@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vetro Restaurant &amp; Lounge — Howard Beach</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --limestone:#e7e1d3;
+    --limestone-dk:#d8cfbc;
+    --parchment:#f1ece1;
+    --cream:#faf7f0;
+    --taupe:#6e5a4c;
+    --espresso:#42352b;
+    --bronze:#9a7b4f;
+    --bronze-dk:#7d6240;
+    --sky:#a9c4d4;
+    --ink:#2c241d;
+    --line:rgba(66,53,43,.16);
+    --line-soft:rgba(66,53,43,.09);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--limestone);color:var(--ink);font-family:'Jost',sans-serif;font-weight:300;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  h1,h2,h3,.display{font-family:'Cormorant Garamond',serif;font-weight:500;line-height:1.05;color:var(--espresso)}
+  .eyebrow{font-family:'Jost',sans-serif;font-weight:400;text-transform:uppercase;letter-spacing:.42em;font-size:.7rem;color:var(--bronze)}
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+  .ph{position:relative;background:linear-gradient(135deg,rgba(154,123,79,.1),rgba(110,90,76,.06)),repeating-linear-gradient(45deg,rgba(66,53,43,.035) 0 14px,transparent 14px 28px);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden}
+  .ph span{font-family:'Jost',sans-serif;font-weight:400;font-size:.66rem;letter-spacing:.26em;text-transform:uppercase;color:var(--taupe);padding:0 1rem;opacity:.85}
+  header{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:1.6rem clamp(1.2rem,5vw,3.5rem);transition:all .5s ease}
+  header.scrolled{background:rgba(241,236,225,.86);backdrop-filter:blur(14px);padding:1rem clamp(1.2rem,5vw,3.5rem);border-bottom:1px solid var(--line-soft)}
+  .brand{display:flex;align-items:center;gap:.85rem}
+  /* nav logo: gold logo on a soft espresso pill so it reads on light limestone */
+  .nav-logo{height:38px;width:auto;display:block;transition:height .5s ease;filter:drop-shadow(0 1px 3px rgba(44,36,29,.45))}
+  header.scrolled .nav-logo{height:32px;filter:none}
+  .brand-name{font-family:'Cormorant Garamond',serif;font-size:1.55rem;letter-spacing:.2em;color:var(--espresso)}
+  .brand-name small{display:block;font-family:'Jost',sans-serif;font-size:.52rem;letter-spacing:.46em;color:var(--taupe);text-transform:uppercase;margin-top:-2px}
+  nav{display:flex;gap:2.4rem;align-items:center}
+  nav a{font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink);opacity:.82;transition:all .3s}
+  nav a:hover{opacity:1;color:var(--bronze)}
+  .nav-reserve{border:1px solid var(--bronze);padding:.6rem 1.3rem;color:var(--bronze)!important;opacity:1!important}
+  .nav-reserve:hover{background:var(--bronze);color:var(--cream)!important}
+  .menu-toggle{display:none;background:none;border:none;color:var(--espresso);font-size:1.4rem;cursor:pointer}
+  .hero{position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:7rem clamp(1.2rem,5vw,3.5rem) 4rem}
+  .hero-media{position:absolute;inset:0;z-index:0}
+  .hero-media .ph{width:100%;height:100%;border:none}
+  .hero-media::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(44,36,29,.28) 0%,rgba(44,36,29,.12) 38%,rgba(231,225,211,.72) 88%,var(--limestone) 100%)}
+  .hero-inner{position:relative;z-index:2;max-width:900px}
+  .hero-logo{width:clamp(280px,42vw,480px);height:auto;margin-bottom:1.6rem;filter:drop-shadow(0 6px 30px rgba(44,36,29,.5));opacity:0;transform:translateY(20px) scale(.97);animation:rise 1.2s .2s forwards}
+  .hero .eyebrow{color:var(--cream);opacity:0;transform:translateY(18px);animation:rise 1s .5s forwards;text-shadow:0 1px 12px rgba(44,36,29,.4)}
+  .hero h1{font-size:clamp(3.4rem,11vw,9rem);color:var(--cream);font-weight:500;letter-spacing:.01em;margin:1.1rem 0 .4rem;text-shadow:0 2px 30px rgba(44,36,29,.45);opacity:0;transform:translateY(24px);animation:rise 1.1s .66s forwards}
+  .hero h1 em{font-style:italic;color:var(--limestone)}
+  .hero-sub{font-size:clamp(1rem,2vw,1.25rem);max-width:560px;color:var(--cream);font-weight:300;text-shadow:0 1px 16px rgba(44,36,29,.55);opacity:0;transform:translateY(20px);animation:rise 1.1s .82s forwards}
+  .hero-actions{display:flex;gap:1rem;flex-wrap:wrap;margin-top:2.4rem;opacity:0;transform:translateY(20px);animation:rise 1.1s .98s forwards}
+  .btn{font-family:'Jost',sans-serif;font-size:.8rem;letter-spacing:.2em;text-transform:uppercase;padding:1rem 2.1rem;border:1px solid var(--bronze);color:var(--bronze);background:rgba(250,247,240,.06);transition:all .35s;cursor:pointer}
+  .btn:hover{background:var(--bronze);color:var(--cream)}
+  .btn-solid{background:var(--bronze);color:var(--cream);border-color:var(--bronze)}
+  .btn-solid:hover{background:var(--bronze-dk);border-color:var(--bronze-dk)}
+  .scroll-cue{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);z-index:2;font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;color:var(--taupe);display:flex;flex-direction:column;align-items:center;gap:.6rem;opacity:0;animation:fade 1.4s 1.3s forwards}
+  .scroll-cue::after{content:"";width:1px;height:46px;background:linear-gradient(var(--bronze),transparent);animation:pulse 2s infinite}
+  @keyframes rise{to{opacity:1;transform:translateY(0)}}
+  @keyframes fade{to{opacity:1}}
+  @keyframes pulse{0%,100%{opacity:.3}50%{opacity:1}}
+  .intro{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(2rem,6vw,6rem);align-items:center;padding:clamp(5rem,12vw,9rem) clamp(1.2rem,5vw,3.5rem);max-width:1280px;margin:0 auto}
+  .intro-copy h2{font-size:clamp(2rem,4.5vw,3.4rem);margin:1.2rem 0 1.6rem}
+  .intro-copy h2 em{font-style:italic;color:var(--bronze)}
+  .intro-copy p{margin-bottom:1.2rem;opacity:.84}
+  .intro-copy .accolade{margin-top:2rem;padding-top:1.6rem;border-top:1px solid var(--line);display:flex;gap:2.4rem;flex-wrap:wrap}
+  .accolade div{min-width:90px}
+  .accolade .n{font-family:'Cormorant Garamond',serif;font-size:2.5rem;color:var(--bronze);line-height:1}
+  .accolade .l{font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--taupe);margin-top:.4rem}
+  .intro-media{position:relative;height:clamp(360px,52vw,560px)}
+  .intro-media .ph{position:absolute;inset:0}
+  .intro-media .ph.small{inset:auto -1.5rem -1.5rem auto;width:46%;height:46%;border:2px solid var(--cream);background:var(--parchment);z-index:2;box-shadow:0 20px 50px rgba(44,36,29,.18)}
+  .section-head{text-align:center;max-width:680px;margin:0 auto clamp(2.5rem,6vw,4rem)}
+  .section-head h2{font-size:clamp(2.2rem,5vw,3.8rem);margin-top:.8rem}
+  .section-head h2 em{font-style:italic;color:var(--bronze)}
+  .section-head p{margin-top:1rem;color:var(--taupe)}
+  .spaces{padding:clamp(4rem,10vw,7rem) clamp(1.2rem,5vw,3.5rem);background:var(--parchment)}
+  .spaces-wrap{max-width:1280px;margin:0 auto}
+  .space-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:1.4rem}
+  .space-card{position:relative;overflow:hidden;border:1px solid var(--line-soft);min-height:430px;display:flex;flex-direction:column;justify-content:flex-end;transition:transform .5s ease,box-shadow .5s ease;background:var(--limestone)}
+  .space-card:hover{transform:translateY(-6px);box-shadow:0 24px 60px rgba(44,36,29,.22)}
+  .space-card .ph{position:absolute;inset:0;border:none;z-index:0}
+  .space-card::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,transparent 28%,rgba(44,36,29,.35) 58%,rgba(44,36,29,.9) 100%)}
+  .space-card .body{position:relative;z-index:2;padding:1.9rem}
+  .space-card .num{font-size:.66rem;letter-spacing:.3em;color:var(--bronze);text-transform:uppercase}
+  .space-card h3{font-size:1.9rem;color:var(--cream);margin:.5rem 0}
+  .space-card p{font-size:.9rem;color:var(--limestone);opacity:.92}
+  .space-card .cap{margin-top:.9rem;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--sky)}
+  .space-card .more{margin-top:1.1rem;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--cream);opacity:0;transform:translateX(-6px);transition:all .4s}
+  .space-card:hover .more{opacity:1;transform:translateX(0)}
+  .space-card.feature{grid-column:span 2}
+  @media(max-width:760px){.space-card.feature{grid-column:span 1}}
+  .strip{position:relative;padding:clamp(5rem,12vw,8rem) clamp(1.2rem,5vw,3.5rem);text-align:center;overflow:hidden}
+  .strip .ph{position:absolute;inset:0;border:none;z-index:0}
+  .strip::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(44,36,29,.55),rgba(66,53,43,.6));z-index:1}
+  .strip-inner{position:relative;z-index:2;max-width:760px;margin:0 auto}
+  .strip .eyebrow{color:var(--sky)}
+  .strip h2{font-size:clamp(2.2rem,6vw,4.4rem);color:var(--cream)}
+  .strip h2 em{font-style:italic;color:var(--limestone)}
+  .strip p{margin:1.4rem 0 0;color:var(--cream);font-size:1.05rem;opacity:.92}
+  .visit{padding:clamp(4rem,10vw,7rem) clamp(1.2rem,5vw,3.5rem);max-width:1280px;margin:0 auto}
+  .visit-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,6vw,5rem)}
+  .visit-grid h2{font-size:clamp(1.8rem,4vw,2.6rem);margin:.6rem 0 1.4rem}
+  .hours-row{display:flex;justify-content:space-between;padding:.85rem 0;border-bottom:1px solid var(--line-soft);font-size:.92rem}
+  .hours-row span:first-child{color:var(--ink)}
+  .hours-row span:last-child{color:var(--taupe);letter-spacing:.04em}
+  .hours-row.closed span:last-child{color:var(--bronze)}
+  .info-block{margin-bottom:2rem}
+  .info-block .eyebrow{display:block;margin-bottom:.7rem}
+  .info-block p,.info-block a{font-size:1.05rem;color:var(--espresso);font-weight:300}
+  .info-block a:hover{color:var(--bronze)}
+  .visit .ph.map{height:230px;margin-top:1rem}
+  footer{border-top:1px solid var(--line);padding:clamp(3rem,7vw,4.5rem) clamp(1.2rem,5vw,3.5rem) 2.5rem;background:var(--espresso)}
+  .foot-grid{max-width:1280px;margin:0 auto;display:flex;justify-content:space-between;flex-wrap:wrap;gap:2.5rem}
+  .foot-brand .foot-logo{height:64px;width:auto;margin-bottom:.4rem}
+  .foot-brand p{margin-top:1rem;max-width:300px;color:var(--limestone);opacity:.7;font-size:.92rem}
+  .foot-col h4{font-size:.7rem;letter-spacing:.24em;text-transform:uppercase;color:var(--bronze);margin-bottom:1.1rem}
+  .foot-col a{display:block;font-size:.92rem;color:var(--limestone);opacity:.78;margin-bottom:.7rem;transition:all .3s}
+  .foot-col a:hover{color:var(--bronze);opacity:1}
+  .foot-bottom{max-width:1280px;margin:3rem auto 0;padding-top:1.6rem;border-top:1px solid rgba(231,225,211,.14);display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;font-size:.74rem;letter-spacing:.08em;color:var(--limestone);opacity:.6}
+  .reveal{opacity:0;transform:translateY(30px);transition:opacity .9s ease,transform .9s ease}
+  .reveal.in{opacity:1;transform:translateY(0)}
+  @media(max-width:880px){nav{display:none}.menu-toggle{display:block}.intro,.visit-grid{grid-template-columns:1fr}.intro-media{height:380px;margin-top:1rem}}
+  @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<header id="hdr">
+  <div class="brand">
+    <img class="nav-logo" src="vetro-logo.webp" alt="Vetro by Russo's on the Bay">
+  </div>
+  <nav>
+    <a href="#story">The Place</a>
+    <a href="#spaces">Spaces</a>
+    <a href="#waterfront">Waterfront</a>
+    <a href="#visit">Visit</a>
+    <a class="nav-reserve" href="#reserve">Reserve</a>
+  </nav>
+  <button class="menu-toggle" aria-label="Menu">&#9776;</button>
+</header>
+
+<section class="hero">
+  <div class="hero-media">
+    <div class="ph"><span>Hero image &mdash; Vetro waterfront / building exterior in daylight</span></div>
+  </div>
+  <div class="hero-inner">
+    <img class="hero-logo" src="vetro-logo.webp" alt="Vetro by Russo's on the Bay">
+    <p class="eyebrow">Howard Beach &middot; On Jamaica Bay</p>
+    <h1>Where every day is a <em>special occasion</em></h1>
+    <p class="hero-sub">A waterfront Italian restaurant, lounge, and catering destination &mdash; where the line between indoors and the bay all but disappears.</p>
+    <div class="hero-actions">
+      <a class="btn btn-solid" href="#reserve">Reserve a Table</a>
+      <a class="btn" href="#spaces">Explore the Spaces</a>
+    </div>
+  </div>
+  <div class="scroll-cue">Scroll</div>
+</section>
+
+<section class="intro" id="story">
+  <div class="intro-copy reveal">
+    <p class="eyebrow">The Vetro Story</p>
+    <h2>Fine dining, <em>reflected</em> in the water</h2>
+    <p>Vetro &mdash; Italian for <em>glass</em> &mdash; was built to make the most of its place on Jamaica Bay. The design intentionally blurs the distinctions between interior and exterior, land and water, in a series of richly understated spaces that are all clear light and air, with open vistas to the bay.</p>
+    <p>The chef personally creates creative and classic Italian cuisine, pairing traditional offerings with international inspiration, alongside an award-winning wine list with hundreds of selections from around the world.</p>
+    <div class="accolade">
+      <div><div class="n">#1</div><div class="l">Best Restaurant, Tri-State &mdash; OpenTable</div></div>
+      <div><div class="n">4.8</div><div class="l">OpenTable rating &middot; 1,600+ reviews</div></div>
+      <div><div class="n">400+</div><div class="l">Wines from around the world</div></div>
+    </div>
+  </div>
+  <div class="intro-media reveal">
+    <div class="ph"><span>Interior &mdash; dining room / candlelit tables</span></div>
+    <div class="ph small"><span>Detail &mdash; plated dish or glassware</span></div>
+  </div>
+</section>
+
+<section class="spaces" id="spaces">
+  <div class="spaces-wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">Five Distinct Settings</p>
+      <h2>One destination, <em>many rooms</em></h2>
+      <p>From a candlelit dinner on the water to a wedding for a hundred and thirty, every Vetro space carries the same Russo&rsquo;s standard of service.</p>
+    </div>
+    <div class="space-grid">
+      <a href="#" class="space-card feature reveal">
+        <div class="ph"><span>The Restaurant &mdash; indoor + waterfront patio</span></div>
+        <div class="body">
+          <p class="num">The Restaurant</p>
+          <h3>Dining on the Bay</h3>
+          <p>Elegant indoor dining and a breezy waterfront patio perched above the channel to Jamaica Bay &mdash; plus dock &amp; dine at Vetro&rsquo;s own marina.</p>
+          <p class="cap">Menu &amp; Drink List &rarr;</p>
+          <span class="more">View the Restaurant</span>
+        </div>
+      </a>
+      <a href="#" class="space-card reveal">
+        <div class="ph"><span>The Blue Lounge &mdash; bar &amp; high tables</span></div>
+        <div class="body">
+          <p class="num">The Blue Lounge</p>
+          <h3>The Blue Lounge</h3>
+          <p>High tables and a full bar that opens to the outside. Live music, happy hour, and late-night drinks.</p>
+          <span class="more">Discover the Lounge</span>
+        </div>
+      </a>
+      <a href="#" class="space-card reveal">
+        <div class="ph"><span>The Rooftop Lounge &mdash; retractable roof, bay views</span></div>
+        <div class="body">
+          <p class="num">Events</p>
+          <h3>The Rooftop</h3>
+          <p>Panoramic bay views under a retractable roof, with a stage, dance floor, and DJ station.</p>
+          <p class="cap">Up to 150 guests</p>
+          <span class="more">Plan an Event</span>
+        </div>
+      </a>
+      <a href="#" class="space-card reveal">
+        <div class="ph"><span>The Murano Room &mdash; wedding &amp; gala ballroom</span></div>
+        <div class="body">
+          <p class="num">Events</p>
+          <h3>The Murano Room</h3>
+          <p>Named for Murano glass &mdash; 2,000+ sq ft of chandeliers and marble dance floor for weddings and galas.</p>
+          <p class="cap">90&ndash;130 guests</p>
+          <span class="more">Plan an Event</span>
+        </div>
+      </a>
+      <a href="#" class="space-card reveal">
+        <div class="ph"><span>The Wine Cellar &mdash; Tuscan beams, exposed brick</span></div>
+        <div class="body">
+          <p class="num">Events</p>
+          <h3>The Wine Cellar</h3>
+          <p>A rustic lower-level room with reclaimed wood, Tuscan beams, and a vast wine display for private parties.</p>
+          <p class="cap">Up to 90 guests</p>
+          <span class="more">Plan an Event</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="strip" id="waterfront">
+  <div class="ph"><span>Wide waterfront image &mdash; patio / marina / bay at golden hour</span></div>
+  <div class="strip-inner reveal">
+    <p class="eyebrow">Dock &amp; Dine</p>
+    <h2>Arrive by car, or <em>by boat</em></h2>
+    <p>Out for a day on the water? Vetro&rsquo;s marina is open to you &mdash; pull up, dock, and stay for a drink or a meal with the bay at your table.</p>
+  </div>
+</section>
+
+<section class="visit" id="visit">
+  <div class="visit-grid">
+    <div class="reveal">
+      <p class="eyebrow">Hours</p>
+      <h2>Open Tuesday&ndash;Sunday</h2>
+      <div class="hours-row closed"><span>Monday</span><span>Closed</span></div>
+      <div class="hours-row"><span>Tuesday</span><span>5:00 PM &ndash; 10:00 PM</span></div>
+      <div class="hours-row"><span>Wednesday</span><span>5:00 PM &ndash; 10:00 PM</span></div>
+      <div class="hours-row"><span>Thursday</span><span>5:00 PM &ndash; 10:00 PM</span></div>
+      <div class="hours-row"><span>Friday</span><span>5:00 PM &ndash; 11:00 PM</span></div>
+      <div class="hours-row"><span>Saturday</span><span>5:00 PM &ndash; 11:00 PM</span></div>
+      <div class="hours-row"><span>Sunday Brunch</span><span>11:30 AM &ndash; 9:00 PM</span></div>
+    </div>
+    <div class="reveal" id="reserve">
+      <div class="info-block">
+        <span class="eyebrow">Find Us</span>
+        <p>164-49 Cross Bay Blvd<br>Howard Beach, NY 11414</p>
+      </div>
+      <div class="info-block">
+        <span class="eyebrow">Reservations</span>
+        <p><a href="tel:+17188438387">(718) 843-8387</a></p>
+      </div>
+      <div class="info-block">
+        <span class="eyebrow">Parking</span>
+        <p>Complimentary valet</p>
+      </div>
+      <div class="ph map"><span>Map &mdash; Vetro on Cross Bay Blvd</span></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-grid">
+    <div class="foot-brand">
+      <img class="foot-logo" src="vetro-logo.webp" alt="Vetro by Russo's on the Bay">
+      <p>A waterfront destination on Jamaica Bay, part of the Russo&rsquo;s On The Bay family of hospitality.</p>
+    </div>
+    <div class="foot-col">
+      <h4>Explore</h4>
+      <a href="#">The Restaurant</a>
+      <a href="#">Menu &amp; Drinks</a>
+      <a href="#">The Blue Lounge</a>
+      <a href="#waterfront">Dock &amp; Dine</a>
+    </div>
+    <div class="foot-col">
+      <h4>Private Events</h4>
+      <a href="#">The Rooftop</a>
+      <a href="#">The Murano Room</a>
+      <a href="#">The Wine Cellar</a>
+      <a href="#">Inquire</a>
+    </div>
+    <div class="foot-col">
+      <h4>Visit</h4>
+      <a href="tel:+17188438387">(718) 843-8387</a>
+      <a href="#visit">Hours &amp; Location</a>
+      <a href="#reserve">Reserve a Table</a>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <span>&copy; 2026 Vetro Restaurant &amp; Lounge &middot; Howard Beach, NY</span>
+    <span>164-49 Cross Bay Blvd &middot; (718) 843-8387</span>
+  </div>
+</footer>
+
+<script>
+  const hdr=document.getElementById('hdr');
+  addEventListener('scroll',()=>hdr.classList.toggle('scrolled',scrollY>40));
+  const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.16});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
