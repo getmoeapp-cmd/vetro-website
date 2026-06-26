@@ -82,7 +82,18 @@
   .section-head p{margin-top:1rem;color:var(--taupe)}
   .spaces{padding:clamp(4rem,10vw,7rem) clamp(1.2rem,5vw,3.5rem);background:var(--parchment)}
   .spaces-wrap{max-width:1280px;margin:0 auto}
-  .space-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:1.4rem}
+  .space-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.4rem}
+  .space-card{grid-column:span 2}
+  .space-card.narrow{grid-column:span 1}
+  .space-card.feature{grid-column:span 2}
+  @media(max-width:900px){
+    .space-grid{grid-template-columns:repeat(2,1fr)}
+    .space-card,.space-card.narrow,.space-card.feature{grid-column:span 1}
+  }
+  @media(max-width:600px){
+    .space-grid{grid-template-columns:1fr}
+    .space-card,.space-card.narrow,.space-card.feature{grid-column:span 1}
+  }
   .space-card{position:relative;overflow:hidden;border:1px solid var(--line-soft);min-height:430px;display:flex;flex-direction:column;justify-content:flex-end;transition:transform .5s ease,box-shadow .5s ease;background:var(--limestone)}
   .space-card:hover{transform:translateY(-6px);box-shadow:0 24px 60px rgba(44,36,29,.22)}
   .space-card .ph{position:absolute;inset:0;border:none;z-index:0}
@@ -96,8 +107,6 @@
   .space-card .cap{margin-top:.9rem;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--sky)}
   .space-card .more{margin-top:1.1rem;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--cream);opacity:0;transform:translateX(-6px);transition:all .4s}
   .space-card:hover .more{opacity:1;transform:translateX(0)}
-  .space-card.feature{grid-column:span 2}
-  @media(max-width:760px){.space-card.feature{grid-column:span 1}}
   .strip{position:relative;padding:clamp(5rem,12vw,8rem) clamp(1.2rem,5vw,3.5rem);text-align:center;overflow:hidden}
   .strip .ph{position:absolute;inset:0;border:none;z-index:0}
   .strip::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(44,36,29,.55),rgba(66,53,43,.6));z-index:1}
@@ -192,7 +201,7 @@
     </div>
     <div class="space-grid">
       <a href="#" class="space-card feature reveal">
-        <div class="ph"><span>The Restaurant &mdash; indoor + waterfront patio</span></div>
+        <img class="card-img" src="vetro-restaurant.jpeg" alt="The Restaurant — main dining room with white-linen tables">
         <div class="body">
           <p class="num">The Restaurant</p>
           <h3>Dining on the Bay</h3>
@@ -201,8 +210,8 @@
           <span class="more">View the Restaurant</span>
         </div>
       </a>
-      <a href="#" class="space-card reveal">
-        <div class="ph"><span>The Blue Lounge &mdash; bar &amp; high tables</span></div>
+      <a href="#" class="space-card narrow reveal">
+        <img class="card-img" src="vetro-bluelounge.jpeg" alt="The Blue Lounge — bar and lounge seating with blue lighting">
         <div class="body">
           <p class="num">The Blue Lounge</p>
           <h3>The Blue Lounge</h3>
@@ -210,7 +219,7 @@
           <span class="more">Discover the Lounge</span>
         </div>
       </a>
-      <a href="#" class="space-card reveal">
+      <a href="#" class="space-card narrow reveal">
         <img class="card-img" src="vetro-rooftop.jpeg" alt="The Rooftop — glass-roofed lounge with bay views, stage, and dance floor">
         <div class="body">
           <p class="num">Events</p>
