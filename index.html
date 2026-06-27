@@ -139,7 +139,19 @@
   .foot-bottom{max-width:1280px;margin:3rem auto 0;padding-top:1.6rem;border-top:1px solid rgba(231,225,211,.14);display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;font-size:.74rem;letter-spacing:.08em;color:var(--limestone);opacity:.6}
   .reveal{opacity:0;transform:translateY(30px);transition:opacity .9s ease,transform .9s ease}
   .reveal.in{opacity:1;transform:translateY(0)}
-  @media(max-width:880px){nav{display:none}.menu-toggle{display:block}.intro,.visit-grid{grid-template-columns:1fr}.intro-media{height:380px;margin-top:1rem}}
+  @media(max-width:880px){
+    .menu-toggle{display:block}
+    nav{position:fixed;top:0;right:0;height:100vh;width:min(78vw,320px);flex-direction:column;align-items:flex-start;justify-content:center;gap:1.8rem;background:var(--espresso);padding:2rem 2.4rem;transform:translateX(100%);transition:transform .4s ease;box-shadow:-10px 0 40px rgba(44,36,29,.3);z-index:60}
+    nav.open{transform:translateX(0)}
+    nav a{font-size:1rem;color:var(--cream);opacity:.9}
+    nav a:hover{color:var(--bronze-bright)}
+    .nav-reserve{border-color:var(--bronze);color:var(--bronze-bright)!important;padding:.8rem 1.6rem}
+    .menu-toggle{z-index:70;position:relative}
+    body.nav-open{overflow:hidden}
+    .nav-backdrop{position:fixed;inset:0;background:rgba(44,36,29,.5);opacity:0;visibility:hidden;transition:opacity .4s ease;z-index:55}
+    .nav-backdrop.open{opacity:1;visibility:visible}
+    .intro,.visit-grid{grid-template-columns:1fr}.intro-media{height:380px;margin-top:1rem}
+  }
   @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
 </style>
 </head>
@@ -149,7 +161,7 @@
   <div class="brand">
     <img class="nav-logo" src="vetro-logo.webp" alt="Vetro by Russo's on the Bay">
   </div>
-  <nav>
+  <nav id="mainNav">
     <a href="#story">The Place</a>
     <a href="#spaces">Spaces</a>
     <a href="menu.html">Menus</a>
@@ -157,8 +169,9 @@
     <a href="#visit">Visit</a>
     <a class="nav-reserve" href="https://www.opentable.com/r/vetro-by-russos-on-the-bay-reservations-howard-beach?restref=34984&lang=en-US&ot_source=Restaurant%20website" target="_blank" rel="noopener">Reserve</a>
   </nav>
-  <button class="menu-toggle" aria-label="Menu">&#9776;</button>
+  <button class="menu-toggle" id="menuToggle" aria-label="Menu" aria-expanded="false">&#9776;</button>
 </header>
+<div class="nav-backdrop" id="navBackdrop"></div>
 
 <section class="hero">
   <div class="hero-media">
@@ -332,6 +345,15 @@
 
 <script>
   const hdr=document.getElementById('hdr');
+  // mobile nav toggle
+  const navEl=document.getElementById('mainNav');
+  const toggle=document.getElementById('menuToggle');
+  const backdrop=document.getElementById('navBackdrop');
+  function closeNav(){navEl.classList.remove('open');backdrop.classList.remove('open');document.body.classList.remove('nav-open');toggle.innerHTML='&#9776;';toggle.setAttribute('aria-expanded','false');}
+  function openNav(){navEl.classList.add('open');backdrop.classList.add('open');document.body.classList.add('nav-open');toggle.innerHTML='&times;';toggle.setAttribute('aria-expanded','true');}
+  toggle.addEventListener('click',()=>{navEl.classList.contains('open')?closeNav():openNav();});
+  backdrop.addEventListener('click',closeNav);
+  navEl.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeNav));
   addEventListener('scroll',()=>hdr.classList.toggle('scrolled',scrollY>40));
   const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.16});
   document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
