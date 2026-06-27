@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Catering Menu &mdash; Vetro by Russo's On The Bay</title>
+<meta name="description" content="Vetro's off-premise catering take-out menu. Trays from our kitchen to your home &mdash; pasta, chicken, veal, seafood, appetizers and more. Call 718-843-8387 to order.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --limestone:#E7E1D3;
+    --taupe:#6E5A4C;
+    --espresso:#42352B;
+    --bronze:#9A7B4F;
+    --white-trim:#FAF7F0;
+    --sky:#A9C4D4;
+    --bronze-soft:rgba(154,123,79,.14);
+    --line:rgba(66,53,43,.16);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Jost',sans-serif;
+    background:var(--limestone);
+    color:var(--espresso);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none}
+  .serif{font-family:'Cormorant Garamond',serif}
+
+  /* ---------- NAV ---------- */
+  .nav{
+    position:sticky;top:0;z-index:100;
+    background:rgba(231,225,211,.92);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+    transition:padding .3s ease;
+  }
+  .nav-inner{
+    max-width:1200px;margin:0 auto;
+    padding:14px 28px;
+    display:flex;align-items:center;justify-content:space-between;
+  }
+  .nav-logo{display:flex;align-items:center;gap:13px}
+  .nav-logo img{height:62px;width:auto;transition:height .3s ease}
+  .nav-logo .wordmark{
+    font-family:'Cormorant Garamond',serif;
+    font-size:1.55rem;font-weight:600;letter-spacing:.04em;
+    color:var(--espresso);line-height:1;
+  }
+  .nav-logo .wordmark small{
+    display:block;font-family:'Jost',sans-serif;
+    font-size:.52rem;font-weight:400;letter-spacing:.34em;
+    text-transform:uppercase;color:var(--bronze);margin-top:4px;
+  }
+  .nav-links{display:flex;gap:30px;align-items:center}
+  .nav-links a{
+    font-size:.82rem;font-weight:400;letter-spacing:.13em;
+    text-transform:uppercase;color:var(--espresso);
+    position:relative;padding:4px 0;transition:color .2s;
+  }
+  .nav-links a::after{
+    content:'';position:absolute;left:0;bottom:-2px;height:1px;width:0;
+    background:var(--bronze);transition:width .25s ease;
+  }
+  .nav-links a:hover{color:var(--bronze)}
+  .nav-links a:hover::after{width:100%}
+  .nav-links a.cta{
+    border:1px solid var(--bronze);border-radius:2px;
+    padding:9px 20px;color:var(--bronze);
+  }
+  .nav-links a.cta::after{display:none}
+  .nav-links a.cta:hover{background:var(--bronze);color:var(--white-trim)}
+  .nav-toggle{display:none;background:none;border:none;cursor:pointer;padding:6px}
+  .nav-toggle span{display:block;width:26px;height:2px;background:var(--espresso);margin:5px 0;transition:.3s}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    background:var(--espresso);
+    color:var(--white-trim);
+    text-align:center;
+    padding:74px 24px 66px;
+    position:relative;overflow:hidden;
+  }
+  .hero::before{
+    content:'';position:absolute;inset:0;
+    background:
+      radial-gradient(circle at 20% 20%,rgba(154,123,79,.22),transparent 55%),
+      radial-gradient(circle at 82% 78%,rgba(169,196,212,.13),transparent 50%);
+  }
+  .hero-content{position:relative;z-index:1;max-width:760px;margin:0 auto}
+  .hero .eyebrow{
+    font-size:.72rem;letter-spacing:.42em;text-transform:uppercase;
+    color:var(--bronze);margin-bottom:20px;font-weight:500;
+  }
+  .hero h1{
+    font-family:'Cormorant Garamond',serif;
+    font-size:clamp(2.7rem,7vw,4.6rem);
+    font-weight:600;line-height:1.02;letter-spacing:.01em;
+    margin-bottom:22px;
+  }
+  .hero h1 em{font-style:italic;color:var(--bronze)}
+  .hero p{
+    font-size:1.05rem;font-weight:300;color:rgba(250,247,240,.84);
+    max-width:560px;margin:0 auto 30px;
+  }
+  .hero-tagline{
+    font-family:'Cormorant Garamond',serif;font-style:italic;
+    font-size:1.3rem;color:rgba(250,247,240,.7);letter-spacing:.02em;
+  }
+  .hero-call{
+    display:inline-flex;align-items:center;gap:10px;
+    margin-top:8px;
+    font-size:.8rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--bronze);font-weight:500;
+  }
+  .hero-call a{
+    font-family:'Cormorant Garamond',serif;text-transform:none;
+    letter-spacing:.01em;font-size:1.5rem;font-weight:600;
+    color:var(--white-trim);border-bottom:1px solid var(--bronze);
+  }
+
+  /* ---------- SERVING NOTE STRIP ---------- */
+  .serving-strip{
+    background:var(--white-trim);
+    border-bottom:1px solid var(--line);
+  }
+  .serving-inner{
+    max-width:1080px;margin:0 auto;padding:22px 28px;
+    display:flex;flex-wrap:wrap;gap:14px 40px;justify-content:center;
+    align-items:center;text-align:center;
+  }
+  .serving-inner .item{
+    display:flex;flex-direction:column;gap:2px;min-width:150px;
+  }
+  .serving-inner .item .k{
+    font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--bronze);font-weight:500;
+  }
+  .serving-inner .item .v{
+    font-family:'Cormorant Garamond',serif;font-size:1.12rem;
+    color:var(--espresso);font-weight:500;
+  }
+  .serving-inner .divider{width:1px;height:34px;background:var(--line)}
+
+  /* ---------- TABS ---------- */
+  .menu-wrap{max-width:1080px;margin:0 auto;padding:54px 28px 30px}
+  .tabs{
+    display:flex;flex-wrap:wrap;gap:6px;justify-content:center;
+    margin-bottom:46px;
+    position:sticky;top:91px;z-index:40;
+    background:var(--limestone);padding:14px 0;
+  }
+  .tab{
+    font-family:'Jost',sans-serif;
+    font-size:.78rem;letter-spacing:.13em;text-transform:uppercase;
+    font-weight:400;color:var(--taupe);
+    background:none;border:1px solid transparent;border-radius:2px;
+    padding:9px 17px;cursor:pointer;transition:all .2s;white-space:nowrap;
+  }
+  .tab:hover{color:var(--espresso);background:var(--bronze-soft)}
+  .tab.active{
+    color:var(--white-trim);background:var(--bronze);
+    border-color:var(--bronze);font-weight:500;
+  }
+
+  /* ---------- PANELS ---------- */
+  .panel{display:none;animation:fade .4s ease}
+  .panel.active{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+  .panel-head{text-align:center;margin-bottom:38px}
+  .panel-head h2{
+    font-family:'Cormorant Garamond',serif;
+    font-size:clamp(2.2rem,5vw,3.2rem);font-weight:600;
+    letter-spacing:.01em;line-height:1;
+  }
+  .panel-head .sub{
+    font-family:'Cormorant Garamond',serif;font-style:italic;
+    font-size:1.05rem;color:var(--bronze);margin-top:6px;
+  }
+  .panel-head::after{
+    content:'';display:block;width:54px;height:2px;
+    background:var(--bronze);margin:18px auto 0;
+  }
+
+  .items{display:grid;gap:2px}
+  .item-row{
+    display:grid;
+    grid-template-columns:1fr auto;
+    gap:10px 28px;
+    align-items:baseline;
+    padding:17px 4px;
+    border-bottom:1px solid var(--line);
+  }
+  .item-row:last-child{border-bottom:none}
+  .item-main .name{
+    font-family:'Cormorant Garamond',serif;
+    font-size:1.32rem;font-weight:600;letter-spacing:.01em;
+    color:var(--espresso);line-height:1.18;
+  }
+  .item-main .desc{
+    font-size:.86rem;font-weight:300;color:var(--taupe);
+    margin-top:3px;max-width:54ch;
+  }
+  .item-main .addon{
+    font-size:.8rem;color:var(--bronze);margin-top:5px;font-weight:400;
+  }
+  .price{
+    text-align:right;white-space:nowrap;
+    font-size:.82rem;letter-spacing:.04em;
+    color:var(--espresso);font-weight:500;line-height:1.5;
+  }
+  .price .pc{display:inline-block}
+  .price .qty{font-size:.66rem;color:var(--bronze);font-weight:500;letter-spacing:.06em}
+  .price .amt{font-family:'Cormorant Garamond',serif;font-size:1.18rem;font-weight:600}
+  .price .sep{color:var(--line);margin:0 7px}
+  .price .single{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:600;letter-spacing:.04em}
+  .price-label{
+    font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--bronze);font-weight:500;
+  }
+
+  .panel-note{
+    background:var(--bronze-soft);
+    border-left:2px solid var(--bronze);
+    padding:14px 20px;margin-top:30px;border-radius:0 3px 3px 0;
+    font-size:.86rem;color:var(--taupe);
+  }
+  .panel-note strong{color:var(--espresso);font-weight:600}
+
+  /* ---------- ORDER CTA ---------- */
+  .order-cta{
+    background:var(--espresso);color:var(--white-trim);
+    text-align:center;padding:64px 24px;margin-top:30px;
+  }
+  .order-cta .eyebrow{
+    font-size:.72rem;letter-spacing:.36em;text-transform:uppercase;
+    color:var(--bronze);margin-bottom:16px;font-weight:500;
+  }
+  .order-cta h2{
+    font-family:'Cormorant Garamond',serif;
+    font-size:clamp(2rem,5vw,3rem);font-weight:600;margin-bottom:14px;
+  }
+  .order-cta p{
+    font-weight:300;color:rgba(250,247,240,.82);
+    max-width:520px;margin:0 auto 28px;
+  }
+  .order-cta .phone{
+    font-family:'Cormorant Garamond',serif;
+    font-size:2.3rem;font-weight:600;color:var(--white-trim);
+    display:inline-block;border-bottom:2px solid var(--bronze);
+    padding-bottom:3px;margin-bottom:8px;
+  }
+  .order-cta .email{
+    display:block;margin-top:18px;font-size:.9rem;
+    letter-spacing:.06em;color:rgba(250,247,240,.7);
+  }
+  .order-cta .email a{color:var(--bronze);border-bottom:1px solid rgba(154,123,79,.5)}
+
+  /* ---------- FOOTER ---------- */
+  .footer{
+    background:var(--espresso);color:rgba(250,247,240,.6);
+    padding:46px 28px 30px;border-top:1px solid rgba(154,123,79,.25);
+  }
+  .footer-inner{
+    max-width:1080px;margin:0 auto;
+    display:flex;flex-wrap:wrap;gap:30px;justify-content:space-between;align-items:center;
+  }
+  .footer-logo{display:flex;align-items:center;gap:12px}
+  .footer-logo .wordmark{
+    font-family:'Cormorant Garamond',serif;font-size:1.4rem;
+    font-weight:600;color:var(--white-trim);letter-spacing:.04em;
+  }
+  .footer-meta{font-size:.82rem;line-height:1.9;text-align:right}
+  .footer-meta a:hover{color:var(--bronze)}
+  .footer-bottom{
+    max-width:1080px;margin:26px auto 0;padding-top:20px;
+    border-top:1px solid rgba(250,247,240,.1);
+    font-size:.72rem;letter-spacing:.04em;color:rgba(250,247,240,.4);
+    text-align:center;
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media(max-width:860px){
+    .nav-links{
+      position:fixed;top:0;right:-100%;height:100vh;width:74%;max-width:320px;
+      background:var(--espresso);flex-direction:column;justify-content:center;
+      gap:30px;transition:right .35s ease;padding:40px;
+    }
+    .nav-links.open{right:0}
+    .nav-links a{color:var(--white-trim);font-size:1rem}
+    .nav-links a.cta{border-color:var(--bronze);color:var(--bronze)}
+    .nav-toggle{display:block;z-index:110}
+    .nav-toggle.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+    .nav-toggle.open span:nth-child(2){opacity:0}
+    .nav-toggle.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+    .tabs{top:83px}
+    .serving-inner .divider{display:none}
+  }
+  @media(max-width:560px){
+    .nav-logo .wordmark{font-size:1.3rem}
+    .nav-logo img{height:52px}
+    .item-row{grid-template-columns:1fr;gap:8px}
+    .price{text-align:left}
+    .hero{padding:54px 22px 48px}
+    .menu-wrap{padding:36px 20px 20px}
+  }
+  @media(prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important;scroll-behavior:auto}
+  }
+  /* visible keyboard focus */
+  a:focus-visible,button:focus-visible{outline:2px solid var(--bronze);outline-offset:3px}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo" aria-label="Vetro home">
+      <span class="wordmark">Vetro<small>Russo's On The Bay</small></span>
+    </a>
+    <button class="nav-toggle" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-links">
+      <a href="index.html">Restaurant</a>
+      <a href="menu.html">Menus</a>
+      <a href="events.html">Host an Event</a>
+      <a href="catering-menu.html">Catering</a>
+      <a href="index.html#visit">Visit</a>
+      <a href="index.html#reserve" class="cta">Reserve</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-content">
+    <p class="eyebrow">Off-Premise Catering</p>
+    <h1>From Our Kitchen<br>to <em>Your Home</em></h1>
+    <p>The same kitchen behind Vetro &mdash; trayed, packed, and ready for your table. Order by the half or full tray for any gathering.</p>
+    <div class="hero-call">
+      To order, call <a href="tel:17188438387">718&middot;843&middot;8387</a>
+    </div>
+  </div>
+</header>
+
+<!-- SERVING NOTE STRIP -->
+<div class="serving-strip">
+  <div class="serving-inner">
+    <div class="item">
+      <span class="k">Full Tray</span>
+      <span class="v">Serves 10&ndash;15</span>
+    </div>
+    <div class="divider"></div>
+    <div class="item">
+      <span class="k">Half Tray</span>
+      <span class="v">Serves 5&ndash;7</span>
+    </div>
+    <div class="divider"></div>
+    <div class="item">
+      <span class="k">Orders $300+</span>
+      <span class="v">Bread, Cheese &amp; Setup</span>
+    </div>
+    <div class="divider"></div>
+    <div class="item">
+      <span class="k">Delivery</span>
+      <span class="v">Free over $400 / 3mi</span>
+    </div>
+  </div>
+</div>
+
+<!-- MENU -->
+<main class="menu-wrap">
+  <div class="tabs" role="tablist">
+    <button class="tab active" data-panel="sauces" role="tab">Sauces</button>
+    <button class="tab" data-panel="salads" role="tab">Salads</button>
+    <button class="tab" data-panel="appetizers" role="tab">Appetizers</button>
+    <button class="tab" data-panel="pasta" role="tab">Pasta</button>
+    <button class="tab" data-panel="chicken" role="tab">Chicken</button>
+    <button class="tab" data-panel="pork" role="tab">Pork</button>
+    <button class="tab" data-panel="veal" role="tab">Veal</button>
+    <button class="tab" data-panel="seafood" role="tab">Seafood</button>
+    <button class="tab" data-panel="veg" role="tab">Vegetables &amp; Starches</button>
+  </div>
+
+  <!-- SAUCES -->
+  <section class="panel active" id="sauces" role="tabpanel">
+    <div class="panel-head"><h2 class="serif">Sauces</h2><div class="sub">By the Quart</div></div>
+    <div class="items">
+      <div class="item-row"><div class="item-main"><div class="name">Filetto di Pomodoro</div><div class="desc">Italian plum tomatoes, sautéed onions, prosciutto di Parma and pancetta</div></div><div class="price"><span class="single">$10</span></div></div>
+      <div class="item-row"><div class="item-main"><div class="name">Marinara</div><div class="desc">San Marzano tomatoes, basil, salt, pepper, garlic and butter</div></div><div class="price"><span class="single">$10</span></div></div>
+      <div class="item-row"><div class="item-main"><div class="name">Vodka</div><div class="desc">Freshly simmered San Marzano tomato sauce and cream, flambéed with vodka</div></div><div class="price"><span class="single">$10</span></div></div>
+      <div class="item-row"><div class="item-main"><div class="name">Alfredo</div><div class="desc">Russo's famous recipe for this classic cream sauce</div></div><div class="price"><span class="single">$12</span></div></div>
+      <div class="item-row"><div class="item-main"><div class="name">Bolognese</div><div class="desc">Traditional Italian meat sauce with beef and San Marzano tomatoes</div></div><div class="price"><span class="single">$12</span></div></div>
+      <div class="item-row"><div class="item-main"><div class="name">White Clam Sauce</div><div class="desc">Our famous secret recipe with whole and chopped little neck clams</div></div><div class="price"><span class="single">$16</span></div></div>
+    </div>
+  </section>
+
+  <!-- SALADS -->
+  <section class="panel" id="salads" role="tabpanel">
+    <div class="panel-head"><h2 class="serif">Salads</h2><div class="sub">Prepared with dressing on the side</div></div>
+    <div class="items">
+      <div class="item-row"><div class="item-main"><div class="name">Murano</div><div class="desc">Tomatoes, cucumber, chickpeas, olive oil and white balsamic</div><div class="addon">Add grilled chicken: half +$25 / full +$35 &nbsp;&bull;&nbsp; Add grilled shrimp: half +$25 / full +$40</div></div><div class="price"><span class="pc"><span class="price-label">Half</span> <span class="amt">$40</span></span><span class="sep">|</span><span class="pc"><span class="price-label">Full</span> <span class="amt">$70</span></span></div></div>
+      <div class="item-row"><div class="item-main"><div class="name">Caesar Salad</div><div class="desc">Classic preparation, croutons and shaved parmesan</div><div class="addon">Add grilled chicken: half +$25 / full +$35 &nbsp;&bull;&nbsp; Add grilled shrimp: half +$25 / full +$40</div></div><div class="price"><span class="pc"><span class="price-label">Half</span> <span class="amt">$40</span></span><span class="sep">|</span><span class="pc"><span class="price-label">Full</span> <span class="amt">$70</span></span></div></div>
+      <div class="item-row"><div class="item-main"><div class="name">Caprese Platter</div><div class="desc">Sliced fresh mozzarella, beef steak tomato, fresh basil, olive oil and balsamic glaze</div></div><div class="price"><span class="pc"><span class="price-label">Half</span> <span class="amt">$50</span></span><span class="sep">|</span><span class="pc"><span class="price-label">Full</span> <span class="amt">$90</span></span></div></div>
+      <div class="item-row"><div class="item-main"><div class="name">Seafood Salad</div><div class="desc">Shrimp, calamari, scunguilli, scallops, octopus, lemon and olive oil</div></div><div class="price"><span class="single">$21 / lb</span></div></div>
+      <div class="item-row"><div class="item-main"><div class="name">Italian Chopped Salad</div><div class="desc">Romaine, soppressata, capicola, roasted peppers, provolone, gaeta olives, celery and white balsamic</div></div><div class="price"><span class="pc"><span class="price-label">Half</span> <span class="amt">$45</span></span><span class="sep">|</span><span class="pc"><span class="price-label">Full</span> <span class="amt">$85</span></span></div></div>
+      <div class="item-row"><div class="item-main"><div class="name">Tri Color Tortellini Salad</div><div class="desc">Cheese tortellini, diced peppers, onions, olives, heirloom tomatoes, extra virgin olive oil and Italian vinaigrette</div></div><div class="price"><span class="pc"><span class="price-label">Half</span> <span class="amt">$45</span></span><span class="sep">|</span><span class="pc"><span class="price-label">Full</span> <span class="amt">$85</span></span></div></div>
+    </div>
+  </section>
+
+  <!-- APPETIZERS -->
+  <section class="panel" id="appetizers" role="tabpanel">
+    <div class="panel-head"><h2 class="serif">Appetizers</h2></div>
+    <div class="items">
+      <div class="item-row"><div class="item-main"><div class="name">Jumbo Shrimp Cocktail Platter</div><div class="desc">Home made cocktail sauce and lemon garnish</div></div><div class="price"><span class="pc"><span class="qty">30pc</span> <span class="price-label">Half</span> <span class="amt">$90</span></span><span class="sep">|</span><span class="pc"><span class="qty">60pc</span> <span class="price-label">Full</span> <span class="amt">$170</span></span></div></div>
+      <div class="item-row"><div class="item-main"><div class="name">Cold Antipasto Platter</div><div class="desc">Bocconcini mozzarella, fire roasted peppers, olives, soppressata, prosciutto, grana padana, capicola and eggplant caponata</div></div><div class="price"><span class="pc"><span class="price-label">Half</span> <span class="amt">$70</span></span><span class="sep">|</span><span class="pc"><span class="price-label">Full</span> <span class="amt">$130</span></span></div></div>
+      <div class="item-row"><div class="item-main"><div class="name">Baked Clams Oreganata</div><div class="desc">Baked little necks, seasoned breadcrumbs and garlic</div></div><div class="price"><span class="pc"><span class="qty">24pc</span> <span class="price-label">Half</span> <span class="amt">$60</span></span><span class="sep">|</span><span class="pc"><span class="qty">48pc</span> <span class="price-label">Full</span> <span class="amt">$115</span></span></div></div>
+      <div class="item-row"><div class="item-main"><div class="name">Asiago Rice Balls</div><div class="desc">Mozzarella, pecorino and panko breadcrumbs</div></div><div class="price"><span class="pc"><span class="qty">24pc</span> <span class="price-label">Half</span> <span class="amt">$40</span></span><span class="sep">|</span><span class="pc"><span class="qty">48pc</span> <span class="price-label">Full</span> <span class="amt">$75</span></span></div></div>
+      <div class="item-row"><div class="item-main"><div class="name">Stuffed Mushrooms</div><div class="desc">Vegetable and bread stuffing</div></div><div class="price"><span class="pc"><span class="qty">24pc</span> <span class="price-label">Half</span> <span class="amt">$40</span></span><span class="sep">|</span><span class="pc"><span class="qty">48pc</span> <span class="price-label">Full</span> <span class="amt">$75</span></span></div></div>
+      <div class="item-row"><div class="item-main"><div class="name">Long Stem Artichoke Francese</div><div class="desc">Egg battered, fried, in a lemon butter sauce</div></div><div class="price"><span class="pc"><span class="qty">24pc</span> <span class="price-label">Half</span> <span class="amt">$45</span></span><span class="sep">|</span><span class="pc"><span class="qty">48pc</span> <span class="price-label">Full</span> <span class="amt">$85</span></span></div></div>
+      <div class="item-row"><div class="item-main"><div class="name">Chicken Meatballs</div><div class="desc">Grated cheese and parsley in francese sauce</div></div><div class="price"><span class="pc"><span class="qty">36pc</span> <span class="price-label">Half</span> <span class="amt">$50</span></span><span class="sep">|</span><span class="pc"><span class="qty">72pc</span> <span class="price-label">Full</span> <span class="amt">$95</span></span></div></div>
+      <div class="item-row"><div class="item-main"><div class="name">Sunday Meatballs</div><div class="desc">Grated cheese, parsley, ricotta and tomato sauce</div></div><div class="price"><span class="pc"><span class="qty">36pc</span> <span class="price-label">Half</span> <span class="amt">$50</span></span><span class="sep">|</span><span class="pc"><span class="qty">72pc</span> <span class="price-label">Full</span> <span class="amt">$95</span></span></div></div>
+      <div class="item-row"><div class="item-main"><div class="name">Eggplant Rollatine</div><div class="desc">Ricotta, mozzarella and classic marinara</div></div><div class="price"><span class="pc"><span class="qty">24pc</span> <span class="price-label">Half</span> <span class="amt">$60</span></span><span class="sep">|</span><span class="pc"><span class="qty">48pc</span> <span class="price-label">Full</span> <span class="amt">$115</span></span></div></div>
+      <div class="item-row"><div class="item-main"><div class="name">Mussels</div><div class="desc">Choice of: Bianca, Fra Diavolo or Limoncello style</div></div><div class="price"><span class="pc"><span class="price-label">Half</span> <span class="amt">$60</span></span><span class="sep">|</span><span class="pc"><span class="price-label">Full</span> <span class="amt">$110</span></span></div></div>
+      <div class="item-row"><div class="item-main"><div class="name">Fried Calamari Arribiatta</div><div class="desc">Fried golden &amp; tossed with chili pepper &amp; spicy tomato sauce</div></div><div class="price"><span class="pc"><span class="price-label">Half</span> <span class="amt">$65</span></span><span class="sep">|</span><span class="pc"><span class="price-label">Full</span> <span class="amt">$120</span></span></div></div>
+      <div class="item-row"><div class="item-main"><div class="name">Seafood Fra Diavolo or Marinara</div><div class="desc">Shrimp, scunguilli, calamari, mussels and clams with garlic in a white wine spicy tomato sauce</div></div><div class="price"><span class="pc"><span class="price-label">Half</span> <span class="amt">$95</span></span><span class="sep">|</span><span class="pc"><span class="price-label">Full</span> <span class="amt">$175</span></span></div></div>
+      <div class="item-row"><div class="item-main"><div class="name">Clams Posillipo</div><div class="desc">Little neck clams, simmered in a light tomato &amp; white wine sauce</div></div><div class="price"><span class="pc"><span class="qty">24pc</span> <span class="price-label">Half</span> <span class="amt">$65</span></span><span class="sep">|</span><span class="pc"><span class="qty">48pc</span> <span class="price-label">Full</span> <span class="amt">$120</span></span></div></div>
+      <div class="item-row"><div class="item-main"><div class="name">Marinated Zucchini &amp; White Beans</div><div class="desc">Thinly sliced zucchini, cannellini beans, extra virgin olive oil &amp; herbs</div></div><div class="price"><span class="pc"><span class="price-label">Pint</span> <span class="amt">$12</span></span><span class="sep">|</span><span class="pc"><span class="price-label">Quart</span> <span class="amt">$21</span></span></div></div>
+      <div class="item-row"><div class="item-main"><div class="name">Sicilian Caponata</div><div class="desc">Roasted eggplant, olives, capers, crushed tomato &amp; garlic</div></div><div class="price"><span class="pc"><span class="price-label">Pint</span> <span class="amt">$10</span></span><span class="sep">|</span><span class="pc"><span class="price-label">Quart</span> <span class="amt">$19</span></span></div></div>
+    </div>
+  </section>
+
+  <!-- PASTA -->
+  <section class="panel" id="pasta" role="tabpanel">
+    <div class="panel-head"><h2 class="serif">Pasta</h2></div>
+    <div class="items">
+      <div class="item-row"><div class="item-main"><div class="name">Rigatoni al Filetto di Pomodoro</div><div class="desc">Fresh tomato and basil sauce</div></div><div class="price"><span class="pc"><span class="price-label">Half</span> <span class="amt">$60</span></span><span class="sep">|</span><span class="pc"><span class="price-label">Full</span> <span class="amt">$100</span></span></div></div>
+      <div class="item-row"><div class="item-main"><div class="name">Penne alla Vodka</div><div class="desc">Pink cream sauce with vodka</div></div><div class="price"><span class="pc"><span class="price-label">Half</span> <span class="amt">$60</span></span><span class="sep">|</span><span class="pc"><span class="price-label">Full</span> <span class="amt">$100</span></span></div></div>
+      <div class="item-row"><div class="item-main"><div class="name">Rigatoni Amatriciana</div><div class="desc">Guanciale, onions, tomato, pecorino romano and basil</div></div><div class="price"><span class="pc"><span class="price-label">Half</span> <span class="amt">$60</span></span><span class="sep">|</span><span class="pc"><span class="price-label">Full</span> <span class="amt">$100</span></span></div></div>
+      <div class="item-row"><div class="item-main"><div class="name">Cavatelli Bolognese</div><div class="desc">Classic meat sauce</div></div><div class="price"><span class="pc"><span class="price-label">Half</span> <span class="amt">$65</span></span><span class="sep">|</span><span class="pc"><span class="price-label">Full</span> <span class="amt">$110</span></span></div></div>
+      <div class="item-row"><div class="item-main"><div class="name">Rigatoni alla Norma</div><div class="desc">Eggplant, tomato and basil sauce</div></div><div class="price"><span class="pc"><span class="price-label">Half</span> <span class="amt">$60</span></span><span class="sep">|</span><span class="pc"><span class="price-label">Full</span> <span class="amt">$100</span></span></div></div>
+      <div class="item-row"><div class="item-main"><div class="name">Linguini White Clam Sauce</div><div class="desc">Little neck clams, white wine, garlic and olive oil</div></div><div class="price"><span class="pc"><span class="price-label">Half</span> <span class="amt">$70</span></span><span class="sep">|</span><span class="pc"><span class="price-label">Full</span> <span class="amt">$125</span></span></div></div>
+      <div class="item-row"><div class="item-main"><div class="name">Linguini Red Clam Sauce</div><div class="desc">Little neck clams, white wine, garlic and olive oil in a red sauce</div></div><div class="price"><span class="pc"><span class="price-label">Half</span> <span class="amt">$70</span></span><span class="sep">|</span><span class="pc"><span class="price-label">Full</span> <span class="amt">$115</span></span></div></div>
+      <div class="item-row"><div class="item-main"><div class="name">Orecchiette Salsice</div><div class="desc">Sausage and broccoli rabe with cannellini beans, garlic and oil</div></div><div class="price"><span class="pc"><span class="price-label">Half</span> <span class="amt">$65</span></span><span class="sep">|</span><span class="pc"><span class="price-label">Full</span> <span class="amt">$110</span></span></div></div>
+      <div class="item-row"><div class="item-main"><div class="name">Gnocchi Sorrentino</div><div class="desc">Potato gnocchi, rich plum tomato sauce, melted mozzarella, baked golden</div></div><div class="price"><span class="pc"><span class="price-label">Half</span> <span class="amt">$65</span></span><span class="sep">|</span><span class="pc"><span class="price-label">Full</span> <span class="amt">$110</span></span></div></div>
+      <div class="item-row"><div class="item-main"><div class="name">Baked Ziti</div><div class="desc">Ricotta, marinara sauce and melted mozzarella</div></div><div class="price"><span class="pc"><span class="price-label">Half</span> <span class="amt">$60</span></span><span class="sep">|</span><span class="pc"><span class="price-label">Full</span> <span class="amt">$100</span></span></div></div>
+      <div class="item-row"><div class="item-main"><div class="name">Lasagna</div><div class="desc">Pasta layered with sausage, meatballs, ricotta and marinara sauce</div></div><div class="price"><span class="pc"><span class="price-label">Half</span> <span class="amt">$65</span></span><span class="sep">|</span><span class="pc"><span class="price-label">Full</span> <span class="amt">$110</span></span></div></div>
+      <div class="item-row"><div class="item-main"><div class="name">Russo's Famous Tortellini Alfredo</div><div class="desc">Meat filled tortellini with Russo's famous alfredo cream sauce</div></div><div class="price"><span class="pc"><span class="price-label">Half</span> <span class="amt">$70</span></span><span class="sep">|</span><span class="pc"><span class="price-label">Full</span> <span class="amt">$130</span></span></div></div>
+    </div>
+  </section>
+
+  <!-- CHICKEN -->
+  <section class="panel" id="chicken" role="tabpanel">
+    <div class="panel-head"><h2 class="serif">Chicken</h2></div>
+    <div class="items">
+      <div class="item-row"><div class="item-main"><div class="name">Chicken Scarpariello</div><div class="desc">Roasted bone-in chicken, fresh herbs, sausage, mushrooms, potatoes and peppers</div></div><div class="price"><span class="pc"><span class="price-label">Half</span> <span class="amt">$65</span></span><span class="sep">|</span><span class="pc"><span class="price-label">Full</span> <span class="amt">$115</span></span></div></div>
+      <div class="item-row"><div class="item-main"><div class="name">Chicken Parmigiana</div><div class="desc">Breaded, fried, topped with tomato sauce and mozzarella</div></div><div class="price"><span class="pc"><span class="price-label">Half</span> <span class="amt">$65</span></span><span class="sep">|</span><span class="pc"><span class="price-label">Full</span> <span class="amt">$115</span></span></div></div>
+      <div class="item-row"><div class="item-main"><div class="name">Chicken Francese</div><div class="desc">Sautéed in a lemon butter sauce</div></div><div class="price"><span class="pc"><span class="price-label">Half</span> <span class="amt">$65</span></span><span class="sep">|</span><span class="pc"><span class="price-label">Full</span> <span class="amt">$115</span></span></div></div>
+      <div class="item-row"><div class="item-main"><div class="name">Chicken Marsala</div><div class="desc">Sautéed with mushrooms in a marsala wine sauce</div></div><div class="price"><span class="pc"><span class="price-label">Half</span> <span class="amt">$65</span></span><span class="sep">|</span><span class="pc"><span class="price-label">Full</span> <span class="amt">$115</span></span></div></div>
+      <div class="item-row"><div class="item-main"><div class="name">Chicken Saltimbocca</div><div class="desc">Prosciutto, sage, in a marsala demi glaze sauce</div></div><div class="price"><span class="pc"><span class="price-label">Half</span> <span class="amt">$80</span></span><span class="sep">|</span><span class="pc"><span class="price-label">Full</span> <span class="amt">$150</span></span></div></div>
+      <div class="item-row"><div class="item-main"><div class="name">Chicken Piccata</div><div class="desc">Sautéed with capers, lemon and white wine</div></div><div class="price"><span class="pc"><span class="price-label">Half</span> <span class="amt">$65</span></span><span class="sep">|</span><span class="pc"><span class="price-label">Full</span> <span class="amt">$115</span></span></div></div>
+      <div class="item-row"><div class="item-main"><div class="name">Chicken alla Romana</div><div class="desc">Boneless, francese style, with broccoli rabe, roasted peppers and mozzarella</div></div><div class="price"><span class="pc"><span class="price-label">Half</span> <span class="amt">$65</span></span><span class="sep">|</span><span class="pc"><span class="price-label">Full</span> <span class="amt">$115</span></span></div></div>
+      <div class="item-row"><div class="item-main"><div class="name">Chicken Capricciosa</div><div class="desc">Breaded, fried, topped with a tomato, red onion and arugula salad</div></div><div class="price"><span class="pc"><span class="price-label">Half</span> <span class="amt">$65</span></span><span class="sep">|</span><span class="pc"><span class="price-label">Full</span> <span class="amt">$115</span></span></div></div>
+      <div class="item-row"><div class="item-main"><div class="name">Chicken Sorrentino</div><div class="desc">Francese style with prosciutto, eggplant and mozzarella in a sherry wine sauce</div></div><div class="price"><span class="pc"><span class="price-label">Half</span> <span class="amt">$65</span></span><span class="sep">|</span><span class="pc"><span class="price-label">Full</span> <span class="amt">$115</span></span></div></div>
+    </div>
+  </section>
+
+  <!-- PORK -->
+  <section class="panel" id="pork" role="tabpanel">
+    <div class="panel-head"><h2 class="serif">Pork</h2></div>
+    <div class="items">
+      <div class="item-row"><div class="item-main"><div class="name">Sausage and Peppers</div><div class="desc">With onions and a hint of tomato sauce</div></div><div class="price"><span class="pc"><span class="price-label">Half</span> <span class="amt">$60</span></span><span class="sep">|</span><span class="pc"><span class="price-label">Full</span> <span class="amt">$105</span></span></div></div>
+      <div class="item-row"><div class="item-main"><div class="name">Pork Pizzaiola</div><div class="desc">Sautéed mushrooms, onions, peppers and tomato sauce</div></div><div class="price"><span class="pc"><span class="price-label">Half</span> <span class="amt">$65</span></span><span class="sep">|</span><span class="pc"><span class="price-label">Full</span> <span class="amt">$115</span></span></div></div>
+      <div class="item-row"><div class="item-main"><div class="name">Pork Milanese</div><div class="desc">Breaded medallions pan-fried golden; topped with sweet peppers, onions &amp; garlic in a red wine vinegar sauce</div></div><div class="price"><span class="pc"><span class="price-label">Half</span> <span class="amt">$65</span></span><span class="sep">|</span><span class="pc"><span class="price-label">Full</span> <span class="amt">$115</span></span></div></div>
+    </div>
+  </section>
+
+  <!-- VEAL -->
+  <section class="panel" id="veal" role="tabpanel">
+    <div class="panel-head"><h2 class="serif">Veal</h2></div>
+    <div class="items">
+      <div class="item-row"><div class="item-main"><div class="name">Veal Parmigiana</div><div class="desc">Breaded, fried, topped with tomato sauce and mozzarella</div></div><div class="price"><span class="pc"><span class="price-label">Half</span> <span class="amt">$85</span></span><span class="sep">|</span><span class="pc"><span class="price-label">Full</span> <span class="amt">$130</span></span></div></div>
+      <div class="item-row"><div class="item-main"><div class="name">Veal Capricciosa</div><div class="desc">Breaded, fried, topped with diced tomatoes, onions in a balsamic sauce</div></div><div class="price"><span class="pc"><span class="price-label">Half</span> <span class="amt">$85</span></span><span class="sep">|</span><span class="pc"><span class="price-label">Full</span> <span class="amt">$130</span></span></div></div>
+      <div class="item-row"><div class="item-main"><div class="name">Veal Marsala</div><div class="desc">Sautéed with mushrooms in a marsala wine sauce</div></div><div class="price"><span class="pc"><span class="price-label">Half</span> <span class="amt">$85</span></span><span class="sep">|</span><span class="pc"><span class="price-label">Full</span> <span class="amt">$130</span></span></div></div>
+      <div class="item-row"><div class="item-main"><div class="name">Veal Francese</div><div class="desc">Sautéed in a lemon and butter sauce</div></div><div class="price"><span class="pc"><span class="price-label">Half</span> <span class="amt">$85</span></span><span class="sep">|</span><span class="pc"><span class="price-label">Full</span> <span class="amt">$130</span></span></div></div>
+      <div class="item-row"><div class="item-main"><div class="name">Veal Saltimbocca</div><div class="desc">Prosciutto, sage, in a marsala demi glaze sauce</div></div><div class="price"><span class="pc"><span class="price-label">Half</span> <span class="amt">$90</span></span><span class="sep">|</span><span class="pc"><span class="price-label">Full</span> <span class="amt">$155</span></span></div></div>
+      <div class="item-row"><div class="item-main"><div class="name">Veal Milanese</div><div class="desc">Breaded, fried; hot or sweet peppers</div></div><div class="price"><span class="pc"><span class="price-label">Half</span> <span class="amt">$85</span></span><span class="sep">|</span><span class="pc"><span class="price-label">Full</span> <span class="amt">$130</span></span></div></div>
+      <div class="item-row"><div class="item-main"><div class="name">Veal alla Romana</div><div class="desc">Francese style, with broccoli rabe, roasted peppers and mozzarella</div></div><div class="price"><span class="pc"><span class="price-label">Half</span> <span class="amt">$85</span></span><span class="sep">|</span><span class="pc"><span class="price-label">Full</span> <span class="amt">$130</span></span></div></div>
+      <div class="item-row"><div class="item-main"><div class="name">Veal Sorrentino</div><div class="desc">Francese style with prosciutto, eggplant and mozzarella in a sherry wine sauce</div></div><div class="price"><span class="pc"><span class="price-label">Half</span> <span class="amt">$85</span></span><span class="sep">|</span><span class="pc"><span class="price-label">Full</span> <span class="amt">$130</span></span></div></div>
+    </div>
+  </section>
+
+  <!-- SEAFOOD -->
+  <section class="panel" id="seafood" role="tabpanel">
+    <div class="panel-head"><h2 class="serif">Seafood</h2></div>
+    <div class="items">
+      <div class="item-row"><div class="item-main"><div class="name">Salmon ai Ferri</div><div class="desc">Broiled with white wine and garlic</div></div><div class="price"><span class="pc"><span class="price-label">Half</span> <span class="amt">$80</span></span><span class="sep">|</span><span class="pc"><span class="price-label">Full</span> <span class="amt">$135</span></span></div></div>
+      <div class="item-row"><div class="item-main"><div class="name">Filet of Sole Oreganata</div><div class="desc">Baked with seasoned breadcrumbs</div></div><div class="price"><span class="pc"><span class="price-label">Half</span> <span class="amt">$85</span></span><span class="sep">|</span><span class="pc"><span class="price-label">Full</span> <span class="amt">$140</span></span></div></div>
+      <div class="item-row"><div class="item-main"><div class="name">Filet of Sole Francese</div><div class="desc">Sautéed in a lemon butter sauce</div></div><div class="price"><span class="pc"><span class="price-label">Half</span> <span class="amt">$85</span></span><span class="sep">|</span><span class="pc"><span class="price-label">Full</span> <span class="amt">$140</span></span></div></div>
+      <div class="item-row"><div class="item-main"><div class="name">Shrimp Francese</div><div class="desc">Sautéed in a lemon butter sauce</div></div><div class="price"><span class="pc"><span class="price-label">Half</span> <span class="amt">$85</span></span><span class="sep">|</span><span class="pc"><span class="price-label">Full</span> <span class="amt">$140</span></span></div></div>
+      <div class="item-row"><div class="item-main"><div class="name">Shrimp Parmigiana</div><div class="desc">Breaded, fried, topped with tomato sauce and mozzarella</div></div><div class="price"><span class="pc"><span class="price-label">Half</span> <span class="amt">$85</span></span><span class="sep">|</span><span class="pc"><span class="price-label">Full</span> <span class="amt">$140</span></span></div></div>
+      <div class="item-row"><div class="item-main"><div class="name">Shrimp Oreganata</div><div class="desc">Baked with seasoned bread crumbs</div></div><div class="price"><span class="pc"><span class="price-label">Half</span> <span class="amt">$85</span></span><span class="sep">|</span><span class="pc"><span class="price-label">Full</span> <span class="amt">$140</span></span></div></div>
+      <div class="item-row"><div class="item-main"><div class="name">Shrimp Santino</div><div class="desc">Stuffed with crabmeat, cheese &amp; herbs; baked golden with oreganata crumbs in a lemon butter sauce</div></div><div class="price"><span class="pc"><span class="price-label">Half</span> <span class="amt">$90</span></span><span class="sep">|</span><span class="pc"><span class="price-label">Full</span> <span class="amt">$150</span></span></div></div>
+      <div class="item-row"><div class="item-main"><div class="name">Mussels Bianco</div><div class="desc">Mussels sautéed with garlic and white wine</div></div><div class="price"><span class="pc"><span class="price-label">Half</span> <span class="amt">$60</span></span><span class="sep">|</span><span class="pc"><span class="price-label">Full</span> <span class="amt">$110</span></span></div></div>
+      <div class="item-row"><div class="item-main"><div class="name">Mussels Fra Diavolo</div><div class="desc">Mussels sautéed with garlic, chili pepper and white wine in red sauce</div></div><div class="price"><span class="pc"><span class="price-label">Half</span> <span class="amt">$60</span></span><span class="sep">|</span><span class="pc"><span class="price-label">Full</span> <span class="amt">$110</span></span></div></div>
+      <div class="item-row"><div class="item-main"><div class="name">Fried Calamari Arribiatta</div><div class="desc">Fried golden &amp; tossed with chili pepper &amp; spicy tomato sauce</div></div><div class="price"><span class="pc"><span class="price-label">Half</span> <span class="amt">$65</span></span><span class="sep">|</span><span class="pc"><span class="price-label">Full</span> <span class="amt">$120</span></span></div></div>
+      <div class="item-row"><div class="item-main"><div class="name">Seafood Fra Diavolo or Marinara</div><div class="desc">Shrimp, scunguilli, calamari, mussels and clams with garlic in a white wine spicy tomato sauce</div></div><div class="price"><span class="pc"><span class="price-label">Half</span> <span class="amt">$95</span></span><span class="sep">|</span><span class="pc"><span class="price-label">Full</span> <span class="amt">$175</span></span></div></div>
+      <div class="item-row"><div class="item-main"><div class="name">Clams Posillipo</div><div class="desc">Little neck clams, simmered in a light tomato &amp; white wine sauce</div></div><div class="price"><span class="pc"><span class="qty">24pc</span> <span class="price-label">Half</span> <span class="amt">$65</span></span><span class="sep">|</span><span class="pc"><span class="qty">48pc</span> <span class="price-label">Full</span> <span class="amt">$120</span></span></div></div>
+    </div>
+  </section>
+
+  <!-- VEGETABLES & STARCHES -->
+  <section class="panel" id="veg" role="tabpanel">
+    <div class="panel-head"><h2 class="serif">Vegetables &amp; Starches</h2></div>
+    <div class="items">
+      <div class="item-row"><div class="item-main"><div class="name">Broccoli</div><div class="desc">Oreganata</div></div><div class="price"><span class="pc"><span class="price-label">Half</span> <span class="amt">$50</span></span><span class="sep">|</span><span class="pc"><span class="price-label">Full</span> <span class="amt">$95</span></span></div></div>
+      <div class="item-row"><div class="item-main"><div class="name">Escarole</div><div class="desc">Garlic and oil</div></div><div class="price"><span class="pc"><span class="price-label">Half</span> <span class="amt">$45</span></span><span class="sep">|</span><span class="pc"><span class="price-label">Full</span> <span class="amt">$85</span></span></div></div>
+      <div class="item-row"><div class="item-main"><div class="name">Spinach</div><div class="desc">Garlic and oil</div></div><div class="price"><span class="pc"><span class="price-label">Half</span> <span class="amt">$45</span></span><span class="sep">|</span><span class="pc"><span class="price-label">Full</span> <span class="amt">$85</span></span></div></div>
+      <div class="item-row"><div class="item-main"><div class="name">Broccoli Rabe</div><div class="desc">Garlic and oil</div></div><div class="price"><span class="pc"><span class="price-label">Half</span> <span class="amt">$55</span></span><span class="sep">|</span><span class="pc"><span class="price-label">Full</span> <span class="amt">$105</span></span></div></div>
+      <div class="item-row"><div class="item-main"><div class="name">Roasted Red Potatoes</div><div class="desc">Olive oil and herb seasoning</div></div><div class="price"><span class="pc"><span class="price-label">Half</span> <span class="amt">$45</span></span><span class="sep">|</span><span class="pc"><span class="price-label">Full</span> <span class="amt">$85</span></span></div></div>
+      <div class="item-row"><div class="item-main"><div class="name">Steak House Potatoes</div><div class="desc">Cubed with peppers, onions, olive oil and herb seasoning</div></div><div class="price"><span class="pc"><span class="price-label">Half</span> <span class="amt">$45</span></span><span class="sep">|</span><span class="pc"><span class="price-label">Full</span> <span class="amt">$85</span></span></div></div>
+      <div class="item-row"><div class="item-main"><div class="name">Grilled Vegetables</div><div class="desc">Zucchini, eggplant, peppers, squash, asparagus and portobello mushrooms</div></div><div class="price"><span class="pc"><span class="price-label">Half</span> <span class="amt">$55</span></span><span class="sep">|</span><span class="pc"><span class="price-label">Full</span> <span class="amt">$100</span></span></div></div>
+      <div class="item-row"><div class="item-main"><div class="name">Potato Croquettes</div><div class="desc">Baked golden</div></div><div class="price"><span class="pc"><span class="price-label">Half</span> <span class="amt">$45</span></span><span class="sep">|</span><span class="pc"><span class="price-label">Full</span> <span class="amt">$85</span></span></div></div>
+      <div class="item-row"><div class="item-main"><div class="name">Mac &amp; Cheese</div><div class="desc">Rotelle with four cheese sauce</div></div><div class="price"><span class="pc"><span class="price-label">Half</span> <span class="amt">$60</span></span><span class="sep">|</span><span class="pc"><span class="price-label">Full</span> <span class="amt">$110</span></span></div></div>
+      <div class="item-row"><div class="item-main"><div class="name">Chicken Fingers</div><div class="desc">Breaded chicken fingers</div></div><div class="price"><span class="pc"><span class="price-label">Half</span> <span class="amt">$50</span></span><span class="sep">|</span><span class="pc"><span class="price-label">Full</span> <span class="amt">$95</span></span></div></div>
+      <div class="item-row"><div class="item-main"><div class="name">French Fries</div><div class="desc">Portobello mushrooms</div></div><div class="price"><span class="pc"><span class="price-label">Half</span> <span class="amt">$40</span></span><span class="sep">|</span><span class="pc"><span class="price-label">Full</span> <span class="amt">$75</span></span></div></div>
+    </div>
+  </section>
+
+  <!-- INGREDIENTS NOTE -->
+  <div class="panel-note">
+    <strong>Made with the finest.</strong> We use only the freshest ingredients including DeCecco pasta, Carmelina tomatoes, Colavita E.V.O.O., "Plume de Veau" veal and the finest seafood available at market.
+  </div>
+</main>
+
+<!-- ORDER CTA -->
+<section class="order-cta">
+  <p class="eyebrow">Place Your Order</p>
+  <h2 class="serif">From Our House to Yours</h2>
+  <p>Catering orders are placed by phone so our team can confirm trays, timing, and any full-service needs. Free delivery on orders over $400 within 3 miles; $50 within 10 miles.</p>
+  <a href="tel:17188438387" class="phone">718&middot;843&middot;8387</a>
+  <span class="email">Questions? <a href="mailto:info@vetronyc.com">info@vetronyc.com</a></span>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <span class="wordmark">Vetro</span>
+    </div>
+    <div class="footer-meta">
+      164-49 Cross Bay Blvd, Howard Beach, NY<br>
+      <a href="tel:17188438387">718-843-8387</a> &nbsp;&bull;&nbsp; Closed Mondays<br>
+      Complimentary valet parking
+    </div>
+  </div>
+  <div class="footer-bottom">
+    &copy; 2026 Vetro by Russo's On The Bay &nbsp;&bull;&nbsp; From Our House to Your House
+  </div>
+</footer>
+
+<script>
+  // Tabs
+  const tabs = document.querySelectorAll('.tab');
+  const panels = document.querySelectorAll('.panel');
+  tabs.forEach(tab=>{
+    tab.addEventListener('click',()=>{
+      const target = tab.dataset.panel;
+      tabs.forEach(t=>t.classList.remove('active'));
+      panels.forEach(p=>{ if(p.id) p.classList.remove('active'); });
+      tab.classList.add('active');
+      document.getElementById(target).classList.add('active');
+      // scroll tabs back into view on mobile
+      window.scrollTo({top:document.querySelector('.menu-wrap').offsetTop - 150, behavior:'smooth'});
+    });
+  });
+
+  // Mobile nav
+  const toggle = document.querySelector('.nav-toggle');
+  const links = document.querySelector('.nav-links');
+  toggle.addEventListener('click',()=>{
+    const open = links.classList.toggle('open');
+    toggle.classList.toggle('open',open);
+    toggle.setAttribute('aria-expanded',open);
+  });
+  links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
+    links.classList.remove('open');toggle.classList.remove('open');
+    toggle.setAttribute('aria-expanded',false);
+  }));
+</script>
+</body>
+</html>
