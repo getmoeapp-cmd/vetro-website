@@ -54,7 +54,7 @@
   /* SPACES */
   .spaces-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
   @media(max-width:860px){.spaces-grid{grid-template-columns:1fr}}
-  .sp-card{position:relative;overflow:hidden;border-radius:2px;min-height:340px;display:flex;align-items:flex-end;color:var(--cream)}
+  .sp-card{position:relative;overflow:hidden;border-radius:2px;min-height:400px;display:flex;align-items:flex-end;color:var(--cream)}
   .sp-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .7s ease;z-index:0}
   .sp-card:hover img{transform:scale(1.06)}
   .sp-card::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(44,36,29,.82),rgba(44,36,29,.15) 60%,rgba(44,36,29,.05));z-index:1}
@@ -63,6 +63,8 @@
   .sp-inner h3{color:var(--cream);font-size:1.7rem;margin:.3rem 0 .4rem}
   .sp-inner p{font-size:.88rem;opacity:.92;max-width:34ch}
   .sp-cap{margin-top:.6rem;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--sky)}
+  .sp-btn{display:inline-block;margin-top:1rem;font-family:'Jost',sans-serif;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;padding:.6rem 1.3rem;background:var(--bronze);color:var(--cream);transition:all .3s;position:relative;z-index:3}
+  .sp-btn:hover{background:var(--cream);color:var(--espresso)}
 
   /* OFF-PREMISE */
   .offprem{background:var(--parchment)}
@@ -177,6 +179,7 @@
           <h3>Rustic &amp; Intimate</h3>
           <p>Reclaimed wood, old-world carved detailing and Tuscan beamed ceilings — a romantic setting for true wine enthusiasts.</p>
           <div class="sp-cap">Up to 90 guests</div>
+          <a class="sp-btn" href="room-winecellar.html">More Info &amp; Book &rarr;</a>
         </div>
       </div>
       <div class="sp-card">
