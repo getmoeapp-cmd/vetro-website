@@ -128,6 +128,53 @@
   .foot-col a:hover{color:var(--bronze);opacity:1}
   .foot-bottom{max-width:1080px;margin:2.5rem auto 0;padding-top:1.5rem;border-top:1px solid rgba(231,225,211,.14);font-size:.74rem;letter-spacing:.08em;color:var(--limestone);opacity:.55;text-align:center}
 
+  /* BOOKING FLOW */
+  .booking{background:var(--espresso);color:var(--cream);padding:clamp(3rem,7vw,5rem) clamp(1.2rem,5vw,3.5rem)}
+  .booking-head{text-align:center;max-width:620px;margin:0 auto 2.5rem}
+  .booking-head .eyebrow{color:var(--bronze)}
+  .booking-head h2{color:var(--cream);font-size:clamp(2rem,5vw,3rem);margin:.7rem 0 .8rem}
+  .booking-head p{color:var(--limestone);opacity:.85}
+  .booking-card{max-width:680px;margin:0 auto;background:var(--cream);color:var(--ink);padding:clamp(1.8rem,4vw,2.8rem);border-radius:3px;box-shadow:0 30px 80px rgba(20,15,10,.45)}
+  .steps-bar{display:flex;gap:.5rem;margin-bottom:2rem}
+  .steps-bar .step-dot{flex:1;height:4px;background:var(--limestone-dk);border-radius:2px;transition:background .4s}
+  .steps-bar .step-dot.active{background:var(--bronze)}
+  .step-label{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--bronze);margin-bottom:.4rem}
+  .step-title{font-family:'Cormorant Garamond',serif;font-size:1.7rem;color:var(--espresso);margin-bottom:1.4rem;line-height:1.1}
+  .fstep{display:none}
+  .fstep.active{display:block;animation:fade .35s ease}
+  @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  .field{margin-bottom:1.1rem}
+  .field label{display:block;font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;color:var(--taupe);margin-bottom:.4rem}
+  .field input,.field select,.field textarea{width:100%;padding:.8rem .9rem;border:1px solid var(--line);background:var(--parchment);font-family:'Jost',sans-serif;font-size:.95rem;color:var(--ink);border-radius:2px}
+  .field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--bronze);background:#fff}
+  .field textarea{resize:vertical;min-height:90px}
+  .field-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+  @media(max-width:560px){.field-row{grid-template-columns:1fr}}
+  .form-nav{display:flex;justify-content:space-between;align-items:center;margin-top:1.6rem;gap:1rem}
+  .btn{font-family:'Jost',sans-serif;font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;padding:.85rem 1.8rem;border:none;cursor:pointer;transition:all .3s;border-radius:2px}
+  .btn-primary{background:var(--bronze);color:var(--cream)}
+  .btn-primary:hover{background:var(--bronze-dk)}
+  .btn-ghost{background:none;color:var(--taupe);border:1px solid var(--line)}
+  .btn-ghost:hover{border-color:var(--bronze);color:var(--bronze)}
+  /* time slot picker */
+  .slot-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.6rem;margin-top:.3rem}
+  @media(max-width:560px){.slot-grid{grid-template-columns:repeat(2,1fr)}}
+  .slot{padding:.7rem;text-align:center;border:1px solid var(--line);background:var(--parchment);font-size:.85rem;cursor:pointer;border-radius:2px;transition:all .2s}
+  .slot:hover{border-color:var(--bronze)}
+  .slot.selected{background:var(--bronze);color:var(--cream);border-color:var(--bronze)}
+  .review-summary{background:var(--parchment);border:1px solid var(--line);padding:1.1rem 1.3rem;border-radius:2px;margin-bottom:1.2rem;font-size:.9rem;color:var(--taupe)}
+  .review-summary strong{color:var(--espresso)}
+  /* confirmation */
+  .confirm{text-align:center;padding:1rem 0}
+  .confirm .check{width:64px;height:64px;border-radius:50%;background:var(--bronze);color:var(--cream);display:flex;align-items:center;justify-content:center;font-size:2rem;margin:0 auto 1.2rem}
+  .confirm h3{font-size:2rem;color:var(--espresso);margin-bottom:.6rem}
+  .confirm p{color:var(--taupe);max-width:420px;margin:0 auto .5rem}
+  .confirm .detail-box{background:var(--parchment);border:1px solid var(--line);padding:1.2rem;border-radius:2px;margin:1.5rem auto 0;max-width:380px;text-align:left;font-size:.9rem}
+  .confirm .detail-box div{padding:.3rem 0;color:var(--taupe)}
+  .confirm .detail-box strong{color:var(--espresso)}
+  .or-call{text-align:center;margin-top:1.6rem;font-size:.86rem;color:var(--limestone);opacity:.8}
+  .or-call a{color:var(--cream);border-bottom:1px solid var(--bronze)}
+
   @media(max-width:880px){
     header{z-index:60}
     .menu-toggle{display:block;z-index:70;position:relative}
@@ -293,22 +340,153 @@
   </div>
 </section>
 
-<!-- CTA -->
-<section class="room-cta">
-  <p class="eyebrow">Book The Wine Cellar</p>
-  <h2>Let's Plan Your Event</h2>
-  <p>Tell us your date and guest count, and our events team will walk you through everything — menus, timing, and every detail.</p>
-  <div class="contact-methods">
-    <a href="tel:+17188438387">
-      <span class="cm-label">Call</span>
-      <span class="cm-val">(718) 843-8387</span>
-    </a>
-    <a href="mailto:info@vetronyc.com?subject=Wine%20Cellar%20Event%20Inquiry">
-      <span class="cm-label">Email</span>
-      <span class="cm-val">info@vetronyc.com</span>
-    </a>
+<!-- BOOKING FLOW -->
+<section class="booking" id="book">
+  <div class="booking-head">
+    <p class="eyebrow">Book The Wine Cellar</p>
+    <h2>Plan Your Event in Minutes</h2>
+    <p>Tell us about your celebration, then pick a date and time for a quick video consultation with our events team — they'll have everything ready before you meet.</p>
   </div>
-  <div><a class="back-link" href="events.html">&larr; Back to all event spaces</a></div>
+
+  <div class="booking-card">
+    <div class="steps-bar">
+      <div class="step-dot active" data-d="1"></div>
+      <div class="step-dot" data-d="2"></div>
+      <div class="step-dot" data-d="3"></div>
+      <div class="step-dot" data-d="4"></div>
+    </div>
+
+    <!-- STEP 1 -->
+    <div class="fstep active" data-step="1">
+      <div class="step-label">Step 1 of 4</div>
+      <div class="step-title">About your event</div>
+      <div class="field">
+        <label>Type of event</label>
+        <select id="f-type">
+          <option value="">Select…</option>
+          <option>Birthday</option>
+          <option>Anniversary</option>
+          <option>Baby Shower</option>
+          <option>Wedding Rehearsal</option>
+          <option>Retirement Party</option>
+          <option>Holiday Party</option>
+          <option>Corporate / Business</option>
+          <option>Other Celebration</option>
+        </select>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label>Preferred event date</label>
+          <input type="date" id="f-date">
+        </div>
+        <div class="field">
+          <label>Approx. guest count</label>
+          <input type="number" id="f-guests" min="60" max="90" placeholder="60–90">
+        </div>
+      </div>
+      <div class="field">
+        <label>Estimated budget (optional)</label>
+        <select id="f-budget">
+          <option value="">Prefer to discuss</option>
+          <option>Under $5,000</option>
+          <option>$5,000 – $10,000</option>
+          <option>$10,000 – $20,000</option>
+          <option>$20,000+</option>
+        </select>
+      </div>
+      <div class="form-nav">
+        <span></span>
+        <button class="btn btn-primary" data-next="2">Continue &rarr;</button>
+      </div>
+    </div>
+
+    <!-- STEP 2 -->
+    <div class="fstep" data-step="2">
+      <div class="step-label">Step 2 of 4</div>
+      <div class="step-title">Your details</div>
+      <div class="field-row">
+        <div class="field"><label>First name</label><input type="text" id="f-first"></div>
+        <div class="field"><label>Last name</label><input type="text" id="f-last"></div>
+      </div>
+      <div class="field"><label>Email</label><input type="email" id="f-email" placeholder="you@email.com"></div>
+      <div class="field"><label>Phone</label><input type="tel" id="f-phone" placeholder="(   )    -    "></div>
+      <div class="form-nav">
+        <button class="btn btn-ghost" data-back="1">&larr; Back</button>
+        <button class="btn btn-primary" data-next="3">Continue &rarr;</button>
+      </div>
+    </div>
+
+    <!-- STEP 3 -->
+    <div class="fstep" data-step="3">
+      <div class="step-label">Step 3 of 4</div>
+      <div class="step-title">Tell us more</div>
+      <div class="field">
+        <label>Your vision, questions, or special requests</label>
+        <textarea id="f-notes" placeholder="Theme, menu preferences, dietary needs, timing, anything you'd like the team to know…"></textarea>
+      </div>
+      <div class="field">
+        <label>How did you hear about us? (optional)</label>
+        <select id="f-source">
+          <option value="">Select…</option>
+          <option>Google</option>
+          <option>Instagram / Facebook</option>
+          <option>Previous guest</option>
+          <option>Referral from friend/family</option>
+          <option>OpenTable / Yelp</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="form-nav">
+        <button class="btn btn-ghost" data-back="2">&larr; Back</button>
+        <button class="btn btn-primary" data-next="4">Continue &rarr;</button>
+      </div>
+    </div>
+
+    <!-- STEP 4 -->
+    <div class="fstep" data-step="4">
+      <div class="step-label">Step 4 of 4</div>
+      <div class="step-title">Book your consultation</div>
+      <div class="review-summary" id="summary">Choose a date and time for a 15-minute video call with our events team.</div>
+      <div class="field-row">
+        <div class="field">
+          <label>Consultation date</label>
+          <input type="date" id="f-calldate">
+        </div>
+        <div class="field">
+          <label>Add a guest (optional)</label>
+          <input type="email" id="f-guest-email" placeholder="partner@email.com">
+        </div>
+      </div>
+      <div class="field">
+        <label>Available times</label>
+        <div class="slot-grid" id="slots">
+          <div class="slot">10:00 AM</div>
+          <div class="slot">11:30 AM</div>
+          <div class="slot">1:00 PM</div>
+          <div class="slot">2:30 PM</div>
+          <div class="slot">4:00 PM</div>
+          <div class="slot">5:30 PM</div>
+        </div>
+      </div>
+      <div class="form-nav">
+        <button class="btn btn-ghost" data-back="3">&larr; Back</button>
+        <button class="btn btn-primary" id="submitBooking">Request Consultation &rarr;</button>
+      </div>
+    </div>
+
+    <!-- CONFIRMATION -->
+    <div class="fstep" data-step="5">
+      <div class="confirm">
+        <div class="check">&#10003;</div>
+        <h3>Request Received!</h3>
+        <p>Thank you, <span id="c-name">there</span>. Our events team has your details and will confirm your consultation shortly — you'll receive a calendar invite with the video link by email.</p>
+        <div class="detail-box" id="c-details"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="or-call">Prefer to talk now? Call us at <a href="tel:+17188438387">(718) 843-8387</a> &middot; <a href="mailto:info@vetronyc.com?subject=Wine%20Cellar%20Event%20Inquiry">email the events team</a></div>
+  <div style="text-align:center"><a class="back-link" href="events.html">&larr; Back to all event spaces</a></div>
 </section>
 
 <footer>
@@ -334,6 +512,65 @@
   <div class="foot-bottom">© 2026 Vetro Restaurant &amp; Lounge · 164-49 Cross Bay Blvd, Howard Beach, NY · (718) 843-8387</div>
 </footer>
 
+<script>
+  // ---- Booking multi-step flow ----
+  (function(){
+    const card=document.querySelector('.booking-card');
+    if(!card) return;
+    const steps=card.querySelectorAll('.fstep');
+    const dots=card.querySelectorAll('.step-dot');
+    let selectedSlot=null;
+
+    function show(n){
+      steps.forEach(s=>s.classList.toggle('active', s.dataset.step==String(n)));
+      dots.forEach(d=>d.classList.toggle('active', Number(d.dataset.d)<=n && n<=4));
+      card.scrollIntoView({behavior:'smooth',block:'start'});
+    }
+    card.querySelectorAll('[data-next]').forEach(b=>b.addEventListener('click',()=>show(Number(b.dataset.next))));
+    card.querySelectorAll('[data-back]').forEach(b=>b.addEventListener('click',()=>show(Number(b.dataset.back))));
+
+    // slot selection
+    const slots=card.querySelectorAll('.slot');
+    slots.forEach(s=>s.addEventListener('click',()=>{
+      slots.forEach(x=>x.classList.remove('selected'));
+      s.classList.add('selected');
+      selectedSlot=s.textContent.trim();
+    }));
+
+    // build summary on step 4
+    const val=id=>{const el=document.getElementById(id);return el?el.value.trim():'';};
+    card.querySelector('[data-next="4"]').addEventListener('click',()=>{
+      const type=val('f-type')||'your event';
+      const date=val('f-date');
+      const guests=val('f-guests');
+      let s='Planning <strong>'+type+'</strong>';
+      if(guests) s+=' for <strong>'+guests+' guests</strong>';
+      if(date) s+=' on <strong>'+date+'</strong>';
+      s+='. Now choose a time to chat with our team.';
+      document.getElementById('summary').innerHTML=s;
+    });
+
+    // submit -> confirmation
+    document.getElementById('submitBooking').addEventListener('click',()=>{
+      const callDate=val('f-calldate');
+      if(!callDate||!selectedSlot){
+        alert('Please choose a consultation date and time.');
+        return;
+      }
+      const first=val('f-first');
+      document.getElementById('c-name').textContent=first||'there';
+      const guest=val('f-guest-email');
+      document.getElementById('c-details').innerHTML=
+        '<div><strong>Event:</strong> '+(val('f-type')||'—')+'</div>'+
+        '<div><strong>Event date:</strong> '+(val('f-date')||'To be discussed')+'</div>'+
+        '<div><strong>Consultation:</strong> '+callDate+' at '+selectedSlot+'</div>'+
+        (guest?'<div><strong>Guest invited:</strong> '+guest+'</div>':'');
+      // hide step bar on confirmation
+      card.querySelector('.steps-bar').style.display='none';
+      show(5);
+    });
+  })();
+</script>
 <script>
   const navEl=document.getElementById('mainNav');
   const toggle=document.getElementById('menuToggle');
