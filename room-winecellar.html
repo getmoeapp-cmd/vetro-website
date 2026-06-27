@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Wine Cellar — Private Events at Vetro Restaurant &amp; Lounge</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --limestone:#e7e1d3;--limestone-dk:#d8cfbc;--parchment:#f1ece1;--cream:#faf7f0;
+    --taupe:#6e5a4c;--espresso:#42352b;--bronze:#9a7b4f;--bronze-dk:#7d6240;
+    --sky:#a9c4d4;--ink:#2c241d;--line:rgba(66,53,43,.16);--line-soft:rgba(66,53,43,.09);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--limestone);color:var(--ink);font-family:'Jost',sans-serif;font-weight:300;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  h1,h2,h3,h4,.display{font-family:'Cormorant Garamond',serif;font-weight:500;line-height:1.05;color:var(--espresso)}
+  .eyebrow{font-family:'Jost',sans-serif;font-weight:400;text-transform:uppercase;letter-spacing:.42em;font-size:.7rem;color:var(--bronze)}
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+
+  /* NAV */
+  header{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:1.1rem clamp(1.2rem,5vw,3.5rem);background:rgba(241,236,225,.9);backdrop-filter:blur(14px);border-bottom:1px solid var(--line-soft)}
+  .brand{display:flex;align-items:center;gap:.85rem}
+  .nav-logo{height:34px;width:auto;display:block}
+  nav{display:flex;gap:2rem;align-items:center}
+  nav a{font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink);opacity:.82;transition:all .3s}
+  nav a:hover,nav a.active{opacity:1;color:var(--bronze)}
+  .nav-reserve{border:1px solid var(--bronze);padding:.6rem 1.3rem;color:var(--bronze)!important;opacity:1!important}
+  .nav-reserve:hover{background:var(--bronze);color:var(--cream)!important}
+  .menu-toggle{display:none;background:none;border:none;color:var(--espresso);font-size:1.4rem;cursor:pointer}
+
+  /* HERO */
+  .room-hero{position:relative;min-height:78vh;display:flex;align-items:flex-end;color:var(--cream);overflow:hidden}
+  .room-hero img.hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+  .room-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(28,22,17,.88),rgba(28,22,17,.25) 55%,rgba(28,22,17,.45));z-index:1}
+  .room-hero-inner{position:relative;z-index:2;padding:clamp(2.5rem,6vw,5rem) clamp(1.2rem,5vw,3.5rem);max-width:900px}
+  .room-hero .eyebrow{color:var(--limestone);opacity:.9}
+  .room-hero h1{color:var(--cream);font-size:clamp(3rem,8vw,6rem);margin:.6rem 0 .8rem}
+  .room-hero p{font-size:1.1rem;max-width:560px;opacity:.92}
+  .room-hero .quick{margin-top:1.6rem;display:flex;gap:2rem;flex-wrap:wrap}
+  .room-hero .quick div{border-left:2px solid var(--bronze);padding-left:1rem}
+  .room-hero .quick .q-num{font-family:'Cormorant Garamond',serif;font-size:1.8rem;color:var(--cream)}
+  .room-hero .quick .q-lab{font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--limestone);opacity:.8}
+
+  .wrap{max-width:1080px;margin:0 auto;padding:0 clamp(1.2rem,5vw,3.5rem)}
+  .section{padding:clamp(3rem,7vw,5rem) 0}
+
+  /* INTRO */
+  .intro-row{display:grid;grid-template-columns:1.4fr 1fr;gap:3rem;align-items:center}
+  @media(max-width:820px){.intro-row{grid-template-columns:1fr;gap:2rem}}
+  .intro-text .eyebrow{margin-bottom:.8rem;display:block}
+  .intro-text h2{font-size:clamp(2rem,4.5vw,3rem);margin-bottom:1.1rem}
+  .intro-text h2 em{font-style:italic;color:var(--bronze)}
+  .intro-text p{color:var(--taupe);margin-bottom:1rem}
+  .specs{background:var(--parchment);border:1px solid var(--line);padding:1.8rem}
+  .specs h4{font-size:1.2rem;margin-bottom:1rem;color:var(--espresso)}
+  .specs .spec-row{display:flex;justify-content:space-between;padding:.7rem 0;border-bottom:1px solid var(--line-soft);font-size:.92rem}
+  .specs .spec-row:last-child{border-bottom:none}
+  .specs .spec-row span:first-child{color:var(--taupe);text-transform:uppercase;letter-spacing:.1em;font-size:.74rem;align-self:center}
+  .specs .spec-row span:last-child{color:var(--espresso);font-weight:400;text-align:right}
+
+  /* FEATURES */
+  .feat{background:var(--parchment)}
+  .feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2.5rem}
+  @media(max-width:820px){.feat-grid{grid-template-columns:1fr}}
+  .feat-card{background:var(--cream);border:1px solid var(--line);padding:1.8rem}
+  .feat-card h4{font-size:1.25rem;margin-bottom:.5rem}
+  .feat-card h4 em{font-style:italic;color:var(--bronze)}
+  .feat-card p{font-size:.9rem;color:var(--taupe)}
+  .sec-head{text-align:center;max-width:640px;margin:0 auto}
+  .sec-head .eyebrow{display:block;margin-bottom:.7rem}
+  .sec-head h2{font-size:clamp(2rem,4.5vw,3rem)}
+  .sec-head h2 em{font-style:italic;color:var(--bronze)}
+  .sec-head p{margin-top:.8rem;color:var(--taupe)}
+
+  /* OCCASIONS */
+  .occ-list{display:flex;flex-wrap:wrap;gap:.8rem;justify-content:center;margin-top:2.2rem;max-width:760px;margin-left:auto;margin-right:auto}
+  .occ-list span{border:1px solid var(--line);padding:.6rem 1.3rem;font-size:.85rem;letter-spacing:.04em;color:var(--taupe);background:var(--cream)}
+
+  /* GALLERY */
+  .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:2.5rem}
+  @media(max-width:820px){.gallery{grid-template-columns:1fr 1fr}}
+  .gallery .g-item{position:relative;aspect-ratio:4/3;overflow:hidden;background:var(--limestone-dk)}
+  .gallery .g-item img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+  .gallery .g-item:hover img{transform:scale(1.06)}
+  .gallery .g-placeholder{display:flex;align-items:center;justify-content:center;color:var(--taupe);font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;opacity:.6;text-align:center;padding:1rem;border:1px dashed var(--line)}
+
+  /* CTA */
+  .room-cta{background:var(--espresso);color:var(--cream);text-align:center;padding:clamp(3rem,7vw,5rem) clamp(1.2rem,5vw,3.5rem)}
+  .room-cta .eyebrow{color:var(--bronze)}
+  .room-cta h2{color:var(--cream);font-size:clamp(2rem,5vw,3rem);margin:.7rem 0 1rem}
+  .room-cta p{max-width:540px;margin:0 auto 2rem;color:var(--limestone);opacity:.85}
+  .contact-methods{display:flex;gap:1.2rem;justify-content:center;flex-wrap:wrap}
+  .contact-methods a{display:inline-flex;flex-direction:column;gap:.3rem;padding:1.3rem 2.2rem;border:1px solid rgba(231,225,211,.28);transition:all .35s;min-width:230px}
+  .contact-methods a:hover{background:var(--bronze);border-color:var(--bronze)}
+  .contact-methods .cm-label{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--bronze)}
+  .contact-methods a:hover .cm-label{color:var(--cream)}
+  .contact-methods .cm-val{font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--cream)}
+  .back-link{display:inline-block;margin-top:2rem;font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:var(--limestone);opacity:.75;border-bottom:1px solid var(--bronze);padding-bottom:.2rem}
+  .back-link:hover{opacity:1;color:var(--cream)}
+
+  /* FOOTER */
+  footer{border-top:1px solid var(--line);padding:clamp(3rem,7vw,4rem) clamp(1.2rem,5vw,3.5rem) 2.5rem;background:var(--espresso)}
+  .foot-grid{max-width:1080px;margin:0 auto;display:flex;justify-content:space-between;flex-wrap:wrap;gap:2.5rem}
+  .foot-logo{height:58px;width:auto;margin-bottom:.6rem}
+  .foot-brand p{max-width:280px;color:var(--limestone);opacity:.68;font-size:.9rem}
+  .foot-col h4{font-size:.7rem;letter-spacing:.24em;text-transform:uppercase;color:var(--bronze);margin-bottom:1rem}
+  .foot-col a{display:block;font-size:.9rem;color:var(--limestone);opacity:.78;margin-bottom:.6rem;transition:all .3s}
+  .foot-col a:hover{color:var(--bronze);opacity:1}
+  .foot-bottom{max-width:1080px;margin:2.5rem auto 0;padding-top:1.5rem;border-top:1px solid rgba(231,225,211,.14);font-size:.74rem;letter-spacing:.08em;color:var(--limestone);opacity:.55;text-align:center}
+
+  @media(max-width:880px){
+    header{z-index:60}
+    .menu-toggle{display:block;z-index:70;position:relative}
+    nav{position:fixed;top:0;right:0;height:100vh;width:min(78vw,320px);flex-direction:column;align-items:flex-start;justify-content:center;gap:1.8rem;background:var(--espresso);padding:2rem 2.4rem;transform:translateX(100%);transition:transform .4s ease;box-shadow:-10px 0 40px rgba(44,36,29,.3);z-index:65}
+    nav.open{transform:translateX(0)}
+    nav a{font-size:1rem;color:var(--cream);opacity:.9;position:relative;z-index:1}
+    nav a:hover,nav a.active{color:var(--bronze)}
+    .nav-reserve{border-color:var(--bronze);color:var(--bronze)!important;padding:.8rem 1.6rem}
+    body.nav-open{overflow:hidden}
+    .nav-backdrop{position:fixed;inset:0;background:rgba(44,36,29,.5);opacity:0;visibility:hidden;transition:opacity .4s ease;z-index:55;pointer-events:none}
+    .nav-backdrop.open{opacity:1;visibility:visible;pointer-events:auto}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand">
+    <a href="index.html"><img class="nav-logo" src="vetro-logo.webp" alt="Vetro by Russo's on the Bay"></a>
+  </div>
+  <nav id="mainNav">
+    <a href="index.html">Restaurant</a>
+    <a href="menu.html">Menus</a>
+    <a href="https://vetronyc.com/upcoming-events/" target="_blank" rel="noopener">Live Events</a>
+    <a href="events.html" class="active">Host an Event</a>
+    <a href="index.html#visit">Visit</a>
+    <a class="nav-reserve" href="https://www.opentable.com/r/vetro-by-russos-on-the-bay-reservations-howard-beach?restref=34984&lang=en-US&ot_source=Restaurant%20website" target="_blank" rel="noopener">Reserve</a>
+  </nav>
+  <button class="menu-toggle" id="menuToggle" aria-label="Menu" aria-expanded="false">&#9776;</button>
+</header>
+<div class="nav-backdrop" id="navBackdrop"></div>
+
+<!-- HERO -->
+<section class="room-hero">
+  <img class="hero-bg" src="vetro-winecellar.jpeg" alt="The Wine Cellar private dining room at Vetro">
+  <div class="room-hero-inner">
+    <p class="eyebrow">Private Events &middot; The Wine Cellar</p>
+    <h1>The Wine Cellar</h1>
+    <p>Reclaimed wood, old-world carved detailing and Tuscan beamed ceilings — an intimate, romantic setting surrounded by our award-winning collection.</p>
+    <div class="quick">
+      <div><div class="q-num">60–90</div><div class="q-lab">Guests</div></div>
+      <div><div class="q-num">Lower Level</div><div class="q-lab">Private Room</div></div>
+      <div><div class="q-num">500+</div><div class="q-lab">Wines Surrounding You</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- INTRO + SPECS -->
+<section class="section">
+  <div class="wrap">
+    <div class="intro-row">
+      <div class="intro-text">
+        <span class="eyebrow">The Space</span>
+        <h2>Rich, Rustic &amp; <em>Romantic</em></h2>
+        <p>The Wine Cellar at Vetro is an incredible setting for events and parties — a beautiful, quaint location with rich décor built of reclaimed wood, old-world carved detailing, and a Tuscan beamed ceiling.</p>
+        <p>Surrounded by walls of our 500+ bottle collection, it's the perfect room for romantic events, intimate celebrations, and true wine enthusiasts — all with Vetro's award-winning cuisine and the Russo's standard of service.</p>
+      </div>
+      <div class="specs">
+        <h4>Room Specifications</h4>
+        <div class="spec-row"><span>Capacity</span><span>60 minimum · 90 maximum</span></div>
+        <div class="spec-row"><span>Location</span><span>Lower level, private</span></div>
+        <div class="spec-row"><span>Best For</span><span>Social &amp; corporate events</span></div>
+        <div class="spec-row"><span>Cuisine</span><span>Full Vetro catering menu</span></div>
+        <div class="spec-row"><span>Setting</span><span>Reclaimed wood &amp; Tuscan beams</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="section feat">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Why The Wine Cellar</span>
+      <h2>An Unforgettable <em>Setting</em></h2>
+      <p>Every detail is designed to make your celebration feel intimate and special.</p>
+    </div>
+    <div class="feat-grid">
+      <div class="feat-card">
+        <h4>Old-World <em>Character</em></h4>
+        <p>Exposed brick, hand-carved detailing and warm Tuscan beams create an atmosphere you simply can't replicate.</p>
+      </div>
+      <div class="feat-card">
+        <h4>Surrounded by <em>Wine</em></h4>
+        <p>Dine encircled by our Wine Spectator–recognized cellar of 500+ selections — a true wine-lover's dream.</p>
+      </div>
+      <div class="feat-card">
+        <h4>Intimate by <em>Design</em></h4>
+        <p>Sized for 60 to 90 guests, the room feels full and warm without ever losing its private, personal feel.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OCCASIONS -->
+<section class="section">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Perfect For</span>
+      <h2>Every <em>Occasion</em></h2>
+    </div>
+    <div class="occ-list">
+      <span>Business Seminars</span>
+      <span>Holiday Parties</span>
+      <span>Retirement Parties</span>
+      <span>Baby Showers</span>
+      <span>Wedding Rehearsals</span>
+      <span>Birthdays</span>
+      <span>Anniversaries</span>
+      <span>Corporate Events</span>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="section feat">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Gallery</span>
+      <h2>Take a Look <em>Inside</em></h2>
+      <p>More photos of the Wine Cellar coming soon.</p>
+    </div>
+    <div class="gallery">
+      <div class="g-item"><img src="vetro-winecellar.jpeg" alt="The Wine Cellar at Vetro"></div>
+      <div class="g-item g-placeholder">Photo coming soon</div>
+      <div class="g-item g-placeholder">Photo coming soon</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="room-cta">
+  <p class="eyebrow">Book The Wine Cellar</p>
+  <h2>Let's Plan Your Event</h2>
+  <p>Tell us your date and guest count, and our events team will walk you through everything — menus, timing, and every detail.</p>
+  <div class="contact-methods">
+    <a href="tel:+17188438387">
+      <span class="cm-label">Call</span>
+      <span class="cm-val">(718) 843-8387</span>
+    </a>
+    <a href="mailto:info@vetronyc.com?subject=Wine%20Cellar%20Event%20Inquiry">
+      <span class="cm-label">Email</span>
+      <span class="cm-val">info@vetronyc.com</span>
+    </a>
+  </div>
+  <div><a class="back-link" href="events.html">&larr; Back to all event spaces</a></div>
+</section>
+
+<footer>
+  <div class="foot-grid">
+    <div class="foot-brand">
+      <img class="foot-logo" src="vetro-logo.webp" alt="Vetro by Russo's on the Bay">
+      <p>A waterfront destination on the bay, part of the Russo's On The Bay family of hospitality.</p>
+    </div>
+    <div class="foot-col">
+      <h4>Host an Event</h4>
+      <a href="events.html">All Event Spaces</a>
+      <a href="room-winecellar.html">The Wine Cellar</a>
+      <a href="events.html#spaces">The Murano Room</a>
+      <a href="events.html#spaces">The Rooftop</a>
+    </div>
+    <div class="foot-col">
+      <h4>Visit</h4>
+      <a href="tel:+17188438387">(718) 843-8387</a>
+      <a href="mailto:info@vetronyc.com">info@vetronyc.com</a>
+      <a href="index.html#visit">Hours &amp; Location</a>
+    </div>
+  </div>
+  <div class="foot-bottom">© 2026 Vetro Restaurant &amp; Lounge · 164-49 Cross Bay Blvd, Howard Beach, NY · (718) 843-8387</div>
+</footer>
+
+<script>
+  const navEl=document.getElementById('mainNav');
+  const toggle=document.getElementById('menuToggle');
+  const backdrop=document.getElementById('navBackdrop');
+  function closeNav(){navEl.classList.remove('open');backdrop.classList.remove('open');document.body.classList.remove('nav-open');toggle.innerHTML='&#9776;';toggle.setAttribute('aria-expanded','false');}
+  function openNav(){navEl.classList.add('open');backdrop.classList.add('open');document.body.classList.add('nav-open');toggle.innerHTML='&times;';toggle.setAttribute('aria-expanded','true');}
+  toggle.addEventListener('click',()=>{navEl.classList.contains('open')?closeNav():openNav();});
+  backdrop.addEventListener('click',closeNav);
+  navEl.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeNav));
+</script>
+</body>
+</html>
