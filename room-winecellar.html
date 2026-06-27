@@ -88,6 +88,22 @@
   .gallery .g-item:hover img{transform:scale(1.06)}
   .gallery .g-placeholder{display:flex;align-items:center;justify-content:center;color:var(--taupe);font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;opacity:.6;text-align:center;padding:1rem;border:1px dashed var(--line)}
 
+  /* TESTIMONIALS */
+  .reviews{background:var(--parchment)}
+  .rating-bar{text-align:center;margin-bottom:2.8rem}
+  .rating-bar .stars{color:var(--bronze);font-size:1.4rem;letter-spacing:.2em}
+  .rating-bar .rating-num{font-family:'Cormorant Garamond',serif;font-size:2.4rem;color:var(--espresso);margin:.3rem 0 .1rem}
+  .rating-bar .rating-sub{font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--taupe)}
+  .review-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+  @media(max-width:860px){.review-grid{grid-template-columns:1fr}}
+  .review-card{background:var(--cream);border:1px solid var(--line);padding:2rem 1.8rem;display:flex;flex-direction:column}
+  .review-card .quote-mark{font-family:'Cormorant Garamond',serif;font-size:3rem;line-height:.6;color:var(--bronze);opacity:.5;margin-bottom:.5rem}
+  .review-card p{color:var(--taupe);font-size:.95rem;font-style:italic;flex:1}
+  .review-card .author{margin-top:1.2rem;font-family:'Jost',sans-serif;font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--bronze);font-style:normal}
+  .reviews-cta{text-align:center;margin-top:2.5rem}
+  .reviews-cta a{font-size:.76rem;letter-spacing:.16em;text-transform:uppercase;color:var(--taupe);border-bottom:1px solid var(--bronze);padding-bottom:.2rem;transition:all .3s}
+  .reviews-cta a:hover{color:var(--bronze)}
+
   /* CTA */
   .room-cta{background:var(--espresso);color:var(--cream);text-align:center;padding:clamp(3rem,7vw,5rem) clamp(1.2rem,5vw,3.5rem)}
   .room-cta .eyebrow{color:var(--bronze)}
@@ -236,8 +252,43 @@
     </div>
     <div class="gallery">
       <div class="g-item"><img src="vetro-wc-room.jpeg" alt="The Wine Cellar set for a private event"></div>
-      <div class="g-item"><img src="vetro-winecellar.jpeg" alt="Long banquet table in the Wine Cellar"></div>
+      <div class="g-item"><img src="vetro-wc-table.jpeg" alt="Candlelit table set in the Wine Cellar"></div>
       <div class="g-item"><img src="vetro-wc-racks.jpeg" alt="Wine racks lining the Wine Cellar"></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section reviews">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">What Guests Say</span>
+      <h2>Celebrated <em>Here</em></h2>
+    </div>
+    <div class="rating-bar">
+      <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <div class="rating-num">4.8</div>
+      <div class="rating-sub">1,600+ reviews &middot; #1 Best Restaurant, Tri-State (OpenTable)</div>
+    </div>
+    <div class="review-grid">
+      <div class="review-card">
+        <div class="quote-mark">&ldquo;</div>
+        <p>We had my sister's surprise 30th party and planned it in under three weeks. PJ and the whole staff were amazing and accommodating, and Christina attended to every detail. The food was delicious — we already booked her bridal shower at Vetro for next year!</p>
+        <div class="author">— Justine O.</div>
+      </div>
+      <div class="review-card">
+        <div class="quote-mark">&ldquo;</div>
+        <p>A lovely restaurant by the water. The multi-level venue is spacious and perfect for group dining and events, with private sections available. Service is excellent, patient, and attentive.</p>
+        <div class="author">— Rose I.</div>
+      </div>
+      <div class="review-card">
+        <div class="quote-mark">&ldquo;</div>
+        <p>Five stars. The moment you walk in, you feel like a celebrity.</p>
+        <div class="author">— Tania B.</div>
+      </div>
+    </div>
+    <div class="reviews-cta">
+      <a href="https://www.opentable.com/r/vetro-by-russos-on-the-bay-howard-beach" target="_blank" rel="noopener">Read more reviews on OpenTable &rarr;</a>
     </div>
   </div>
 </section>
