@@ -81,7 +81,7 @@
   .occ-list span{border:1px solid var(--line);padding:.6rem 1.3rem;font-size:.85rem;letter-spacing:.04em;color:var(--taupe);background:var(--cream)}
 
   /* GALLERY */
-  .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:2.5rem}
+  .gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin-top:2.5rem}
   @media(max-width:820px){.gallery{grid-template-columns:1fr 1fr}}
   .gallery .g-item{position:relative;aspect-ratio:4/3;overflow:hidden;background:var(--limestone-dk);cursor:pointer}
   .gallery .g-item img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
@@ -121,6 +121,34 @@
   .reviews-cta{text-align:center;margin-top:2.5rem}
   .reviews-cta a{font-size:.76rem;letter-spacing:.16em;text-transform:uppercase;color:var(--taupe);border-bottom:1px solid var(--bronze);padding-bottom:.2rem;transition:all .3s}
   .reviews-cta a:hover{color:var(--bronze)}
+
+  /* STICKY BOOK BUTTON */
+  .sticky-book{position:fixed;bottom:1.4rem;right:1.4rem;z-index:90;background:var(--bronze);color:var(--cream);font-family:'Jost',sans-serif;font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;padding:1rem 1.6rem;border-radius:40px;box-shadow:0 10px 30px rgba(28,22,17,.4);transition:all .3s;opacity:0;transform:translateY(20px);pointer-events:none}
+  .sticky-book.show{opacity:1;transform:translateY(0);pointer-events:auto}
+  .sticky-book:hover{background:var(--bronze-dk);box-shadow:0 14px 36px rgba(28,22,17,.5)}
+  @media(max-width:560px){.sticky-book{bottom:1rem;right:1rem;left:1rem;text-align:center;padding:1rem}}
+
+  /* URGENCY BANNER */
+  .urgency{background:var(--bronze);color:var(--cream);text-align:center;padding:.8rem 1.2rem;font-size:.82rem;letter-spacing:.08em}
+  .urgency strong{font-weight:500}
+
+  /* WHAT'S INCLUDED */
+  .included-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem 2.5rem;max-width:780px;margin:2.5rem auto 0}
+  @media(max-width:620px){.included-grid{grid-template-columns:1fr;gap:.6rem}}
+  .inc-item{display:flex;align-items:flex-start;gap:.8rem;padding:.7rem 0;border-bottom:1px solid var(--line-soft)}
+  .inc-item .inc-check{flex-shrink:0;width:24px;height:24px;border-radius:50%;background:var(--bronze);color:var(--cream);display:flex;align-items:center;justify-content:center;font-size:.85rem;margin-top:.1rem}
+  .inc-item .inc-text strong{display:block;color:var(--espresso);font-weight:500;font-size:.98rem}
+  .inc-item .inc-text span{color:var(--taupe);font-size:.86rem}
+
+  /* FAQ */
+  .faq-wrap{max-width:760px;margin:2.5rem auto 0}
+  .faq-item{border-bottom:1px solid var(--line);}
+  .faq-q{width:100%;text-align:left;background:none;border:none;cursor:pointer;padding:1.3rem .2rem;font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:var(--espresso);display:flex;justify-content:space-between;align-items:center;gap:1rem;transition:color .2s}
+  .faq-q:hover{color:var(--bronze)}
+  .faq-q .faq-icon{flex-shrink:0;font-family:'Jost',sans-serif;font-size:1.5rem;color:var(--bronze);transition:transform .3s;line-height:1}
+  .faq-item.open .faq-q .faq-icon{transform:rotate(45deg)}
+  .faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease;color:var(--taupe);font-size:.95rem}
+  .faq-a p{padding:0 .2rem 1.3rem}
 
   /* CTA */
   .room-cta{background:var(--espresso);color:var(--cream);text-align:center;padding:clamp(3rem,7vw,5rem) clamp(1.2rem,5vw,3.5rem)}
@@ -240,6 +268,9 @@
   </div>
 </section>
 
+<!-- URGENCY BANNER -->
+<div class="urgency">&#10022; Now booking <strong>2026 &amp; 2027</strong> &mdash; weekend dates fill quickly. Reserve your consultation today.</div>
+
 <!-- INTRO + SPECS -->
 <section class="section">
   <div class="wrap">
@@ -287,6 +318,43 @@
   </div>
 </section>
 
+<!-- WHAT'S INCLUDED -->
+<section class="section">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">All-Inclusive</span>
+      <h2>What's <em>Included</em></h2>
+      <p>Your event in the Wine Cellar comes complete — no surprises, no hidden fees.</p>
+    </div>
+    <div class="included-grid">
+      <div class="inc-item">
+        <div class="inc-check">&#10003;</div>
+        <div class="inc-text"><strong>Award-Winning Cuisine</strong><span>Full Vetro catering menu, customizable to your event</span></div>
+      </div>
+      <div class="inc-item">
+        <div class="inc-check">&#10003;</div>
+        <div class="inc-text"><strong>Professional Service Staff</strong><span>Dedicated servers and an event captain for your party</span></div>
+      </div>
+      <div class="inc-item">
+        <div class="inc-check">&#10003;</div>
+        <div class="inc-text"><strong>Complimentary Valet Parking</strong><span>Easy, free parking for you and all your guests</span></div>
+      </div>
+      <div class="inc-item">
+        <div class="inc-check">&#10003;</div>
+        <div class="inc-text"><strong>Private Room &amp; Setup</strong><span>The Wine Cellar exclusively yours, fully set and styled</span></div>
+      </div>
+      <div class="inc-item">
+        <div class="inc-check">&#10003;</div>
+        <div class="inc-text"><strong>500+ Bottle Wine Program</strong><span>Wine Spectator–recognized cellar and expert pairings</span></div>
+      </div>
+      <div class="inc-item">
+        <div class="inc-check">&#10003;</div>
+        <div class="inc-text"><strong>Waterfront Setting</strong><span>On the bay, on the border of Queens &amp; Brooklyn</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- OCCASIONS -->
 <section class="section">
   <div class="wrap">
@@ -316,9 +384,10 @@
       <p>From an intimate candlelit table to walls lined with our collection.</p>
     </div>
     <div class="gallery" id="gallery">
-      <div class="g-item" data-i="0"><img src="vetro-wc-room.jpeg" alt="The Wine Cellar set for a private event"></div>
-      <div class="g-item" data-i="1"><img src="vetro-wc-table.jpeg" alt="Candlelit table set in the Wine Cellar"></div>
-      <div class="g-item" data-i="2"><img src="vetro-wc-racks.jpeg" alt="Wine racks lining the Wine Cellar"></div>
+      <div class="g-item" data-i="0"><img src="vetro-winecellar.jpeg" alt="The Wine Cellar private dining room"></div>
+      <div class="g-item" data-i="1"><img src="vetro-wc-room.jpeg" alt="The Wine Cellar set for a private event"></div>
+      <div class="g-item" data-i="2"><img src="vetro-wc-table.jpeg" alt="Candlelit table set in the Wine Cellar"></div>
+      <div class="g-item" data-i="3"><img src="vetro-wc-racks.jpeg" alt="Wine racks lining the Wine Cellar"></div>
     </div>
   </div>
 </section>
@@ -354,6 +423,42 @@
     </div>
     <div class="reviews-cta">
       <a href="https://www.opentable.com/r/vetro-by-russos-on-the-bay-howard-beach" target="_blank" rel="noopener">Read more reviews on OpenTable &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section feat">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Good to Know</span>
+      <h2>Frequently Asked <em>Questions</em></h2>
+    </div>
+    <div class="faq-wrap">
+      <div class="faq-item">
+        <button class="faq-q">What is the guest minimum and maximum?<span class="faq-icon">+</span></button>
+        <div class="faq-a"><p>The Wine Cellar accommodates a minimum of 60 and a maximum of 90 guests, making it ideal for intimate-yet-lively celebrations. For larger parties, our Murano Room and Rooftop Lounge offer more space.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Can we customize the menu?<span class="faq-icon">+</span></button>
+        <div class="faq-a"><p>Absolutely. Our events team builds a menu around your tastes, dietary needs, and budget — from passed hors d'oeuvres to plated dinners and family-style feasts, all from Vetro's award-winning kitchen.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Is parking available for our guests?<span class="faq-icon">+</span></button>
+        <div class="faq-a"><p>Yes — complimentary valet parking is included for you and all of your guests, so no one has to worry about finding a spot.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Can we bring entertainment or a DJ?<span class="faq-icon">+</span></button>
+        <div class="faq-a"><p>The Wine Cellar is designed as an intimate dining setting. For events with a DJ, dance floor, or live entertainment, our Rooftop Lounge is purpose-built for it. Ask our events team and we'll help match your vision to the right space.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">How far in advance should we book?<span class="faq-icon">+</span></button>
+        <div class="faq-a"><p>We recommend reaching out as early as possible — popular dates, especially weekends, book up well in advance. That said, we've planned beautiful events on shorter timelines too. The best first step is a quick consultation with our team.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Is there a deposit to reserve a date?<span class="faq-icon">+</span></button>
+        <div class="faq-a"><p>Yes, a deposit secures your date, with the balance handled closer to your event. Your events coordinator will walk you through all the details during your consultation.</p></div>
+      </div>
     </div>
   </div>
 </section>
@@ -530,6 +635,9 @@
   <div class="foot-bottom">© 2026 Vetro Restaurant &amp; Lounge · 164-49 Cross Bay Blvd, Howard Beach, NY · (718) 843-8387</div>
 </footer>
 
+<!-- STICKY BOOK BUTTON -->
+<a class="sticky-book" id="stickyBook" href="#book">Book This Room</a>
+
 <!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox">
   <button class="lb-close" id="lbClose" aria-label="Close">&times;</button>
@@ -540,7 +648,43 @@
 </div>
 
 <script>
-  // ---- Gallery lightbox ----
+  // ---- FAQ accordion ----
+  (function(){
+    document.querySelectorAll('.faq-q').forEach(q=>{
+      q.addEventListener('click',()=>{
+        const item=q.closest('.faq-item');
+        const ans=item.querySelector('.faq-a');
+        const isOpen=item.classList.contains('open');
+        // close all
+        document.querySelectorAll('.faq-item').forEach(i=>{
+          i.classList.remove('open');
+          i.querySelector('.faq-a').style.maxHeight=null;
+        });
+        if(!isOpen){
+          item.classList.add('open');
+          ans.style.maxHeight=ans.scrollHeight+'px';
+        }
+      });
+    });
+  })();
+
+  // ---- Sticky book button (show after hero, hide near the form) ----
+  (function(){
+    const btn=document.getElementById('stickyBook');
+    const book=document.getElementById('book');
+    if(!btn||!book) return;
+    function update(){
+      const y=window.scrollY;
+      const bookTop=book.getBoundingClientRect().top;
+      // show after scrolling past ~60% of first viewport; hide once the form scrolls into view
+      const show = y>window.innerHeight*0.6 && bookTop>window.innerHeight*0.5;
+      btn.classList.toggle('show',show);
+    }
+    window.addEventListener('scroll',update,{passive:true});
+    update();
+  })();
+
+
   (function(){
     const gallery=document.getElementById('gallery');
     if(!gallery) return;
