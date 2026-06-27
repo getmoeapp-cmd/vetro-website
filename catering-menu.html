@@ -45,17 +45,7 @@
     display:flex;align-items:center;justify-content:space-between;
   }
   .nav-logo{display:flex;align-items:center;gap:13px}
-  .nav-logo img{height:62px;width:auto;transition:height .3s ease}
-  .nav-logo .wordmark{
-    font-family:'Cormorant Garamond',serif;
-    font-size:1.55rem;font-weight:600;letter-spacing:.04em;
-    color:var(--espresso);line-height:1;
-  }
-  .nav-logo .wordmark small{
-    display:block;font-family:'Jost',sans-serif;
-    font-size:.52rem;font-weight:400;letter-spacing:.34em;
-    text-transform:uppercase;color:var(--bronze);margin-top:4px;
-  }
+  .nav-logo img{height:62px;width:auto;display:block;transition:height .3s ease;filter:drop-shadow(0 1px 3px rgba(44,36,29,.45))}
   .nav-links{display:flex;gap:30px;align-items:center}
   .nav-links a{
     font-size:.82rem;font-weight:400;letter-spacing:.13em;
@@ -271,10 +261,7 @@
     display:flex;flex-wrap:wrap;gap:30px;justify-content:space-between;align-items:center;
   }
   .footer-logo{display:flex;align-items:center;gap:12px}
-  .footer-logo .wordmark{
-    font-family:'Cormorant Garamond',serif;font-size:1.4rem;
-    font-weight:600;color:var(--white-trim);letter-spacing:.04em;
-  }
+  .footer-logo img{height:64px;width:auto;display:block}
   .footer-meta{font-size:.82rem;line-height:1.9;text-align:right}
   .footer-meta a:hover{color:var(--bronze)}
   .footer-bottom{
@@ -302,7 +289,6 @@
     .serving-inner .divider{display:none}
   }
   @media(max-width:560px){
-    .nav-logo .wordmark{font-size:1.3rem}
     .nav-logo img{height:52px}
     .item-row{grid-template-columns:1fr;gap:8px}
     .price{text-align:left}
@@ -314,6 +300,308 @@
   }
   /* visible keyboard focus */
   a:focus-visible,button:focus-visible{outline:2px solid var(--bronze);outline-offset:3px}
+
+  /* ===== CATERING BUILDER ===== */
+  .builder{
+    background:var(--white-trim);
+    border-top:1px solid var(--line);
+    padding:clamp(54px,9vw,90px) 24px;
+  }
+  .builder-inner{max-width:840px;margin:0 auto}
+  .builder-head{text-align:center;margin-bottom:44px}
+  .builder-head .eyebrow{
+    font-size:.72rem;letter-spacing:.36em;text-transform:uppercase;
+    color:var(--bronze);font-weight:500;margin-bottom:14px;
+  }
+  .builder-head h2{
+    font-family:'Cormorant Garamond',serif;
+    font-size:clamp(2.2rem,5.5vw,3.4rem);font-weight:600;line-height:1.04;
+  }
+  .builder-head h2 em{font-style:italic;color:var(--bronze)}
+  .builder-head p{
+    font-weight:300;color:var(--taupe);max-width:520px;margin:14px auto 0;
+  }
+
+  .builder-card{
+    background:var(--limestone);
+    border:1px solid var(--line);
+    border-radius:4px;
+    padding:clamp(26px,4vw,44px);
+    box-shadow:0 18px 50px rgba(66,53,43,.08);
+  }
+
+  /* progress */
+  .bld-progress{
+    display:flex;align-items:center;gap:8px;
+    margin-bottom:30px;flex-wrap:wrap;justify-content:center;
+  }
+  .bld-dot{
+    display:flex;align-items:center;gap:8px;
+    font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--taupe);font-weight:500;opacity:.5;transition:opacity .3s;
+  }
+  .bld-dot .ring{
+    width:24px;height:24px;border-radius:50%;
+    border:1.5px solid var(--bronze);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Cormorant Garamond',serif;font-size:.8rem;font-weight:600;
+    color:var(--bronze);background:transparent;transition:all .3s;
+  }
+  .bld-dot.active{opacity:1}
+  .bld-dot.active .ring{background:var(--bronze);color:var(--white-trim)}
+  .bld-dot.done .ring{background:var(--bronze);color:var(--white-trim);border-color:var(--bronze)}
+  .bld-dot.done{opacity:.85}
+  .bld-line{width:18px;height:1px;background:var(--line)}
+  @media(max-width:620px){
+    .bld-dot span{display:none}
+    .bld-line{width:10px}
+  }
+
+  /* steps */
+  .bld-step{display:none;animation:fade .35s ease}
+  .bld-step.active{display:block}
+  .bld-step h3{
+    font-family:'Cormorant Garamond',serif;
+    font-size:clamp(1.7rem,4vw,2.3rem);font-weight:600;
+    text-align:center;line-height:1.1;margin-bottom:6px;
+  }
+  .bld-step .step-sub{
+    text-align:center;color:var(--taupe);font-weight:300;
+    margin-bottom:28px;font-size:.95rem;
+  }
+  .bld-step .step-sub strong{color:var(--bronze);font-weight:500}
+
+  /* guest count step */
+  .guest-input-wrap{
+    max-width:340px;margin:0 auto 8px;text-align:center;
+  }
+  .guest-input{
+    width:100%;
+    font-family:'Cormorant Garamond',serif;
+    font-size:3rem;font-weight:600;text-align:center;
+    color:var(--espresso);background:var(--white-trim);
+    border:1px solid var(--line);border-radius:4px;
+    padding:14px 10px;outline:none;transition:border-color .2s;
+    -moz-appearance:textfield;
+  }
+  .guest-input::-webkit-outer-spin-button,
+  .guest-input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+  .guest-input:focus{border-color:var(--bronze)}
+  .guest-label{
+    font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--bronze);font-weight:500;margin-top:10px;display:block;
+  }
+  .guest-quick{
+    display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:22px;
+  }
+  .guest-quick button{
+    font-family:'Jost',sans-serif;font-size:.8rem;font-weight:400;
+    letter-spacing:.04em;color:var(--taupe);
+    background:var(--white-trim);border:1px solid var(--line);
+    border-radius:40px;padding:8px 18px;cursor:pointer;transition:all .2s;
+  }
+  .guest-quick button:hover{border-color:var(--bronze);color:var(--bronze)}
+
+  /* item choices */
+  .choice-grid{display:grid;gap:10px}
+  .choice{
+    display:flex;align-items:flex-start;gap:14px;
+    background:var(--white-trim);
+    border:1px solid var(--line);border-radius:4px;
+    padding:15px 17px;cursor:pointer;transition:all .18s;
+    text-align:left;width:100%;font-family:inherit;
+  }
+  .choice:hover{border-color:var(--bronze);transform:translateY(-1px)}
+  .choice.selected{
+    border-color:var(--bronze);
+    background:linear-gradient(0deg,var(--bronze-soft),var(--bronze-soft)),var(--white-trim);
+    box-shadow:0 4px 16px rgba(154,123,79,.14);
+  }
+  .choice .check{
+    flex-shrink:0;width:22px;height:22px;border-radius:50%;
+    border:1.5px solid var(--bronze);margin-top:2px;
+    display:flex;align-items:center;justify-content:center;
+    transition:all .2s;
+  }
+  .choice .check svg{width:12px;height:12px;opacity:0;transform:scale(.5);transition:all .2s}
+  .choice.selected .check{background:var(--bronze)}
+  .choice.selected .check svg{opacity:1;transform:scale(1)}
+  .choice .c-body{flex:1}
+  .choice .c-name{
+    font-family:'Cormorant Garamond',serif;font-size:1.22rem;
+    font-weight:600;color:var(--espresso);line-height:1.2;
+  }
+  .choice .c-desc{
+    font-size:.82rem;font-weight:300;color:var(--taupe);margin-top:2px;
+  }
+  .choice .c-qty{
+    flex-shrink:0;display:flex;align-items:center;gap:0;
+    margin-top:1px;
+  }
+  .qty-btn{
+    width:30px;height:30px;border:1px solid var(--line);
+    background:var(--white-trim);color:var(--bronze);
+    font-size:1.1rem;line-height:1;cursor:pointer;
+    display:flex;align-items:center;justify-content:center;
+    transition:all .15s;font-family:'Jost',sans-serif;
+  }
+  .qty-btn:first-child{border-radius:4px 0 0 4px}
+  .qty-btn:last-child{border-radius:0 4px 4px 0}
+  .qty-btn:hover{background:var(--bronze);color:var(--white-trim);border-color:var(--bronze)}
+  .qty-val{
+    width:42px;height:30px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+    background:var(--white-trim);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;
+    color:var(--espresso);
+  }
+  .qty-unit{
+    font-size:.6rem;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--bronze);font-weight:500;margin-left:8px;align-self:center;
+    min-width:54px;
+  }
+  .choice-pick{align-items:center}
+  .choice-qtyrow{align-items:center;justify-content:space-between}
+
+  .step-hint{
+    text-align:center;font-size:.8rem;color:var(--taupe);
+    margin-top:18px;font-style:italic;font-family:'Cormorant Garamond',serif;
+  }
+
+  /* nav buttons */
+  .bld-nav{
+    display:flex;gap:12px;justify-content:space-between;align-items:center;
+    margin-top:30px;padding-top:24px;border-top:1px solid var(--line);
+  }
+  .bld-btn{
+    font-family:'Jost',sans-serif;font-size:.78rem;letter-spacing:.14em;
+    text-transform:uppercase;font-weight:500;
+    padding:13px 28px;border-radius:3px;cursor:pointer;transition:all .2s;
+    border:1px solid var(--bronze);
+  }
+  .bld-btn.primary{background:var(--bronze);color:var(--white-trim)}
+  .bld-btn.primary:hover{background:var(--espresso);border-color:var(--espresso)}
+  .bld-btn.ghost{background:transparent;color:var(--bronze)}
+  .bld-btn.ghost:hover{background:var(--bronze-soft)}
+  .bld-btn.skip{
+    border:none;background:none;color:var(--taupe);
+    letter-spacing:.1em;padding:13px 10px;
+  }
+  .bld-btn.skip:hover{color:var(--bronze)}
+  .bld-btn:disabled{opacity:.4;cursor:not-allowed}
+  .bld-nav .nav-right{display:flex;gap:10px;align-items:center}
+
+  /* form fields */
+  .bld-fields{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .bld-field{display:flex;flex-direction:column;gap:6px}
+  .bld-field.full{grid-column:1/-1}
+  .bld-field label{
+    font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--bronze);font-weight:500;
+  }
+  .bld-field input,.bld-field textarea,.bld-field select{
+    font-family:'Jost',sans-serif;font-size:.95rem;color:var(--espresso);
+    background:var(--white-trim);border:1px solid var(--line);border-radius:4px;
+    padding:12px 14px;outline:none;transition:border-color .2s;width:100%;
+  }
+  .bld-field input:focus,.bld-field textarea:focus,.bld-field select:focus{border-color:var(--bronze)}
+  .bld-field textarea{resize:vertical;min-height:90px}
+  @media(max-width:560px){.bld-fields{grid-template-columns:1fr}}
+
+  /* review summary */
+  .review-summary{
+    background:var(--white-trim);border:1px solid var(--line);
+    border-radius:4px;padding:22px 24px;margin-bottom:26px;
+  }
+  .review-summary .rs-head{
+    display:flex;justify-content:space-between;align-items:baseline;
+    border-bottom:1px solid var(--line);padding-bottom:12px;margin-bottom:14px;
+  }
+  .review-summary .rs-head h4{
+    font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;
+  }
+  .review-summary .rs-guests{
+    font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--bronze);font-weight:500;
+  }
+  .rs-cat{margin-bottom:14px}
+  .rs-cat:last-child{margin-bottom:0}
+  .rs-cat .rs-cat-name{
+    font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--bronze);font-weight:500;margin-bottom:5px;
+  }
+  .rs-line{
+    display:flex;justify-content:space-between;gap:14px;
+    font-size:.92rem;color:var(--espresso);padding:3px 0;
+  }
+  .rs-line .rs-qty{color:var(--taupe);font-weight:400;white-space:nowrap}
+  .rs-empty{color:var(--taupe);font-style:italic;font-size:.88rem;font-family:'Cormorant Garamond',serif}
+  .rs-edit{
+    background:none;border:none;color:var(--bronze);cursor:pointer;
+    font-family:'Jost',sans-serif;font-size:.72rem;letter-spacing:.1em;
+    text-transform:uppercase;font-weight:500;
+  }
+  .rs-edit:hover{text-decoration:underline}
+
+  /* finish choice cards */
+  .finish-options{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:8px 0 4px}
+  @media(max-width:560px){.finish-options{grid-template-columns:1fr}}
+  .finish-opt{
+    border:1px solid var(--line);border-radius:4px;padding:22px 20px;
+    text-align:center;cursor:pointer;transition:all .2s;background:var(--white-trim);
+  }
+  .finish-opt:hover{border-color:var(--bronze);transform:translateY(-2px)}
+  .finish-opt.selected{border-color:var(--bronze);background:var(--bronze-soft)}
+  .finish-opt .fo-icon{font-size:1.6rem;margin-bottom:8px}
+  .finish-opt h4{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:600;margin-bottom:4px}
+  .finish-opt p{font-size:.82rem;color:var(--taupe);font-weight:300}
+
+  /* path chooser cards */
+  .path-options{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  @media(max-width:720px){.path-options{grid-template-columns:1fr}}
+  .path-opt{
+    border:1px solid var(--line);border-radius:4px;
+    padding:30px 24px;background:var(--white-trim);
+    cursor:pointer;transition:all .22s;text-align:center;
+    display:flex;flex-direction:column;align-items:center;
+  }
+  .path-opt:hover{border-color:var(--bronze);transform:translateY(-3px);box-shadow:0 14px 36px rgba(154,123,79,.16)}
+  .path-opt .po-icon{font-size:2rem;margin-bottom:12px}
+  .path-opt h4{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;margin-bottom:8px;line-height:1.15}
+  .path-opt p{font-size:.86rem;color:var(--taupe);font-weight:300;flex:1}
+  .path-opt .po-go{
+    margin-top:16px;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--bronze);font-weight:500;
+  }
+
+  /* consultation slots */
+  .slot-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:8px;margin-top:8px}
+  .slot{
+    font-family:'Jost',sans-serif;font-size:.84rem;color:var(--espresso);
+    background:var(--white-trim);border:1px solid var(--line);border-radius:3px;
+    padding:10px;cursor:pointer;transition:all .18s;text-align:center;
+  }
+  .slot:hover{border-color:var(--bronze)}
+  .slot.selected{background:var(--bronze);color:var(--white-trim);border-color:var(--bronze)}
+  .consult-block{display:none}
+  .consult-block.show{display:block;animation:fade .35s ease}
+
+  /* confirmation */
+  .bld-confirm{display:none;text-align:center;padding:20px 0}
+  .bld-confirm.show{display:block;animation:fade .5s ease}
+  .confirm-mark{
+    width:72px;height:72px;border-radius:50%;background:var(--bronze);
+    display:flex;align-items:center;justify-content:center;margin:0 auto 22px;
+  }
+  .confirm-mark svg{width:34px;height:34px}
+  .bld-confirm h3{
+    font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:600;margin-bottom:12px;
+  }
+  .bld-confirm p{color:var(--taupe);font-weight:300;max-width:460px;margin:0 auto 8px}
+  .bld-confirm .confirm-phone{
+    display:inline-block;margin-top:18px;font-family:'Cormorant Garamond',serif;
+    font-size:1.4rem;font-weight:600;color:var(--bronze);
+    border-bottom:1px solid var(--bronze);
+  }
 </style>
 </head>
 <body>
@@ -322,7 +610,7 @@
 <nav class="nav">
   <div class="nav-inner">
     <a href="index.html" class="nav-logo" aria-label="Vetro home">
-      <span class="wordmark">Vetro<small>Russo's On The Bay</small></span>
+      <img src="vetro-logo.webp" alt="Vetro by Russo's on the Bay">
     </a>
     <button class="nav-toggle" aria-label="Menu" aria-expanded="false">
       <span></span><span></span><span></span>
@@ -540,6 +828,142 @@
   </div>
 </main>
 
+<!-- ===== CATERING BUILDER ===== -->
+<section class="builder" id="builder">
+  <div class="builder-inner">
+    <div class="builder-head">
+      <p class="eyebrow">Catering Made Easy</p>
+      <h2>Plan Your <em>Catering</em></h2>
+      <p>Build a full menu, request a quick quote, or schedule a consultation &mdash; whatever's easiest. Either way, our team takes it from there.</p>
+    </div>
+
+    <div class="builder-card">
+      <!-- progress -->
+      <div class="bld-progress" id="bldProgress"></div>
+
+      <!-- STEP: path chooser -->
+      <div class="bld-step active" data-step="path">
+        <h3>How can we help?</h3>
+        <p class="step-sub">Build a full menu, request a quick quote, or schedule a call &mdash; your choice.</p>
+        <div class="path-options">
+          <div class="path-opt" data-path="build" tabindex="0" role="button">
+            <div class="po-icon">&#127869;</div>
+            <h4>Build a Catering Order</h4>
+            <p>Answer a few questions and we'll suggest a spread you can customize.</p>
+            <span class="po-go">Start building &rarr;</span>
+          </div>
+          <div class="path-opt" data-path="quote" tabindex="0" role="button">
+            <div class="po-icon">&#9993;</div>
+            <h4>Request a Quote</h4>
+            <p>Tell us the basics and our team will reach out with options.</p>
+            <span class="po-go">Just the form &rarr;</span>
+          </div>
+          <div class="path-opt" data-path="consult" tabindex="0" role="button">
+            <div class="po-icon">&#128197;</div>
+            <h4>Book a Consultation</h4>
+            <p>Schedule a call to plan your event with our catering team.</p>
+            <span class="po-go">Pick a time &rarr;</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP: guest count -->
+      <div class="bld-step" data-step="guest">
+        <h3>How many guests?</h3>
+        <p class="step-sub">We'll suggest tray quantities based on your headcount.</p>
+        <div class="guest-input-wrap">
+          <input type="number" class="guest-input" id="guestCount" min="1" max="500" placeholder="30" inputmode="numeric">
+          <span class="guest-label">Guests</span>
+        </div>
+        <div class="guest-quick">
+          <button data-g="15">15</button>
+          <button data-g="25">25</button>
+          <button data-g="40">40</button>
+          <button data-g="60">60</button>
+          <button data-g="100">100</button>
+        </div>
+        <p class="step-hint">Full tray serves ~10&ndash;15 &middot; Half tray serves ~5&ndash;7</p>
+      </div>
+
+      <!-- category steps injected by JS -->
+      <div id="catSteps"></div>
+
+      <!-- REVIEW step -->
+      <div class="bld-step" data-step="review">
+        <h3>Review Your Menu</h3>
+        <p class="step-sub">Here's your spread for <strong id="reviewGuests">&mdash;</strong> guests. Edit any section, or continue.</p>
+        <div class="review-summary" id="reviewSummary"></div>
+      </div>
+
+      <!-- CONTACT + FINISH step -->
+      <div class="bld-step" data-step="contact">
+        <h3>Almost There</h3>
+        <p class="step-sub">Where should the catering team reach you?</p>
+        <div class="bld-fields">
+          <div class="bld-field"><label for="cName">Name</label><input type="text" id="cName" autocomplete="name"></div>
+          <div class="bld-field"><label for="cPhone">Phone</label><input type="tel" id="cPhone" autocomplete="tel"></div>
+          <div class="bld-field full"><label for="cEmail">Email</label><input type="email" id="cEmail" autocomplete="email"></div>
+          <div class="bld-field"><label for="cDate">Event date</label><input type="date" id="cDate"></div>
+          <div class="bld-field"><label for="cType">Occasion <span style="text-transform:none;letter-spacing:0;color:var(--taupe)">(optional)</span></label><input type="text" id="cType" placeholder="Birthday, office, holiday&hellip;"></div>
+          <div class="bld-field full"><label for="cNotes">Notes for the team <span style="text-transform:none;letter-spacing:0;color:var(--taupe)">(allergies, delivery, setup&hellip;)</span></label><textarea id="cNotes"></textarea></div>
+        </div>
+
+        <div id="finishChoiceWrap">
+          <p class="step-sub" style="margin-top:28px;margin-bottom:14px">How would you like to finish?</p>
+          <div class="finish-options">
+            <div class="finish-opt" data-finish="send" tabindex="0" role="button">
+              <div class="fo-icon">&#9993;</div>
+              <h4>Send My Menu</h4>
+              <p>The team reviews and calls you with a quote.</p>
+            </div>
+            <div class="finish-opt" data-finish="consult" tabindex="0" role="button">
+              <div class="fo-icon">&#128197;</div>
+              <h4>Book a Consultation</h4>
+              <p>Schedule a call to go over everything together.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- consultation scheduler (revealed when "consult" chosen) -->
+        <div class="consult-block" id="consultBlock">
+          <div class="bld-fields" style="margin-top:22px">
+            <div class="bld-field"><label for="consultDate">Preferred call date</label><input type="date" id="consultDate"></div>
+            <div class="bld-field"><label>Preferred time</label>
+              <div class="slot-grid" id="slotGrid">
+                <button type="button" class="slot" data-slot="10:00 AM">10:00 AM</button>
+                <button type="button" class="slot" data-slot="12:00 PM">12:00 PM</button>
+                <button type="button" class="slot" data-slot="2:00 PM">2:00 PM</button>
+                <button type="button" class="slot" data-slot="4:00 PM">4:00 PM</button>
+                <button type="button" class="slot" data-slot="6:00 PM">6:00 PM</button>
+                <button type="button" class="slot" data-slot="7:00 PM">7:00 PM</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CONFIRMATION -->
+      <div class="bld-confirm" id="bldConfirm">
+        <div class="confirm-mark">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#faf7f0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        </div>
+        <h3 id="confirmHead">Your menu is on its way</h3>
+        <p id="confirmBody">Thanks &mdash; our catering team has your menu and will reach out to confirm details and pricing.</p>
+        <a href="tel:17188438387" class="confirm-phone">718&middot;843&middot;8387</a>
+      </div>
+
+      <!-- nav -->
+      <div class="bld-nav" id="bldNav">
+        <button class="bld-btn ghost" id="bldBack" style="visibility:hidden">Back</button>
+        <div class="nav-right">
+          <button class="bld-btn skip" id="bldSkip" style="display:none">Skip</button>
+          <button class="bld-btn primary" id="bldNext">Start</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ORDER CTA -->
 <section class="order-cta">
   <p class="eyebrow">Place Your Order</p>
@@ -553,7 +977,7 @@
 <footer class="footer">
   <div class="footer-inner">
     <div class="footer-logo">
-      <span class="wordmark">Vetro</span>
+      <img src="vetro-logo.webp" alt="Vetro by Russo's on the Bay">
     </div>
     <div class="footer-meta">
       164-49 Cross Bay Blvd, Howard Beach, NY<br>
@@ -594,6 +1018,483 @@
     links.classList.remove('open');toggle.classList.remove('open');
     toggle.setAttribute('aria-expanded',false);
   }));
+
+  /* =================== CATERING BUILDER =================== */
+  // Menu data: each category with its choose-rule and items.
+  // type 'pick' = select any number (toggles). type 'qty' = trays with +/- quantity.
+  const MENU = {
+    appetizers:{
+      label:'Appetizers', heading:'Choose your appetizers',
+      mode:'pick',
+      items:[
+        {n:'Cold Antipasto Platter',d:'Mozzarella, cured meats, roasted peppers, olives'},
+        {n:'Jumbo Shrimp Cocktail',d:'Home made cocktail sauce, lemon'},
+        {n:'Baked Clams Oreganata',d:'Little necks, seasoned breadcrumbs, garlic'},
+        {n:'Asiago Rice Balls',d:'Mozzarella, pecorino, panko'},
+        {n:'Stuffed Mushrooms',d:'Vegetable and bread stuffing'},
+        {n:'Chicken Meatballs',d:'Grated cheese and parsley in francese sauce'},
+        {n:'Sunday Meatballs',d:'Ricotta, grated cheese, tomato sauce'},
+        {n:'Eggplant Rollatine',d:'Ricotta, mozzarella, classic marinara'},
+        {n:'Fried Calamari Arribiatta',d:'Chili pepper & spicy tomato sauce'}
+      ]
+    },
+    salads:{
+      label:'Salad', heading:'Add a salad',
+      mode:'pick',
+      items:[
+        {n:'Murano Salad',d:'Tomatoes, cucumber, chickpeas, white balsamic'},
+        {n:'Caesar Salad',d:'Croutons, shaved parmesan'},
+        {n:'Italian Chopped Salad',d:'Soppressata, capicola, provolone, gaeta olives'},
+        {n:'Caprese Platter',d:'Fresh mozzarella, beef steak tomato, basil'},
+        {n:'Tri Color Tortellini Salad',d:'Cheese tortellini, peppers, heirloom tomatoes'}
+      ]
+    },
+    pasta:{
+      label:'Pasta', heading:'Choose your pasta',
+      mode:'qty',
+      items:[
+        {n:'Penne alla Vodka',d:'Pink cream sauce with vodka'},
+        {n:'Rigatoni al Filetto di Pomodoro',d:'Fresh tomato and basil'},
+        {n:'Baked Ziti',d:'Ricotta, marinara, melted mozzarella'},
+        {n:'Lasagna',d:'Sausage, meatballs, ricotta, marinara'},
+        {n:'Cavatelli Bolognese',d:'Classic meat sauce'},
+        {n:"Russo's Famous Tortellini Alfredo",d:'Meat tortellini, alfredo cream'},
+        {n:'Linguini White Clam Sauce',d:'Little necks, white wine, garlic'}
+      ]
+    },
+    chicken:{
+      label:'Chicken', heading:'Choose your chicken',
+      mode:'qty',
+      items:[
+        {n:'Chicken Parmigiana',d:'Breaded, tomato sauce, mozzarella'},
+        {n:'Chicken Francese',d:'Lemon butter sauce'},
+        {n:'Chicken Marsala',d:'Mushrooms, marsala wine sauce'},
+        {n:'Chicken Scarpariello',d:'Bone-in, sausage, mushrooms, peppers'},
+        {n:'Chicken Piccata',d:'Capers, lemon, white wine'}
+      ]
+    },
+    meats:{
+      label:'Veal & Pork', heading:'Veal & pork',
+      mode:'qty',
+      items:[
+        {n:'Veal Parmigiana',d:'Breaded, tomato sauce, mozzarella'},
+        {n:'Veal Marsala',d:'Mushrooms, marsala wine sauce'},
+        {n:'Veal Francese',d:'Lemon and butter sauce'},
+        {n:'Sausage and Peppers',d:'Onions, a hint of tomato sauce'},
+        {n:'Pork Pizzaiola',d:'Mushrooms, onions, peppers, tomato'}
+      ]
+    },
+    seafood:{
+      label:'Seafood', heading:'Add seafood',
+      mode:'qty',
+      items:[
+        {n:'Shrimp Francese',d:'Lemon butter sauce'},
+        {n:'Shrimp Parmigiana',d:'Breaded, tomato sauce, mozzarella'},
+        {n:'Salmon ai Ferri',d:'Broiled, white wine and garlic'},
+        {n:'Filet of Sole Oreganata',d:'Baked, seasoned breadcrumbs'},
+        {n:'Seafood Fra Diavolo',d:'Shrimp, calamari, mussels, clams'}
+      ]
+    },
+    sides:{
+      label:'Sides', heading:'Vegetables & starches',
+      mode:'qty',
+      items:[
+        {n:'Broccoli Rabe',d:'Garlic and oil'},
+        {n:'Grilled Vegetables',d:'Zucchini, eggplant, peppers, asparagus'},
+        {n:'Roasted Red Potatoes',d:'Olive oil and herb seasoning'},
+        {n:'Steak House Potatoes',d:'Cubed with peppers and onions'},
+        {n:'Mac & Cheese',d:'Rotelle, four cheese sauce'},
+        {n:'Escarole',d:'Garlic and oil'}
+      ]
+    }
+  };
+  const CAT_ORDER = ['appetizers','salads','pasta','chicken','meats','seafood','sides'];
+
+  // Recommendation engine — derived from Vetro's printed packages.
+  // Returns suggested counts/trays for a guest count.
+  function recommend(g){
+    // trays sized so full≈12, half≈6; round to sensible tray counts
+    const fullsFor = per => Math.max(1, Math.round((g/12)*per));
+    return {
+      appetizers: g<=20?1:(g<=45?2:(g<=70?2:3)),   // # of appetizers to choose
+      salads:     g<=20?1:1,                          // # of salads
+      pasta:      Math.max(1, Math.round(g/22)),      // full trays of pasta total
+      chicken:    Math.max(1, Math.round(g/30)),      // full trays chicken
+      meats:      g<=20?0:Math.max(1,Math.round(g/45)),
+      seafood:    g<=30?0:1,
+      sides:      Math.max(1, Math.round(g/35))
+    };
+  }
+
+  // State
+  let path = null;             // 'build' | 'quote' | 'consult'
+  let guests = 0;
+  let rec = {};
+  let stepIndex = 0;
+  let steps = [];
+  const selections = {};
+  let finishMode = null;
+  let consultSlot = null;
+
+  const catStepsEl = document.getElementById('catSteps');
+  const progressEl = document.getElementById('bldProgress');
+  const nextBtn = document.getElementById('bldNext');
+  const backBtn = document.getElementById('bldBack');
+  const skipBtn = document.getElementById('bldSkip');
+  const navEl2 = document.getElementById('bldNav');
+  const confirmEl = document.getElementById('bldConfirm');
+
+  // Build category step DOM once we know guest count
+  function buildCategorySteps(){
+    catStepsEl.innerHTML='';
+    CAT_ORDER.forEach(cat=>{
+      const c = MENU[cat];
+      const recVal = rec[cat]||0;
+      const step = document.createElement('div');
+      step.className='bld-step';
+      step.dataset.step=cat;
+
+      let subText;
+      if(c.mode==='pick'){
+        subText = recVal>0 ? `We suggest choosing <strong>${recVal}</strong> for ${guests} guests.` : `Optional &mdash; add if you'd like.`;
+      } else {
+        subText = recVal>0 ? `We suggest about <strong>${recVal} full ${recVal===1?'tray':'trays'}</strong> total for ${guests} guests.` : `Optional &mdash; add a tray or two if you'd like.`;
+      }
+
+      const grid = document.createElement('div');
+      grid.className='choice-grid';
+
+      c.items.forEach(it=>{
+        const row=document.createElement('div');
+        if(c.mode==='pick'){
+          row.className='choice choice-pick';
+          row.innerHTML=`
+            <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#faf7f0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+            <div class="c-body"><div class="c-name">${it.n}</div><div class="c-desc">${it.d}</div></div>`;
+          row.addEventListener('click',()=>{
+            if(!selections[cat]) selections[cat]={};
+            if(selections[cat][it.n]){ delete selections[cat][it.n]; row.classList.remove('selected'); }
+            else { selections[cat][it.n]=1; row.classList.add('selected'); }
+          });
+        } else {
+          row.className='choice choice-qtyrow';
+          row.innerHTML=`
+            <div class="c-body"><div class="c-name">${it.n}</div><div class="c-desc">${it.d}</div></div>
+            <div class="c-qty">
+              <div style="display:flex;align-items:center">
+                <button class="qty-btn minus" aria-label="Less">&minus;</button>
+                <div class="qty-val">0</div>
+                <button class="qty-btn plus" aria-label="More">+</button>
+              </div>
+              <span class="qty-unit">trays</span>
+            </div>`;
+          const valEl=row.querySelector('.qty-val');
+          const setQty=(v)=>{
+            v=Math.max(0,v);
+            valEl.textContent=v;
+            if(!selections[cat]) selections[cat]={};
+            if(v===0){ delete selections[cat][it.n]; row.classList.remove('selected'); }
+            else { selections[cat][it.n]=v; row.classList.add('selected'); }
+          };
+          row.querySelector('.plus').addEventListener('click',()=>setQty((selections[cat]?.[it.n]||0)+1));
+          row.querySelector('.minus').addEventListener('click',()=>setQty((selections[cat]?.[it.n]||0)-1));
+        }
+        grid.appendChild(row);
+      });
+
+      step.innerHTML=`<h3>${c.heading}</h3><p class="step-sub">${subText}</p>`;
+      step.appendChild(grid);
+      catStepsEl.appendChild(step);
+    });
+  }
+
+  // Auto-apply suggested quantities so the menu is pre-built (user adjusts)
+  function applyRecommendations(){
+    // PASTA / CHICKEN / etc: distribute suggested full trays across top items
+    CAT_ORDER.forEach(cat=>{
+      const c=MENU[cat]; const recVal=rec[cat]||0;
+      if(recVal<=0) return;
+      selections[cat]=selections[cat]||{};
+      if(c.mode==='pick'){
+        // preselect the first `recVal` items
+        c.items.slice(0,recVal).forEach(it=>selections[cat][it.n]=1);
+      } else {
+        // give the first item the bulk, spread remainder across next items 1 each
+        let remaining=recVal;
+        const first=c.items[0];
+        const base=Math.ceil(remaining/Math.min(2,remaining)); // chunk
+        // simple: put 1 tray on each of the first `recVal` items (max 3 distinct)
+        const spread=Math.min(recVal,3);
+        const perItem=Math.floor(recVal/spread);
+        const extra=recVal-perItem*spread;
+        c.items.slice(0,spread).forEach((it,i)=>{
+          selections[cat][it.n]=perItem+(i<extra?1:0);
+        });
+      }
+    });
+    // reflect into DOM
+    syncSelectionsToDOM();
+  }
+
+  function syncSelectionsToDOM(){
+    CAT_ORDER.forEach(cat=>{
+      const step=catStepsEl.querySelector(`[data-step="${cat}"]`);
+      if(!step) return;
+      const c=MENU[cat];
+      const rows=step.querySelectorAll('.choice');
+      rows.forEach((row,idx)=>{
+        const name=c.items[idx].n;
+        const qty=selections[cat]?.[name]||0;
+        if(c.mode==='pick'){
+          row.classList.toggle('selected',qty>0);
+        } else {
+          const valEl=row.querySelector('.qty-val');
+          if(valEl) valEl.textContent=qty;
+          row.classList.toggle('selected',qty>0);
+        }
+      });
+    });
+  }
+
+  function buildSteps(){
+    if(path==='build')       steps=['path','guest',...CAT_ORDER,'review','contact'];
+    else if(path==='quote')  steps=['path','contact'];
+    else if(path==='consult')steps=['path','contact'];
+    else                     steps=['path'];
+  }
+
+  function renderProgress(){
+    const cur=steps[stepIndex];
+    let phases;
+    if(path==='build'){
+      phases=[{label:'Guests'},{label:'Menu'},{label:'Review'},{label:'Finish'}];
+      var curPhase = cur==='guest'?0 : (CAT_ORDER.includes(cur)?1 : (cur==='review'?2:3));
+    } else if(path==='quote'){
+      phases=[{label:'Details'},{label:'Send'}]; var curPhase = cur==='contact'?1:0;
+    } else if(path==='consult'){
+      phases=[{label:'Details'},{label:'Schedule'}]; var curPhase = cur==='contact'?1:0;
+    } else {
+      progressEl.innerHTML=''; return;
+    }
+    progressEl.innerHTML='';
+    phases.forEach((p,i)=>{
+      if(i>0){const l=document.createElement('div');l.className='bld-line';progressEl.appendChild(l);}
+      const d=document.createElement('div');
+      d.className='bld-dot'+(i===curPhase?' active':'')+(i<curPhase?' done':'');
+      d.innerHTML=`<span class="ring">${i<curPhase?'&#10003;':(i+1)}</span><span>${p.label}</span>`;
+      progressEl.appendChild(d);
+    });
+  }
+
+  function showStep(){
+    document.querySelectorAll('.bld-step').forEach(s=>s.classList.remove('active'));
+    const key=steps[stepIndex];
+    const el=document.querySelector(`.bld-step[data-step="${key}"]`);
+    if(el) el.classList.add('active');
+
+    // nav visibility
+    navEl2.style.display = key==='path' ? 'none' : 'flex';   // chooser has its own click targets
+    backBtn.style.visibility = stepIndex===0 ? 'hidden':'visible';
+    skipBtn.style.display = CAT_ORDER.includes(key) ? 'inline-block':'none';
+
+    // contact step adapts to the chosen path
+    if(key==='contact'){
+      const head=el.querySelector('h3');
+      const sub=el.querySelector('.step-sub');
+      const finishWrap=document.getElementById('finishChoiceWrap');
+      const consultBlk=document.getElementById('consultBlock');
+      if(path==='build'){
+        head.textContent='Almost There';
+        sub.textContent='Where should the catering team reach you?';
+        finishWrap.style.display='';           // show send/book choice
+        consultBlk.classList.remove('show');
+        finishMode=null;
+        document.querySelectorAll('.finish-opt').forEach(o=>o.classList.remove('selected'));
+      } else if(path==='quote'){
+        head.textContent='Request a Quote';
+        sub.textContent="Tell us the basics and we'll reach out with options.";
+        finishWrap.style.display='none';        // no finish choice
+        consultBlk.classList.remove('show');
+        finishMode='send';                      // implicit
+      } else if(path==='consult'){
+        head.textContent='Book a Consultation';
+        sub.textContent='Share your details and pick a time that works.';
+        finishWrap.style.display='none';
+        consultBlk.classList.add('show');       // scheduler always open
+        finishMode='consult';
+      }
+      updateContactNextState();
+    }
+
+    // next button label
+    if(key==='guest') nextBtn.textContent='Build My Menu';
+    else if(key==='review') nextBtn.textContent='Continue';
+    else if(key==='contact'){
+      nextBtn.textContent = path==='consult' ? 'Submit & Book Call'
+                          : path==='quote'   ? 'Send Request'
+                          : (finishMode==='consult'?'Submit & Book Call':'Send My Menu');
+    }
+    else nextBtn.textContent='Next';
+
+    if(key==='review') renderReview();
+
+    renderProgress();
+    document.getElementById('builder').scrollIntoView({behavior:'smooth',block:'start'});
+  }
+
+  function renderReview(){
+    document.getElementById('reviewGuests').textContent=guests;
+    const wrap=document.getElementById('reviewSummary');
+    let html=`<div class="rs-head"><h4>Your Menu</h4><span class="rs-guests">${guests} Guests</span></div>`;
+    let any=false;
+    CAT_ORDER.forEach(cat=>{
+      const sel=selections[cat]||{};
+      const names=Object.keys(sel);
+      if(names.length===0) return;
+      any=true;
+      const c=MENU[cat];
+      html+=`<div class="rs-cat"><div class="rs-cat-name">${c.label}</div>`;
+      names.forEach(n=>{
+        const q=sel[n];
+        const qtyLabel = c.mode==='qty' ? `${q} ${q===1?'tray':'trays'}` : '';
+        html+=`<div class="rs-line"><span>${n}</span><span class="rs-qty">${qtyLabel}</span></div>`;
+      });
+      html+=`</div>`;
+    });
+    if(!any) html+=`<p class="rs-empty">No items selected yet &mdash; go back to add a few, or send as-is and we'll plan it with you.</p>`;
+    wrap.innerHTML=html;
+  }
+
+  // path chooser
+  function choosePath(p){
+    path=p;
+    buildSteps();
+    stepIndex=1;          // advance past the 'path' step
+    if(p==='build'){
+      // nothing to prep yet; guest step is next
+    }
+    showStep();
+  }
+  document.querySelectorAll('.path-opt').forEach(opt=>{
+    const go=()=>choosePath(opt.dataset.path);
+    opt.addEventListener('click',go);
+    opt.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();go();}});
+  });
+
+  // ---- navigation handlers ----
+  function goNext(){
+    const key=steps[stepIndex];
+    if(key==='guest'){
+      const v=parseInt(document.getElementById('guestCount').value,10);
+      if(!v||v<1){document.getElementById('guestCount').focus();return;}
+      guests=v; rec=recommend(v);
+      buildCategorySteps();
+      applyRecommendations();
+    }
+    if(key==='contact'){ submitBuilder(); return; }
+    if(stepIndex<steps.length-1){ stepIndex++; showStep(); }
+  }
+  function goBack(){
+    if(stepIndex<=1){            // back to the path chooser resets the flow
+      path=null; buildSteps(); stepIndex=0;
+      document.querySelectorAll('.bld-step').forEach(s=>s.classList.remove('active'));
+      document.querySelector('.bld-step[data-step="path"]').classList.add('active');
+      navEl2.style.display='none';
+      progressEl.innerHTML='';
+      document.getElementById('builder').scrollIntoView({behavior:'smooth',block:'start'});
+      return;
+    }
+    stepIndex--; showStep();
+  }
+  function goSkip(){ if(stepIndex<steps.length-1){stepIndex++;showStep();} }
+
+  nextBtn.addEventListener('click',goNext);
+  backBtn.addEventListener('click',goBack);
+  skipBtn.addEventListener('click',goSkip);
+
+  // guest quick-pick + enter key
+  document.querySelectorAll('.guest-quick button').forEach(b=>{
+    b.addEventListener('click',()=>{document.getElementById('guestCount').value=b.dataset.g;});
+  });
+  document.getElementById('guestCount').addEventListener('keydown',e=>{if(e.key==='Enter')goNext();});
+
+  // finish option selection
+  let contactReady=false;
+  document.querySelectorAll('.finish-opt').forEach(opt=>{
+    const choose=()=>{
+      document.querySelectorAll('.finish-opt').forEach(o=>o.classList.remove('selected'));
+      opt.classList.add('selected');
+      finishMode=opt.dataset.finish;
+      document.getElementById('consultBlock').classList.toggle('show',finishMode==='consult');
+      updateContactNextState();
+    };
+    opt.addEventListener('click',choose);
+    opt.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();choose();}});
+  });
+  // consult slots
+  document.querySelectorAll('#slotGrid .slot').forEach(s=>{
+    s.addEventListener('click',()=>{
+      document.querySelectorAll('#slotGrid .slot').forEach(x=>x.classList.remove('selected'));
+      s.classList.add('selected');consultSlot=s.dataset.slot;
+    });
+  });
+  function updateContactNextState(){
+    if(path==='build'){
+      nextBtn.textContent = finishMode==='consult' ? 'Submit & Book Call' : 'Send My Menu';
+      nextBtn.disabled = !finishMode;     // must pick send or book on the build path
+    } else if(path==='quote'){
+      nextBtn.textContent='Send Request'; nextBtn.disabled=false;
+    } else if(path==='consult'){
+      nextBtn.textContent='Submit & Book Call'; nextBtn.disabled=false;
+    }
+  }
+
+  function submitBuilder(){
+    const payload={
+      path, guests:path==='build'?guests:null, finishMode, consultSlot,
+      consultDate:document.getElementById('consultDate')?.value||null,
+      contact:{
+        name:document.getElementById('cName').value,
+        phone:document.getElementById('cPhone').value,
+        email:document.getElementById('cEmail').value,
+        eventDate:document.getElementById('cDate').value,
+        occasion:document.getElementById('cType').value,
+        notes:document.getElementById('cNotes').value
+      },
+      menu:path==='build'?selections:null
+    };
+    console.log('Catering builder submission:',payload);
+
+    document.querySelectorAll('.bld-step').forEach(s=>s.classList.remove('active'));
+    navEl2.style.display='none';
+    progressEl.style.display='none';
+    confirmEl.classList.add('show');
+    const first = payload.contact.name ? ', '+payload.contact.name.split(' ')[0] : '';
+    const wantsCall = (finishMode==='consult');
+
+    if(wantsCall){
+      document.getElementById('confirmHead').textContent='Your consultation is requested';
+      const when=[document.getElementById('consultDate')?.value,consultSlot].filter(Boolean).join(' at ');
+      const menuBit = path==='build' ? ' along with your menu' : '';
+      document.getElementById('confirmBody').innerHTML=
+        `Thanks${first}! Your consultation request${when?' for <strong>'+when+'</strong>':''}${menuBit} is with our catering team. We'll confirm shortly.`;
+    } else if(path==='quote'){
+      document.getElementById('confirmHead').textContent='Your request is on its way';
+      document.getElementById('confirmBody').innerHTML=
+        `Thanks${first}! Our catering team has your request and will reach out with options and pricing.`;
+    } else {
+      document.getElementById('confirmHead').textContent='Your menu is on its way';
+      document.getElementById('confirmBody').innerHTML=
+        `Thanks${first}! Our catering team has your menu for ${guests} guests and will reach out to confirm details and pricing.`;
+    }
+    confirmEl.scrollIntoView({behavior:'smooth',block:'center'});
+  }
+
+  // init
+  buildSteps();
+  renderProgress();
+  navEl2.style.display='none';   // path chooser uses its own cards
+
 </script>
 </body>
 </html>
