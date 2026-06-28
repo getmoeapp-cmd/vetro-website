@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Corporate Events — Vetro by Russo's on the Bay</title>
+<meta name="description" content="Host your next corporate event on the bay in Howard Beach. Holiday parties, business seminars, client dinners, and meetings — from intimate private dining for 12 to full event spaces for 90. Complimentary valet, Wi-Fi, and on-site catering.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --limestone:#e7e1d3;--limestone-dk:#d8cfbc;--parchment:#f1ece1;--cream:#faf7f0;
+    --taupe:#6e5a4c;--espresso:#42352b;--bronze:#9a7b4f;--bronze-dk:#7d6240;--bronze-bright:#c69a5e;
+    --sky:#a9c4d4;--ink:#2c241d;--line:rgba(66,53,43,.16);--line-soft:rgba(66,53,43,.09);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--limestone);color:var(--ink);font-family:'Jost',sans-serif;font-weight:300;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  h1,h2,h3,h4,.display{font-family:'Cormorant Garamond',serif;font-weight:500;line-height:1.05;color:var(--espresso)}
+  .eyebrow{font-family:'Jost',sans-serif;font-weight:400;text-transform:uppercase;letter-spacing:.42em;font-size:.7rem;color:var(--bronze)}
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+
+  /* NAV */
+  header{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:1.1rem clamp(1.2rem,5vw,3.5rem);background:rgba(241,236,225,.9);backdrop-filter:blur(14px);border-bottom:1px solid var(--line-soft)}
+  .brand{display:flex;align-items:center;gap:.85rem}
+  .nav-logo{height:62px;width:auto;display:block}
+  nav{display:flex;gap:2rem;align-items:center}
+  nav a{font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink);opacity:.82;transition:all .3s}
+  nav a:hover,nav a.active{opacity:1;color:var(--bronze)}
+  .nav-reserve{border:1px solid var(--bronze);padding:.6rem 1.3rem;color:var(--bronze)!important;opacity:1!important}
+  .nav-reserve:hover{background:var(--bronze);color:var(--cream)!important}
+  .menu-toggle{display:none;background:none;border:none;color:var(--espresso);font-size:1.4rem;cursor:pointer}
+
+  /* HERO */
+  .r-hero{position:relative;min-height:88vh;display:flex;align-items:flex-end;color:var(--cream);overflow:hidden}
+  .r-hero img.hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+  .r-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(28,22,17,.9),rgba(28,22,17,.2) 55%,rgba(28,22,17,.5));z-index:1}
+  .r-hero-inner{position:relative;z-index:2;padding:0 clamp(1.2rem,5vw,3.5rem) clamp(2.5rem,6vw,4.5rem);max-width:1240px;margin:0 auto;width:100%}
+  .r-hero .eyebrow{color:var(--limestone);opacity:.9;text-shadow:0 1px 10px rgba(20,15,10,.7)}
+  .r-hero h1{color:var(--cream);font-size:clamp(3rem,8vw,6rem);margin:.6rem 0 1rem;text-shadow:0 2px 24px rgba(20,15,10,.5)}
+  .r-hero p{font-size:1.15rem;max-width:620px;opacity:.95;text-shadow:0 1px 14px rgba(20,15,10,.6)}
+  .r-hero .cta-row{margin-top:1.8rem;display:flex;gap:1rem;flex-wrap:wrap}
+  .cta-row a{font-family:'Jost',sans-serif;font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;padding:.9rem 1.9rem;transition:all .35s}
+  .cta-solid{background:var(--bronze);color:var(--cream)}
+  .cta-solid:hover{background:var(--bronze-bright)}
+  .cta-out{border:1px solid var(--limestone);color:var(--limestone)}
+  .cta-out:hover{background:var(--cream);color:var(--espresso)}
+
+  .wrap{max-width:1140px;margin:0 auto;padding:0 clamp(1.2rem,5vw,3.5rem)}
+  .section{padding:clamp(3.5rem,8vw,6rem) 0}
+  .sec-head{text-align:center;max-width:720px;margin:0 auto 3rem}
+  .sec-head .eyebrow{display:block;margin-bottom:.7rem}
+  .sec-head h2{font-size:clamp(2.1rem,5vw,3.2rem)}
+  .sec-head h2 em{font-style:italic;color:var(--bronze)}
+  .sec-head p{margin-top:.9rem;color:var(--taupe);font-size:1rem}
+
+  /* INTRO / WELCOME */
+  .intro{background:var(--parchment)}
+  .intro-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(2rem,5vw,4rem);align-items:center}
+  @media(max-width:880px){.intro-grid{grid-template-columns:1fr}}
+  .intro-text .eyebrow{display:block;margin-bottom:.8rem}
+  .intro-text h2{font-size:clamp(2.1rem,5vw,3.2rem);margin-bottom:1.2rem}
+  .intro-text h2 em{font-style:italic;color:var(--bronze)}
+  .intro-text p{color:var(--taupe);margin-bottom:1rem;font-size:1.02rem}
+  .intro-stats{display:flex;gap:2.2rem;margin-top:1.8rem;flex-wrap:wrap}
+  .intro-stats .n{font-family:'Cormorant Garamond',serif;font-size:2.4rem;color:var(--bronze);line-height:1}
+  .intro-stats .l{font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;color:var(--taupe);margin-top:.3rem;max-width:150px}
+  .intro-img{position:relative;border-radius:3px;overflow:hidden;min-height:420px}
+  .intro-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+
+  /* WHY VETRO — value props for planners */
+  .why{background:var(--cream)}
+  .why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+  @media(max-width:860px){.why-grid{grid-template-columns:1fr}}
+  .why-card{background:var(--parchment);border:1px solid var(--line-soft);border-radius:3px;padding:2.1rem 1.9rem}
+  .why-card .wc-ico{font-family:'Cormorant Garamond',serif;font-size:2rem;color:var(--bronze);line-height:1}
+  .why-card h3{font-size:1.45rem;margin:.7rem 0 .6rem}
+  .why-card p{font-size:.92rem;color:var(--taupe)}
+
+  /* EXPERIENCE STRIPS */
+  .exp{display:grid;grid-template-columns:1fr 1fr;gap:0;align-items:stretch;min-height:440px}
+  @media(max-width:880px){.exp{grid-template-columns:1fr}}
+  .exp.flip .exp-media{order:2}
+  @media(max-width:880px){.exp.flip .exp-media{order:0}}
+  .exp-media{position:relative;min-height:340px;overflow:hidden}
+  .exp-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .exp-body{display:flex;flex-direction:column;justify-content:center;padding:clamp(2.2rem,5vw,4rem)}
+  .exp-body.dark{background:var(--espresso);color:var(--cream)}
+  .exp-body.light{background:var(--cream)}
+  .exp-body .eyebrow{display:block;margin-bottom:.7rem}
+  .exp-body.dark .eyebrow{color:var(--bronze-bright)}
+  .exp-body h3{font-size:clamp(1.7rem,3.5vw,2.4rem);margin-bottom:.9rem}
+  .exp-body.dark h3{color:var(--cream)}
+  .exp-body h3 em{font-style:italic;color:var(--bronze)}
+  .exp-body.dark h3 em{color:var(--bronze-bright)}
+  .exp-body p{font-size:1rem;color:var(--taupe)}
+  .exp-body.dark p{color:var(--limestone);opacity:.85}
+  .exp-meta{display:flex;gap:1.6rem;margin-top:1.2rem;flex-wrap:wrap}
+  .exp-meta .em-n{font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--bronze)}
+  .exp-body.dark .exp-meta .em-n{color:var(--bronze-bright)}
+  .exp-meta .em-l{font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--taupe)}
+  .exp-body.dark .exp-meta .em-l{color:var(--limestone);opacity:.7}
+  .exp-link{margin-top:1.4rem;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--bronze);transition:color .3s;align-self:flex-start}
+  .exp-body.dark .exp-link{color:var(--bronze-bright)}
+  .exp-link:hover{color:var(--bronze-dk)}
+
+  /* EVENT TYPES */
+  .types{background:var(--parchment)}
+  .type-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+  @media(max-width:860px){.type-grid{grid-template-columns:1fr 1fr}}
+  @media(max-width:480px){.type-grid{grid-template-columns:1fr}}
+  .type-card{background:var(--cream);border:1px solid var(--line-soft);border-radius:3px;padding:1.6rem 1.4rem;text-align:center}
+  .type-card h4{font-size:1.15rem;color:var(--espresso);margin-bottom:.35rem}
+  .type-card p{font-size:.82rem;color:var(--taupe)}
+
+  /* PATHWAYS */
+  .paths{background:var(--cream)}
+  .path-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+  @media(max-width:860px){.path-grid{grid-template-columns:1fr}}
+  .path-card{background:var(--parchment);border:1px solid var(--line-soft);border-radius:3px;padding:2.2rem 2rem;display:flex;flex-direction:column;transition:transform .4s ease,box-shadow .4s ease}
+  .path-card:hover{transform:translateY(-5px);box-shadow:0 22px 50px rgba(44,36,29,.14)}
+  .path-card .pc-num{font-size:.66rem;letter-spacing:.3em;text-transform:uppercase;color:var(--bronze)}
+  .path-card h3{font-size:1.7rem;margin:.6rem 0 .7rem}
+  .path-card p{font-size:.92rem;color:var(--taupe);flex:1}
+  .path-card .pc-link{margin-top:1.3rem;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--bronze);transition:color .3s}
+  .path-card:hover .pc-link{color:var(--bronze-dk)}
+
+  /* GALLERY */
+  .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1rem}
+  @media(max-width:820px){.gallery{grid-template-columns:1fr 1fr}}
+  @media(max-width:520px){.gallery{grid-template-columns:1fr}}
+  .g-item{position:relative;aspect-ratio:4/3;overflow:hidden;border-radius:2px;background:var(--limestone-dk);cursor:pointer}
+  .g-item img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+  .g-item:hover img{transform:scale(1.06)}
+  .g-item.wide{grid-column:span 2}
+  @media(max-width:520px){.g-item.wide{grid-column:span 1}}
+  .g-item::after{content:"\002B";position:absolute;bottom:.7rem;right:.8rem;width:34px;height:34px;border-radius:50%;background:rgba(28,22,17,.6);color:var(--cream);display:flex;align-items:center;justify-content:center;font-size:1.3rem;font-weight:300;opacity:0;transition:opacity .3s}
+  .g-item:hover::after{opacity:1}
+  .g-placeholder{display:flex;align-items:center;justify-content:center;color:var(--taupe);font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;opacity:.6;text-align:center;padding:1rem;border:1px dashed var(--line);cursor:default}
+  .g-placeholder::after{display:none}
+
+  /* AMENITIES STRIP */
+  .amen-sec{background:var(--espresso);color:var(--cream)}
+  .amen-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.4rem 2rem;margin-top:1rem}
+  @media(max-width:760px){.amen-grid{grid-template-columns:1fr 1fr}}
+  .amen-item{display:flex;align-items:flex-start;gap:.7rem;font-size:.92rem;color:var(--limestone)}
+  .amen-item .ck{color:var(--bronze-bright);font-size:1rem;line-height:1.4;flex-shrink:0}
+
+  /* FORM / CONSULT */
+  .consult{background:var(--parchment)}
+  .consult-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(2rem,5vw,4rem);align-items:start}
+  @media(max-width:880px){.consult-grid{grid-template-columns:1fr}}
+  .consult-info .eyebrow{display:block;margin-bottom:.8rem}
+  .consult-info h2{font-size:clamp(2rem,4.5vw,2.9rem);margin-bottom:1.1rem}
+  .consult-info h2 em{font-style:italic;color:var(--bronze)}
+  .consult-info p{color:var(--taupe);margin-bottom:1.4rem;font-size:1rem}
+  .consult-steps{list-style:none;margin-top:1.4rem}
+  .consult-steps li{display:flex;gap:.9rem;align-items:flex-start;margin-bottom:1rem}
+  .consult-steps .s-n{font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:var(--bronze);line-height:1.2;flex-shrink:0;width:1.6rem}
+  .consult-steps .s-t{font-size:.94rem;color:var(--taupe)}
+  .consult-steps .s-t strong{color:var(--espresso);font-weight:500;font-family:'Jost',sans-serif}
+
+  .form-card{background:var(--cream);border:1px solid var(--line-soft);border-radius:4px;padding:clamp(1.6rem,4vw,2.6rem);box-shadow:0 18px 50px rgba(44,36,29,.08)}
+  .steps-bar{display:flex;gap:.5rem;margin-bottom:1.8rem}
+  .steps-bar .sb{flex:1;height:3px;background:var(--limestone-dk);border-radius:2px;transition:background .4s}
+  .steps-bar .sb.active{background:var(--bronze)}
+  .fstep{display:none;animation:fade .4s ease}
+  .fstep.active{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  .fstep h3{font-size:1.5rem;margin-bottom:.3rem}
+  .fstep .step-sub{font-size:.86rem;color:var(--taupe);margin-bottom:1.3rem}
+  .field{margin-bottom:1.1rem}
+  .field label{display:block;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--taupe);margin-bottom:.45rem}
+  .field input,.field select,.field textarea{width:100%;background:var(--parchment);border:1px solid var(--line);border-radius:3px;padding:.8rem .9rem;font-family:'Jost',sans-serif;font-size:.95rem;font-weight:300;color:var(--ink);transition:border .3s}
+  .field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--bronze)}
+  .field textarea{resize:vertical;min-height:90px}
+  .field-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+  @media(max-width:480px){.field-row{grid-template-columns:1fr}}
+  .chip-row{display:flex;flex-wrap:wrap;gap:.6rem}
+  .chip{border:1px solid var(--line);border-radius:40px;padding:.5rem 1.1rem;font-size:.84rem;color:var(--taupe);cursor:pointer;transition:all .25s;background:var(--parchment)}
+  .chip:hover{border-color:var(--bronze)}
+  .chip.sel{background:var(--bronze);color:var(--cream);border-color:var(--bronze)}
+  .form-nav{display:flex;justify-content:space-between;gap:1rem;margin-top:1.6rem}
+  .btn{font-family:'Jost',sans-serif;font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;padding:.85rem 1.7rem;border-radius:3px;cursor:pointer;border:none;transition:all .3s}
+  .btn-next{background:var(--bronze);color:var(--cream)}
+  .btn-next:hover{background:var(--bronze-bright)}
+  .btn-back{background:none;border:1px solid var(--line);color:var(--taupe)}
+  .btn-back:hover{border-color:var(--bronze);color:var(--bronze)}
+  .btn-back[hidden]{visibility:hidden}
+  .form-done{text-align:center;padding:1.5rem 0}
+  .form-done .fd-mark{width:64px;height:64px;border-radius:50%;background:var(--bronze);color:var(--cream);display:flex;align-items:center;justify-content:center;font-size:2rem;margin:0 auto 1.2rem}
+  .form-done h3{font-size:1.8rem;margin-bottom:.6rem}
+  .form-done p{color:var(--taupe);font-size:.95rem;max-width:360px;margin:0 auto .4rem}
+  .form-done .fd-phone{margin-top:1.2rem;font-size:.9rem;color:var(--taupe)}
+  .form-done .fd-phone a{color:var(--bronze-dk)}
+
+  /* HOURS + RESERVE */
+  .reserve-box{background:rgba(231,225,211,.06);border:1px solid rgba(231,225,211,.16);border-radius:3px;padding:clamp(2rem,4vw,3rem);text-align:center}
+
+  /* LIGHTBOX */
+  .lightbox{position:fixed;inset:0;background:rgba(20,15,10,.94);z-index:200;display:none;align-items:center;justify-content:center;padding:2rem}
+  .lightbox.open{display:flex}
+  .lightbox img{max-width:90vw;max-height:82vh;border-radius:2px;box-shadow:0 30px 80px rgba(0,0,0,.5)}
+  .lb-cap{position:absolute;bottom:2rem;left:0;right:0;text-align:center;color:var(--limestone);font-size:.9rem;letter-spacing:.04em}
+  .lb-btn{position:absolute;background:rgba(231,225,211,.12);border:1px solid rgba(231,225,211,.25);color:var(--cream);width:48px;height:48px;border-radius:50%;font-size:1.5rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .3s}
+  .lb-btn:hover{background:rgba(231,225,211,.25)}
+  #lbClose{top:1.5rem;right:1.5rem}
+  #lbPrev{left:1.5rem;top:50%;transform:translateY(-50%)}
+  #lbNext{right:1.5rem;top:50%;transform:translateY(-50%)}
+
+  /* FOOTER */
+  footer{background:var(--ink);color:var(--limestone);padding:clamp(2.5rem,5vw,3.5rem) clamp(1.2rem,5vw,3.5rem) 2rem}
+  .foot-grid{max-width:1140px;margin:0 auto;display:flex;justify-content:space-between;flex-wrap:wrap;gap:2.5rem}
+  .foot-brand{max-width:280px}
+  .foot-logo{height:58px;margin-bottom:1rem}
+  .foot-brand p{font-size:.88rem;opacity:.7}
+  .foot-col h4{font-family:'Jost',sans-serif;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--bronze-bright);margin-bottom:1rem;font-weight:500}
+  .foot-col a{display:block;font-size:.9rem;opacity:.75;margin-bottom:.6rem;transition:opacity .3s}
+  .foot-col a:hover{opacity:1}
+  .foot-bottom{max-width:1140px;margin:2.5rem auto 0;padding-top:1.6rem;border-top:1px solid rgba(231,225,211,.14);font-size:.74rem;letter-spacing:.06em;opacity:.55;text-align:center}
+
+  /* reveal */
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  /* MOBILE NAV */
+  @media(max-width:880px){
+    header{z-index:60}
+    .menu-toggle{display:block;z-index:70;position:relative}
+    nav{position:fixed;top:0;right:0;height:100vh;width:min(78vw,320px);flex-direction:column;align-items:flex-start;justify-content:center;gap:1.8rem;background:var(--espresso);padding:2rem 2.4rem;transform:translateX(100%);transition:transform .4s ease;box-shadow:-10px 0 40px rgba(44,36,29,.3);z-index:65}
+    nav.open{transform:translateX(0)}
+    nav a{font-size:1rem;color:var(--cream);opacity:.9;position:relative;z-index:1}
+    nav a:hover,nav a.active{color:var(--bronze-bright)}
+    .nav-reserve{border-color:var(--bronze);color:var(--bronze-bright)!important;padding:.8rem 1.6rem}
+    body.nav-open{overflow:hidden}
+    .nav-backdrop{position:fixed;inset:0;background:rgba(44,36,29,.5);opacity:0;visibility:hidden;transition:opacity .4s ease;z-index:55;pointer-events:none}
+    .nav-backdrop.open{opacity:1;visibility:visible;pointer-events:auto}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand">
+    <a href="index.html"><img class="nav-logo" src="vetro-logo.webp" alt="Vetro by Russo's on the Bay"></a>
+  </div>
+  <nav id="mainNav">
+    <a href="restaurant.html">Restaurant</a>
+    <a href="menu.html">Menus</a>
+    <a href="live-events.html">Live Events</a>
+    <a href="events.html" class="active">Host an Event</a>
+    <a href="catering-menu.html">Catering</a>
+    <a href="index.html#visit">Visit</a>
+    <a class="nav-reserve" href="https://www.opentable.com/r/vetro-by-russos-on-the-bay-reservations-howard-beach?restref=34984&lang=en-US&ot_source=Restaurant%20website" target="_blank" rel="noopener">Reserve</a>
+  </nav>
+  <button class="menu-toggle" id="menuToggle" aria-label="Menu" aria-expanded="false">&#9776;</button>
+</header>
+<div class="nav-backdrop" id="navBackdrop"></div>
+
+<!-- HERO -->
+<section class="r-hero">
+  <img class="hero-bg" src="vetro-winecellar-hero.jpeg" alt="The Wine Cellar at Vetro set for a corporate event on the bay">
+  <div class="r-hero-inner">
+    <p class="eyebrow">Corporate Events</p>
+    <h1>Mean Business,<br>on the Bay</h1>
+    <p>Holiday parties, client dinners, business seminars, and team celebrations — hosted with the Russo's standard of service, on the water in Howard Beach. From an intimate private dinner for twelve to a full event space for ninety.</p>
+    <div class="cta-row">
+      <a class="cta-solid" href="#consult">Plan Your Event</a>
+      <a class="cta-out" href="#spaces">Explore the Spaces</a>
+    </div>
+  </div>
+</section>
+
+<!-- INTRO -->
+<section class="section intro">
+  <div class="wrap">
+    <div class="intro-grid">
+      <div class="intro-text reveal">
+        <span class="eyebrow">Why Vetro</span>
+        <h2>A Setting That Does the <em>Impressing</em> for You</h2>
+        <p>Vetro Restaurant &amp; Lounge was voted the #1 Best Restaurant in the Tri-State Area by OpenTable — an elegant, modern Italian venue on the water, and part of the Russo's family of hospitality with more than 50 years of experience hosting the moments that matter.</p>
+        <p>For corporate hosts, that means a polished room, a kitchen that treats every plate as the centerpiece, an award-winning wine list, and a banquet team that handles the details from first call to last toast. Complimentary valet for every guest. You bring the agenda — we'll handle the rest.</p>
+        <div class="intro-stats">
+          <div><div class="n">12–90</div><div class="l">Guests, across four distinct spaces</div></div>
+          <div><div class="n">#1</div><div class="l">Best Restaurant, Tri-State — OpenTable</div></div>
+          <div><div class="n">50+</div><div class="l">Years of Russo's hospitality</div></div>
+        </div>
+      </div>
+      <div class="intro-img reveal">
+        <img src="vetro-winecellar-hero.jpeg" alt="The Wine Cellar at Vetro, set for a private corporate event">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY / PLANNER VALUE PROPS -->
+<section class="section why">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Built for Planners</span>
+      <h2>Everything an Organizer <em>Wants to Hear</em></h2>
+      <p>The things that make a corporate booking easy — sorted before you ask.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card reveal">
+        <div class="wc-ico">&#9826;</div>
+        <h3>One Team, Every Detail</h3>
+        <p>A dedicated banquet team handles menus, timing, AV needs, and setup from soup to nuts — our hosts have run thousands of events. You just show up.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="wc-ico">&#9826;</div>
+        <h3>Menus Built Around You</h3>
+        <p>Prix-fixe and family-style menus tailored to your party, your budget, and any dietary needs — created by a chef who blends classic Italian with global inspiration.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="wc-ico">&#9826;</div>
+        <h3>Effortless Logistics</h3>
+        <p>Complimentary valet for every guest, Wi-Fi throughout, a full bar, and an ADA-accessible waterfront venue twenty minutes from JFK. No surprises.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SPACES ANCHOR -->
+<span id="spaces"></span>
+
+<!-- SPACE: PRIVATE DINING (RESTAURANT) -->
+<div class="exp">
+  <div class="exp-media reveal"><img src="vetro-restaurant.jpeg" alt="Vetro's private dining room set with white linen"></div>
+  <div class="exp-body dark reveal">
+    <span class="eyebrow">Private &amp; Semi-Private Dining</span>
+    <h3>The Client <em>Dinner</em></h3>
+    <p>For a working dinner, a team milestone, or hosting visiting clients, our semi-private dining brings the full restaurant experience to your group — white linen, attentive service, and floor-to-ceiling views of the water. Prix-fixe menus with the option for family-style sharing.</p>
+    <div class="exp-meta">
+      <div><div class="em-n">12–50</div><div class="em-l">Guests</div></div>
+      <div><div class="em-n">Prix-fixe</div><div class="em-l">Or family-style</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- SPACE: WINE CELLAR -->
+<div class="exp flip">
+  <div class="exp-media reveal"><img src="vetro-winecellar-hero.jpeg" alt="The Wine Cellar event space at Vetro with exposed brick and wine display"></div>
+  <div class="exp-body light reveal">
+    <span class="eyebrow">The Wine Cellar</span>
+    <h3>Seminars &amp; <em>Holiday Parties</em></h3>
+    <p>Our most-requested corporate room. The Wine Cellar's Tuscan beams, exposed brick, and a display of 500+ wines make a memorable backdrop for business seminars, holiday parties, and retirement celebrations. Flexible seating — theatre-style for presentations, banquet or long tables for dining.</p>
+    <div class="exp-meta">
+      <div><div class="em-n">60–90</div><div class="em-l">Guests</div></div>
+      <div><div class="em-n">500+</div><div class="em-l">Wine display</div></div>
+    </div>
+    <a class="exp-link" href="room-winecellar.html">View the Wine Cellar &rarr;</a>
+  </div>
+</div>
+
+<!-- SPACE: MURANO ROOM -->
+<div class="exp">
+  <div class="exp-media reveal"><img src="vetro-murano-hero.jpeg" alt="The Murano Room at Vetro, a modern ballroom event space"></div>
+  <div class="exp-body dark reveal">
+    <span class="eyebrow">The Murano Room</span>
+    <h3>The Flagship <em>Gathering</em></h3>
+    <p>Named for the famed Venetian glass, the Murano Room pairs clean modern lines with classic Italian beauty and a signature glass sculpture. A versatile space for product launches, award nights, and company celebrations — with room for a dance floor and DJ when the meeting turns into a party.</p>
+    <div class="exp-meta">
+      <div><div class="em-n">Modern</div><div class="em-l">Ballroom setting</div></div>
+      <div><div class="em-n">Flexible</div><div class="em-l">Any event type</div></div>
+    </div>
+    <a class="exp-link" href="room-murano.html">View the Murano Room &rarr;</a>
+  </div>
+</div>
+
+<!-- SPACE: ROOFTOP -->
+<div class="exp flip">
+  <div class="exp-media reveal"><img src="vetro-terrace.jpeg" alt="The rooftop lounge at Vetro with panoramic views of the bay"></div>
+  <div class="exp-body light reveal">
+    <span class="eyebrow">The Rooftop Lounge</span>
+    <h3>The Summer <em>Mixer</em></h3>
+    <p>A panoramic waterfront view of the bay makes the private rooftop lounge a standout for warm-weather networking, summer outings, and after-work mixers — with DJ entertainment and the best sunset in Howard Beach. A tremendous draw for client appreciation events.</p>
+    <div class="exp-meta">
+      <div><div class="em-n">Panoramic</div><div class="em-l">Bay views</div></div>
+      <div><div class="em-n">Seasonal</div><div class="em-l">Private rooftop</div></div>
+    </div>
+    <a class="exp-link" href="room-rooftop.html">View the Rooftop &rarr;</a>
+  </div>
+</div>
+
+<!-- EVENT TYPES -->
+<section class="section types">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">What We Host</span>
+      <h2>Every Kind of <em>Corporate Occasion</em></h2>
+      <p>From the boardroom-adjacent to the celebratory — whatever's on the calendar.</p>
+    </div>
+    <div class="type-grid">
+      <div class="type-card reveal"><h4>Holiday Parties</h4><p>Year-end celebrations done right</p></div>
+      <div class="type-card reveal"><h4>Business Seminars</h4><p>Presentations &amp; training days</p></div>
+      <div class="type-card reveal"><h4>Client Dinners</h4><p>Impress over a great meal</p></div>
+      <div class="type-card reveal"><h4>Retirement Parties</h4><p>Send-offs worth remembering</p></div>
+      <div class="type-card reveal"><h4>Product Launches</h4><p>A room that makes a statement</p></div>
+      <div class="type-card reveal"><h4>Award Nights</h4><p>Recognize the team in style</p></div>
+      <div class="type-card reveal"><h4>Networking Mixers</h4><p>Rooftop &amp; lounge settings</p></div>
+      <div class="type-card reveal"><h4>Team Celebrations</h4><p>Milestones &amp; offsites</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- AMENITIES -->
+<section class="section amen-sec">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow" style="color:var(--bronze-bright)">The Details</span>
+      <h2 style="color:var(--cream)">What's <em style="color:var(--bronze-bright)">Included</em></h2>
+    </div>
+    <div class="amen-grid">
+      <div class="amen-item"><span class="ck">&#10003;</span> Complimentary valet parking</div>
+      <div class="amen-item"><span class="ck">&#10003;</span> Wireless internet / Wi-Fi</div>
+      <div class="amen-item"><span class="ck">&#10003;</span> Full bar &amp; cocktail service</div>
+      <div class="amen-item"><span class="ck">&#10003;</span> On-site catering kitchen</div>
+      <div class="amen-item"><span class="ck">&#10003;</span> Dedicated banquet team</div>
+      <div class="amen-item"><span class="ck">&#10003;</span> Custom prix-fixe menus</div>
+      <div class="amen-item"><span class="ck">&#10003;</span> Award-winning wine list</div>
+      <div class="amen-item"><span class="ck">&#10003;</span> ADA / wheelchair accessible</div>
+      <div class="amen-item"><span class="ck">&#10003;</span> Waterfront &amp; outdoor areas</div>
+      <div class="amen-item"><span class="ck">&#10003;</span> 20 minutes from JFK</div>
+      <div class="amen-item"><span class="ck">&#10003;</span> Live music in the Blue Lounge</div>
+      <div class="amen-item"><span class="ck">&#10003;</span> Off-premise catering option</div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="section">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">The Spaces</span>
+      <h2>A Look <em>Inside</em></h2>
+      <p>From the Wine Cellar to the rooftop and the dining room, on the bay.</p>
+    </div>
+    <div class="gallery" id="gallery">
+      <div class="g-item wide" data-i="0"><img src="vetro-winecellar-hero.jpeg" alt="The Wine Cellar event space set for a corporate function"></div>
+      <div class="g-item" data-i="1"><img src="vetro-murano-hero.jpeg" alt="The Murano Room ballroom at Vetro"></div>
+      <div class="g-item" data-i="2"><img src="vetro-restaurant.jpeg" alt="Vetro's main dining room set with white linen"></div>
+      <div class="g-item" data-i="3"><img src="vetro-terrace.jpeg" alt="The waterfront terrace and rooftop views at Vetro"></div>
+      <div class="g-item g-placeholder"><span>Rooftop lounge<br>(photo coming soon)</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONSULT / LEAD FORM -->
+<section class="section consult" id="consult">
+  <div class="wrap">
+    <div class="consult-grid">
+      <div class="consult-info reveal">
+        <span class="eyebrow">Plan Your Event</span>
+        <h2>Let's Build It <em>Together</em></h2>
+        <p>Tell us a little about your event and we'll set up a quick consultation — by phone, video, or in person — to walk through spaces, menus, and dates. No long email chains, no waiting. A real plan, fast.</p>
+        <ul class="consult-steps">
+          <li><span class="s-n">1</span><span class="s-t"><strong>Share the basics.</strong> Event type, guest count, and a target date.</span></li>
+          <li><span class="s-n">2</span><span class="s-t"><strong>Pick a space.</strong> We'll suggest the right room — or you tell us.</span></li>
+          <li><span class="s-n">3</span><span class="s-t"><strong>Book a consultation.</strong> A scheduled call to finalize the details.</span></li>
+          <li><span class="s-n">4</span><span class="s-t"><strong>We confirm.</strong> Our banquet team locks in your date and menu.</span></li>
+        </ul>
+      </div>
+
+      <div class="form-card reveal">
+        <div class="steps-bar">
+          <div class="sb active" data-sb="1"></div>
+          <div class="sb" data-sb="2"></div>
+          <div class="sb" data-sb="3"></div>
+          <div class="sb" data-sb="4"></div>
+        </div>
+
+        <!-- STEP 1 -->
+        <div class="fstep active" data-step="1">
+          <h3>About Your Event</h3>
+          <p class="step-sub">What are we celebrating?</p>
+          <div class="field">
+            <label>Event Type</label>
+            <div class="chip-row" data-chips="eventType">
+              <span class="chip">Holiday Party</span>
+              <span class="chip">Client Dinner</span>
+              <span class="chip">Seminar / Meeting</span>
+              <span class="chip">Retirement</span>
+              <span class="chip">Product Launch</span>
+              <span class="chip">Networking Mixer</span>
+              <span class="chip">Other</span>
+            </div>
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label>Approx. Guests</label>
+              <select id="guests">
+                <option value="">Select…</option>
+                <option>Up to 25</option>
+                <option>25–50</option>
+                <option>50–75</option>
+                <option>75–90</option>
+                <option>90+</option>
+              </select>
+            </div>
+            <div class="field">
+              <label>Target Date</label>
+              <input type="date" id="eventDate">
+            </div>
+          </div>
+          <div class="form-nav">
+            <button class="btn btn-back" hidden>Back</button>
+            <button class="btn btn-next" data-next>Continue</button>
+          </div>
+        </div>
+
+        <!-- STEP 2 -->
+        <div class="fstep" data-step="2">
+          <h3>Choose a Space</h3>
+          <p class="step-sub">Have a preference? If not, we'll recommend one.</p>
+          <div class="field">
+            <label>Preferred Space</label>
+            <div class="chip-row" data-chips="space">
+              <span class="chip">Private Dining (12–50)</span>
+              <span class="chip">Wine Cellar (60–90)</span>
+              <span class="chip">Murano Room</span>
+              <span class="chip">Rooftop Lounge</span>
+              <span class="chip">Not sure — recommend one</span>
+            </div>
+          </div>
+          <div class="field">
+            <label>Anything we should know? (optional)</label>
+            <textarea id="notes" placeholder="AV needs, dietary restrictions, budget range, timing…"></textarea>
+          </div>
+          <div class="form-nav">
+            <button class="btn btn-back" data-back>Back</button>
+            <button class="btn btn-next" data-next>Continue</button>
+          </div>
+        </div>
+
+        <!-- STEP 3 -->
+        <div class="fstep" data-step="3">
+          <h3>Your Contact Info</h3>
+          <p class="step-sub">So our events team can reach you.</p>
+          <div class="field-row">
+            <div class="field"><label>Full Name</label><input type="text" id="name" placeholder="Jane Smith"></div>
+            <div class="field"><label>Company</label><input type="text" id="company" placeholder="Acme Inc."></div>
+          </div>
+          <div class="field-row">
+            <div class="field"><label>Email</label><input type="email" id="email" placeholder="jane@acme.com"></div>
+            <div class="field"><label>Phone</label><input type="tel" id="phone" placeholder="(718) 555-0123"></div>
+          </div>
+          <div class="form-nav">
+            <button class="btn btn-back" data-back>Back</button>
+            <button class="btn btn-next" data-next>Continue</button>
+          </div>
+        </div>
+
+        <!-- STEP 4 -->
+        <div class="fstep" data-step="4">
+          <h3>Book Your Consultation</h3>
+          <p class="step-sub">Pick how you'd like to connect.</p>
+          <div class="field">
+            <label>Consultation Format</label>
+            <div class="chip-row" data-chips="format">
+              <span class="chip">Video call</span>
+              <span class="chip">Phone call</span>
+              <span class="chip">Visit in person</span>
+            </div>
+          </div>
+          <div class="field">
+            <label>Best Time to Reach You</label>
+            <select id="bestTime">
+              <option value="">Select…</option>
+              <option>Weekday morning</option>
+              <option>Weekday afternoon</option>
+              <option>Weekday evening</option>
+              <option>Weekend</option>
+            </select>
+          </div>
+          <div class="form-nav">
+            <button class="btn btn-back" data-back>Back</button>
+            <button class="btn btn-next" id="submitBtn">Request Consultation</button>
+          </div>
+        </div>
+
+        <!-- DONE -->
+        <div class="fstep" data-step="done">
+          <div class="form-done">
+            <div class="fd-mark">&#10003;</div>
+            <h3>Request Received</h3>
+            <p>Thank you — our events team will reach out within one business day to confirm your consultation and walk through the details.</p>
+            <p class="fd-phone">Need us sooner? Call <a href="tel:+17188438387">(718) 843-8387</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <button class="lb-btn" id="lbClose" aria-label="Close">&times;</button>
+  <button class="lb-btn" id="lbPrev" aria-label="Previous">&#8249;</button>
+  <button class="lb-btn" id="lbNext" aria-label="Next">&#8250;</button>
+  <img id="lbImg" src="" alt="">
+  <div class="lb-cap" id="lbCaption"></div>
+</div>
+
+<footer>
+  <div class="foot-grid">
+    <div class="foot-brand">
+      <img class="foot-logo" src="vetro-logo.webp" alt="Vetro by Russo's on the Bay">
+      <p>A waterfront destination on the bay, part of the Russo's On The Bay family of hospitality.</p>
+    </div>
+    <div class="foot-col">
+      <h4>Explore</h4>
+      <a href="index.html">Home</a>
+      <a href="restaurant.html">Restaurant</a>
+      <a href="menu.html">Menus</a>
+      <a href="live-events.html">Live Events</a>
+      <a href="events.html">Host an Event</a>
+      <a href="catering-menu.html">Catering Menu</a>
+    </div>
+    <div class="foot-col">
+      <h4>Visit</h4>
+      <a href="tel:+17188438387">(718) 843-8387</a>
+      <a href="mailto:info@vetronyc.com">info@vetronyc.com</a>
+      <a href="index.html#visit">Hours &amp; Location</a>
+    </div>
+  </div>
+  <div class="foot-bottom">© 2026 Vetro Restaurant &amp; Lounge · 164-49 Cross Bay Blvd, Howard Beach, NY · (718) 843-8387</div>
+</footer>
+
+<script>
+  // mobile nav
+  const navEl=document.getElementById('mainNav');
+  const toggle=document.getElementById('menuToggle');
+  const backdrop=document.getElementById('navBackdrop');
+  function closeNav(){navEl.classList.remove('open');backdrop.classList.remove('open');document.body.classList.remove('nav-open');toggle.innerHTML='&#9776;';toggle.setAttribute('aria-expanded','false');}
+  function openNav(){navEl.classList.add('open');backdrop.classList.add('open');document.body.classList.add('nav-open');toggle.innerHTML='&times;';toggle.setAttribute('aria-expanded','true');}
+  toggle.addEventListener('click',()=>{navEl.classList.contains('open')?closeNav():openNav();});
+  backdrop.addEventListener('click',closeNav);
+  navEl.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeNav));
+
+  // chip selectors (single-select per group)
+  document.querySelectorAll('[data-chips]').forEach(group=>{
+    group.querySelectorAll('.chip').forEach(chip=>{
+      chip.addEventListener('click',()=>{
+        group.querySelectorAll('.chip').forEach(c=>c.classList.remove('sel'));
+        chip.classList.add('sel');
+      });
+    });
+  });
+
+  // multi-step form
+  (function(){
+    const card=document.querySelector('.form-card');
+    if(!card) return;
+    const steps=[...card.querySelectorAll('.fstep')];
+    const bars=[...card.querySelectorAll('.steps-bar .sb')];
+    let cur=0; // index into steps with data-step 1..4 (done handled separately)
+    const lastInput=steps.findIndex(s=>s.dataset.step==='4');
+    function show(i){
+      steps.forEach(s=>s.classList.remove('active'));
+      steps[i].classList.add('active');
+      const stepNum=steps[i].dataset.step;
+      bars.forEach((b,bi)=>b.classList.toggle('active', (bi+1)<=Number(stepNum)));
+      card.scrollIntoView({behavior:'smooth',block:'center'});
+    }
+    card.querySelectorAll('[data-next]').forEach(btn=>{
+      btn.addEventListener('click',()=>{ if(cur<lastInput){cur++;show(cur);} });
+    });
+    card.querySelectorAll('[data-back]').forEach(btn=>{
+      btn.addEventListener('click',()=>{ if(cur>0){cur--;show(cur);} });
+    });
+    const submit=document.getElementById('submitBtn');
+    if(submit){
+      submit.addEventListener('click',()=>{
+        const doneIdx=steps.findIndex(s=>s.dataset.step==='done');
+        steps.forEach(s=>s.classList.remove('active'));
+        steps[doneIdx].classList.add('active');
+        bars.forEach(b=>b.classList.add('active'));
+        card.scrollIntoView({behavior:'smooth',block:'center'});
+      });
+    }
+  })();
+
+  // lightbox (skips placeholders)
+  (function(){
+    const gallery=document.getElementById('gallery');
+    if(!gallery) return;
+    const items=[...gallery.querySelectorAll('.g-item')].filter(it=>it.querySelector('img'));
+    const imgs=items.map(it=>{const im=it.querySelector('img');return {src:im.src,alt:im.alt};});
+    if(!imgs.length) return;
+    const lb=document.getElementById('lightbox');
+    const lbImg=document.getElementById('lbImg');
+    const lbCap=document.getElementById('lbCaption');
+    let idx=0;
+    function render(){lbImg.src=imgs[idx].src;lbImg.alt=imgs[idx].alt;lbCap.textContent=imgs[idx].alt;}
+    function open(i){idx=i;render();lb.classList.add('open');document.body.style.overflow='hidden';}
+    function close(){lb.classList.remove('open');document.body.style.overflow='';}
+    function next(){idx=(idx+1)%imgs.length;render();}
+    function prev(){idx=(idx-1+imgs.length)%imgs.length;render();}
+    items.forEach((it,i)=>it.addEventListener('click',()=>open(i)));
+    document.getElementById('lbClose').addEventListener('click',close);
+    document.getElementById('lbNext').addEventListener('click',e=>{e.stopPropagation();next();});
+    document.getElementById('lbPrev').addEventListener('click',e=>{e.stopPropagation();prev();});
+    lb.addEventListener('click',e=>{if(e.target===lb)close();});
+    document.addEventListener('keydown',e=>{
+      if(!lb.classList.contains('open'))return;
+      if(e.key==='Escape')close();
+      else if(e.key==='ArrowRight')next();
+      else if(e.key==='ArrowLeft')prev();
+    });
+  })();
+
+  // reveal on scroll
+  const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
