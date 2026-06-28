@@ -58,6 +58,8 @@
   }
   .nav-links a:hover{color:var(--bronze)}
   .nav-links a:hover::after{width:100%}
+  .nav-links a.active{color:var(--bronze)}
+  .nav-links a.active::after{width:100%}
   .nav-links a.cta{
     border:1px solid var(--bronze);border-radius:2px;
     padding:9px 20px;color:var(--bronze);
@@ -616,12 +618,13 @@
       <span></span><span></span><span></span>
     </button>
     <div class="nav-links">
-      <a href="index.html">Restaurant</a>
+      <a href="restaurant.html">Restaurant</a>
       <a href="menu.html">Menus</a>
+      <a href="live-events.html">Live Events</a>
       <a href="events.html">Host an Event</a>
-      <a href="catering-menu.html">Catering</a>
+      <a href="catering-menu.html" class="active">Catering</a>
       <a href="index.html#visit">Visit</a>
-      <a href="index.html#reserve" class="cta">Reserve</a>
+      <a href="https://www.opentable.com/r/vetro-by-russos-on-the-bay-reservations-howard-beach?restref=34984&lang=en-US&ot_source=Restaurant%20website" target="_blank" rel="noopener" class="cta">Reserve</a>
     </div>
   </div>
 </nav>
