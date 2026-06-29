@@ -483,7 +483,7 @@ window.addEventListener("DOMContentLoaded",function(){
   function leadCard(){
     if(leadShown)return;leadShown=true;
     const c=document.createElement("div");c.className="cx-lead";c.id="cxLead";
-    c.innerHTML='<h4>Plan your event</h4><p>Leave your details and Vetro\\'s events team will follow up personally — usually same day.</p>'+
+    c.innerHTML='<h4>Plan your event</h4><p>Leave your details and the Vetro events team will follow up personally — usually same day.</p>'+
       '<div class="lf"><label>Name</label><input id="cxlName" placeholder="Your name"></div>'+
       '<div class="lf"><label>Email</label><input id="cxlEmail" type="email" placeholder="you@email.com"></div>'+
       '<div class="lf"><label>Event &amp; date</label><input id="cxlDate" placeholder="e.g. Wedding, October 2026"></div>'+
@@ -495,7 +495,7 @@ window.addEventListener("DOMContentLoaded",function(){
       if(!e){document.getElementById("cxlEmail").style.borderColor="#C9A65A";return;}
       /* swap for a Supabase insert to capture leads live */
       const card=document.getElementById("cxLead");card.classList.add("done");
-      card.innerHTML='<div class="ck">✓</div><h4>Thank you, '+n.split(" ")[0]+'.</h4><p style="margin-bottom:0">Vetro\\'s events team has your request'+(d?' for <strong>'+d+'</strong>':'')+' and will reply to <strong>'+e+'</strong> shortly.</p>';
+      card.innerHTML='<div class="ck">✓</div><h4>Thank you, '+n.split(" ")[0]+'.</h4><p style="margin-bottom:0">The Vetro events team has your request'+(d?' for <strong>'+d+'</strong>':'')+' and will reply to <strong>'+e+'</strong> shortly.</p>';
       chat.scrollTop=chat.scrollHeight;
     };
   }
